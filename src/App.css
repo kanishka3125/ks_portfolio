@@ -1,0 +1,76 @@
+/* === Immersive Background (CSS fallback for mobile / no-3D) === */
+.immersive-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 15%, rgba(96, 165, 250, 0.22), transparent 22%),
+              radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.18), transparent 18%),
+              radial-gradient(circle at 35% 75%, rgba(16, 185, 129, 0.14), transparent 16%);
+  filter: blur(32px);
+  opacity: 0.95;
+  animation: immersive-bg-move 24s ease-in-out infinite;
+}
+
+.immersive-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 240px 240px;
+  opacity: 0.06;
+  transform: translateZ(0);
+  animation: immersive-grid-spin 60s linear infinite;
+}
+
+.immersive-particles {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px),
+                    radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 100px 100px, 50px 50px;
+  opacity: 0.12;
+  animation: immersive-particles-drift 35s linear infinite;
+}
+
+.immersive-orbit {
+  position: absolute;
+  border-radius: 9999px;
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 0 120px rgba(59, 130, 246, 0.25);
+  transform: translate3d(0, 0, 0);
+  opacity: 0.5;
+  animation: immersive-orbit-scale 9s ease-in-out infinite alternate;
+}
+
+.immersive-orbit--large {
+  width: 520px;
+  height: 520px;
+  top: 10%;
+  left: 8%;
+}
+
+.immersive-orbit--small {
+  width: 320px;
+  height: 320px;
+  bottom: 5%;
+  right: 12%;
+}
+
+@keyframes immersive-bg-move {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-5%, 4%, 0) scale(1.03); }
+}
+
+@keyframes immersive-grid-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes immersive-particles-drift {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: -220px 220px, 180px -180px; }
+}
+
+@keyframes immersive-orbit-scale {
+  0% { transform: scale(0.95); opacity: 0.45; }
+  100% { transform: scale(1.08); opacity: 0.6; }
+}
