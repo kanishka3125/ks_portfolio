@@ -13,6 +13,9 @@ import Certifications from './components/Certifications'
 import Contact from './components/Contact'
 import ChatBot from './components/ChatBot'
 import CustomCursor from './components/CustomCursor'
+import StatsGrid from './components/StatsGrid'
+import TechJourney from './components/TechJourney'
+import HackathonBattlefield from './components/HackathonBattlefield'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lenis from 'lenis'
@@ -167,10 +170,13 @@ function App() {
         {currentView === 'home' ? (
           <>
             <Hero data={portfolioData} theme={theme} />
+            <StatsGrid data={portfolioData} />
             <About data={portfolioData} />
             <Skills data={portfolioData} />
             <Experience data={portfolioData} />
             <Internships data={portfolioData} />
+            <TechJourney data={portfolioData} />
+            <HackathonBattlefield data={portfolioData} />
             <ProjectsTeaser />
             <Certifications data={portfolioData} />
             <Contact data={portfolioData} theme={theme} />

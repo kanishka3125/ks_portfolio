@@ -14,6 +14,10 @@ export const portfolioData = {
     communities: 5,
     skills: 16,
     internships: 2,
+    hackathons: 5,
+    events: 12,
+    certificates: 8,
+    connections: 500,
   },
   contact: {
     email: "kanishkasharma3125@gmail.com",
@@ -154,6 +158,96 @@ export const portfolioData = {
       image: "https://i.postimg.cc/BnBr7ZzC/Microsoft-and-Linkedin-PROFESSIONAL-CERTIFICATE.png",
       verifyLink: "https://image2url.com/pdfs/1765886917981-81c3d275-8732-472c-b2b6-99295450d656.pdf",
       skills: ["Generative AI", "Microsoft Copilot", "AI Ethics"]
+    }
+  ],
+  techJourney: [
+    {
+      id: "journey-oscg",
+      name: "Open Source Connect Global (OSCG'26)",
+      role: "Campus Lead",
+      date: "January 2026 - Present",
+      location: "SRM University, Chennai",
+      description: "Appointed as Campus Lead to foster open-source collaboration, organize hands-on technical workshops, and direct developer hackathons at SRM. Working directly with global project maintainers to construct student open-source pathways.",
+      banner: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/e/e5/Web_development_icon.png",
+      verifyLink: "https://image2url.com/pdfs/1765886844676-53f96413-c487-4447-aa35-0475b8c5b716.pdf"
+    },
+    {
+      id: "journey-gssoc",
+      name: "GirlScript Summer of Code (GSSoC'25)",
+      role: "Campus Ambassador & Contributor",
+      date: "May 2025 - August 2025",
+      location: "Remote / India",
+      description: "Contributed to major open-source web assets, reviewed pull requests, led contributor sessions, and promoted collaborative Git workflows among student teams. Built several interactive custom web layouts.",
+      banner: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop",
+      logo: "https://image2url.com/images/1765895074258-5ed13062-fcc5-450b-aea0-4fa4e9e43afa.png",
+      verifyLink: "https://image2url.com/pdfs/1765886917981-81c3d275-8732-472c-b2b6-99295450d656.pdf"
+    },
+    {
+      id: "journey-gdg",
+      name: "GDG DevFest Meetup Chennai",
+      role: "Community Member",
+      date: "November 2025",
+      location: "Chennai, India",
+      description: "Participated in DevFest technical sessions focusing on advanced Web development, Gemini AI integration, and cloud-native solutions. Exchanged software architectural ideas with lead Google engineers.",
+      banner: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=800&auto=format&fit=crop",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png",
+      verifyLink: "https://image2url.com/pdfs/1765886844676-53f96413-c487-4447-aa35-0475b8c5b716.pdf"
+    },
+    {
+      id: "journey-nvidia",
+      name: "NVIDIA Generative AI Workshop",
+      role: "Attendee",
+      date: "February 2026",
+      location: "SRM Campus",
+      description: "Acquired deep insight into generative modeling, transformer architectures, and CUDA optimizations. Trained custom embeddings and deployed fine-tuned LLM architectures on local inference pipelines.",
+      banner: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/d/df/Nvidia_logo_%282012%29.svg",
+      verifyLink: "https://image2url.com/pdfs/1765886917981-81c3d275-8732-472c-b2b6-99295450d656.pdf"
+    }
+  ],
+  hackathons: [
+    {
+      id: "hack-hacksrm",
+      name: "HackSRM 2025",
+      projectName: "Predictive Diabetes Health Engine",
+      status: "Winner",
+      date: "March 2025",
+      banner: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=800&auto=format&fit=crop",
+      description: "Designed a secure ML pipeline using SVM classifiers for predictive diabetes analysis, running on a FastAPI backend and interactive React UI. Ensured strict input validation and accuracy optimizations.",
+      techStack: ["React", "FastAPI", "Python", "Scikit-learn", "SVM"],
+      achievements: "Secured 1st Place overall in Health Tech Track. Successfully minimized classification baseline bias.",
+      learnings: "Mastered hyperparameter tuning for radial basis function (RBF) kernels and high-frequency React form rendering.",
+      github: "https://github.com/kanishka3125",
+      demoLink: "https://github.com/kanishka3125"
+    },
+    {
+      id: "hack-devfest",
+      name: "GDG DevFest Hackathon 2025",
+      projectName: "Real-Time Emotion Calibration",
+      status: "Finalist",
+      date: "October 2025",
+      banner: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop",
+      description: "Created a real-time computer vision expression analyzer using DeepFace and OpenCV over high-performance WebSocket channels, with baseline calibration to resolve user resting-face variance.",
+      techStack: ["TensorFlow", "DeepFace", "OpenCV", "FastAPI", "WebSockets"],
+      achievements: "Nominated in Top 5 overall hacks. Highlighted for architectural elegance in stream handling.",
+      learnings: "Gained insights into low-latency frame serialization and multi-threading models in Python server setups.",
+      github: "https://github.com/kanishka3125/emotion_detector.git",
+      demoLink: "https://github.com/kanishka3125"
+    },
+    {
+      id: "hack-sih",
+      name: "Smart India Hackathon (SIH'25)",
+      projectName: "Decentralized File Synchronization",
+      status: "Qualified",
+      date: "September 2025",
+      banner: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop",
+      description: "Engineered robust multi-peer synchronization layouts with WebSocket communication, temporal versioning, and auto-conflict resolutions.",
+      techStack: ["Node.js", "Express", "WebSockets", "Docker", "Tailwind CSS"],
+      achievements: "Successfully qualified for national finals. Rated highly on fault-tolerance testing.",
+      learnings: "Mastered conflict resolution strategies in distributed peer systems and virtual network testing under Docker.",
+      github: "https://github.com/kanishka3125",
+      demoLink: "https://github.com/kanishka3125"
     }
   ]
 };
