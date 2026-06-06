@@ -2,9 +2,9 @@
 .immersive-bg {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 20% 15%, rgba(96, 165, 250, 0.22), transparent 22%),
-              radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.18), transparent 18%),
-              radial-gradient(circle at 35% 75%, rgba(16, 185, 129, 0.14), transparent 16%);
+  background: radial-gradient(circle at 20% 15%, rgba(254, 210, 180, 0.22), transparent 22%),
+              radial-gradient(circle at 80% 20%, rgba(255, 170, 166, 0.18), transparent 18%),
+              radial-gradient(circle at 35% 75%, rgba(211, 183, 216, 0.14), transparent 16%);
   filter: blur(32px);
   opacity: 0.95;
   animation: immersive-bg-move 24s ease-in-out infinite;

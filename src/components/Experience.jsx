@@ -46,7 +46,7 @@ const Experience = ({ data }) => {
               </div>
 
               <div className="absolute left-3 md:left-1/2 md:-translate-x-1/2 top-2 md:top-1/2 md:-translate-y-1/2 z-10">
-                <div className="w-4 h-4 rounded-full bg-primary-light border-3 border-[#0A0A1E] shadow-md shadow-primary-light/30" />
+                <div className="w-4 h-4 rounded-full bg-primary-light border-3 border-bg-primary shadow-md shadow-primary-light/30" />
               </div>
 
               <div className="flex-1 hidden md:block" />

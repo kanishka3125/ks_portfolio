@@ -1,4 +1,4 @@
-import { useEffect, Suspense, lazy } from 'react'
+import { useEffect, useState, Suspense, lazy } from 'react'
 import './App.css'
 import { portfolioData } from './data/portfolioData'
 import Navbar from './components/Navbar'
@@ -7,10 +7,10 @@ import About from './components/About'
 import Skills from './components/Skills'
 import Experience from './components/Experience'
 import Internships from './components/Internships'
-import Projects from './components/Projects'
+import ProjectsTeaser from './components/ProjectsTeaser'
+import ProjectsHub from './components/Projects'
 import Certifications from './components/Certifications'
 import Contact from './components/Contact'
-import FutureGoals from './components/FutureGoals'
 import ChatBot from './components/ChatBot'
 import CustomCursor from './components/CustomCursor'
 import { gsap } from 'gsap'
@@ -23,6 +23,28 @@ const ParticleField = lazy(() => import('./components/ParticleField'))
 gsap.registerPlugin(ScrollTrigger)
 
 function App() {
+  const [currentView, setCurrentView] = useState('home') // 'home' | 'projects-hub'
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('ks_portfolio_theme') || 'dark'
+  })
+
+  // Sync theme class to documentElement
+  useEffect(() => {
+    const root = window.document.documentElement
+    if (theme === 'light') {
+      root.classList.add('light')
+      root.classList.remove('dark')
+    } else {
+      root.classList.add('dark')
+      root.classList.remove('light')
+    }
+    localStorage.setItem('ks_portfolio_theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'))
+  }
+
   // Initialize Lenis smooth scroll
   useEffect(() => {
     const lenis = new Lenis({
@@ -45,8 +67,48 @@ function App() {
     }
   }, [])
 
-  // Global 3D scroll reveal animations for sections
+  // Listen to hash changes for view routing
   useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash
+      if (hash === '#projects-hub') {
+        setCurrentView('projects-hub')
+        window.scrollTo({ top: 0, behavior: 'instant' })
+        setTimeout(() => {
+          ScrollTrigger.refresh()
+        }, 100)
+      } else {
+        setCurrentView('home')
+        
+        // If coming back from projects hub, wait a moment for home view to mount before scrolling
+        if (hash && hash !== '#') {
+          setTimeout(() => {
+            const targetElement = document.querySelector(hash)
+            if (targetElement) {
+              targetElement.scrollIntoView({ behavior: 'smooth' })
+            }
+            ScrollTrigger.refresh()
+          }, 150)
+        } else {
+          setTimeout(() => {
+            ScrollTrigger.refresh()
+          }, 150)
+        }
+      }
+    }
+
+    window.addEventListener('hashchange', handleHashChange)
+    handleHashChange() // Initial check
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange)
+    }
+  }, [])
+
+  // Global 3D scroll reveal animations for sections (runs on mount and view changes)
+  useEffect(() => {
+    if (currentView !== 'home') return
+
     const sections = document.querySelectorAll('.section-reveal')
     sections.forEach((section) => {
       // Create a 3D smooth transition
@@ -76,13 +138,17 @@ function App() {
         }
       )
     })
-  }, [])
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+    }
+  }, [currentView])
 
   return (
-    <div className="min-h-screen bg-[#0A0A1E] overflow-x-hidden relative">
+    <div className="min-h-screen bg-bg-primary text-text-primary overflow-x-hidden relative transition-colors duration-300">
       {/* 3D Immersive Background (desktop only, lazy-loaded) */}
       <Suspense fallback={null}>
-        <ParticleField />
+        <ParticleField theme={theme} />
       </Suspense>
 
       {/* CSS fallback background (visible on mobile / while 3D loads) */}
@@ -95,18 +161,23 @@ function App() {
       {/* Custom Cursor (desktop only) */}
       <CustomCursor />
 
-      <Navbar data={portfolioData} />
+      <Navbar data={portfolioData} theme={theme} toggleTheme={toggleTheme} />
 
       <main className="container mx-auto px-4 md:px-6 pt-24 relative z-10 flex flex-col gap-6 md:gap-10 pb-20">
-        <Hero data={portfolioData} />
-        <About data={portfolioData} />
-        <Skills data={portfolioData} />
-        <Experience data={portfolioData} />
-        <Internships data={portfolioData} />
-        <Projects data={portfolioData} />
-        <Certifications data={portfolioData} />
-        <FutureGoals />
-        <Contact data={portfolioData} />
+        {currentView === 'home' ? (
+          <>
+            <Hero data={portfolioData} theme={theme} />
+            <About data={portfolioData} />
+            <Skills data={portfolioData} />
+            <Experience data={portfolioData} />
+            <Internships data={portfolioData} />
+            <ProjectsTeaser />
+            <Certifications data={portfolioData} />
+            <Contact data={portfolioData} theme={theme} />
+          </>
+        ) : (
+          <ProjectsHub data={portfolioData} />
+        )}
       </main>
 
       <ChatBot data={portfolioData} />

@@ -1,42 +1,80 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-dark: #0A0A1E;
-  --color-primary-light: #7C3AED;
-  --color-secondary: #EC4899;
-  --color-accent: #60A5FA;
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+
+  --color-bg-primary: var(--bg-primary);
+  --color-text-primary: var(--text-primary);
+  --color-text-muted: var(--text-muted);
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
+  --color-header-bg: var(--header-bg);
+  --color-glass-bg: var(--glass-bg);
+  --color-glass-border: var(--glass-border);
+  --color-glass-hover: var(--glass-hover);
 
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-heading: "Outfit", "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
-  --bg-primary: #0A0A1E;
-  --text-primary: #E0E0E0;
-  --card-bg: rgba(17, 24, 39, 0.5);
-  --card-border: rgba(124, 58, 237, 0.2);
-  --header-bg: rgba(10, 10, 30, 0.8);
-  /* Significantly increased opacity and border strength so cards stand out */
-  --glass-bg: rgba(15, 15, 35, 0.85); 
-  --glass-border: rgba(124, 58, 237, 0.4);
-  --glass-hover: rgba(20, 20, 45, 0.95);
-  --glow-purple: rgba(124, 58, 237, 0.4);
-  --glow-pink: rgba(236, 72, 153, 0.3);
+  --primary-dark: #1C1822;
+  --primary-light: #FED2B4;
+  --secondary: #FFAAA6;
+  --accent: #D3B7D8;
+
+  --bg-primary: #1C1822;
+  --text-primary: #E5DFE5;
+  --text-muted: #94A3B8;
+  --card-bg: rgba(42, 38, 48, 0.6);
+  --card-border: rgba(211, 183, 216, 0.2);
+  --header-bg: rgba(28, 24, 34, 0.85);
+  --glass-bg: rgba(32, 28, 38, 0.85); 
+  --glass-border: rgba(211, 183, 216, 0.35);
+  --glass-hover: rgba(40, 35, 47, 0.95);
+  --glow-purple: rgba(211, 183, 216, 0.35);
+  --glow-pink: rgba(255, 183, 178, 0.25);
+  --shadow-color: rgba(0, 0, 0, 0.45);
+}
+
+:root.light {
+  --primary-dark: #FFF8F5;
+  --primary-light: #DE8755;
+  --secondary: #D96D68;
+  --accent: #96689F;
+
+  --bg-primary: #FFF8F5;
+  --text-primary: #1D1520;
+  --text-muted: #5A4E60;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-border: rgba(176, 140, 183, 0.25);
+  --header-bg: rgba(255, 249, 255, 0.85);
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(176, 140, 183, 0.35);
+  --glass-hover: rgba(255, 251, 249, 0.95);
+  --glow-purple: rgba(150, 104, 159, 0.5);
+  --glow-pink: rgba(217, 109, 104, 0.4);
+  --shadow-color: rgba(0, 0, 0, 0.06);
 }
 
 body {
-  @apply bg-[#0A0A1E] text-[#E0E0E0] font-sans transition-colors duration-300;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  @apply font-sans transition-colors duration-300;
   overflow-x: hidden;
   cursor: default;
 }
 
 /* === Gradient Utilities === */
 .text-gradient {
-  @apply bg-clip-text text-transparent bg-linear-to-r from-[#7C3AED] to-[#EC4899];
+  @apply bg-clip-text text-transparent bg-linear-to-r from-primary-light to-secondary;
 }
 
 .bg-gradient-button {
-  @apply bg-linear-to-r from-[#7C3AED] to-[#EC4899] transition-all duration-300 bg-[length:200%_auto] hover:bg-right;
+  @apply bg-linear-to-r from-primary-light to-secondary transition-all duration-300 bg-[length:200%_auto] hover:bg-right;
 }
 
 /* === Glassmorphism Cards === */
@@ -50,10 +88,10 @@ body {
 
 .glass-card:hover {
   background: var(--glass-hover);
-  border-color: rgba(124, 58, 237, 0.3);
+  border-color: var(--glow-purple);
   box-shadow:
-    0 0 30px rgba(124, 58, 237, 0.08),
-    0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    0 0 30px var(--glow-pink),
+    0 25px 50px -12px var(--shadow-color);
 }
 
 /* === Glow Effects === */
@@ -135,13 +173,13 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  @apply bg-[#0A0A1E];
+  background-color: var(--bg-primary);
 }
 ::-webkit-scrollbar-thumb {
-  @apply bg-[#7C3AED]/20 rounded-full;
+  @apply bg-primary-light/35 rounded-full;
 }
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-[#7C3AED]/40;
+  @apply bg-primary-light/60;
 }
 
 /* === Section spacing === */
@@ -174,5 +212,47 @@ html.lenis, html.lenis body {
 @layer base {
   html {
     @apply scroll-smooth;
+  }
+}
+
+/* === Light Mode Adapter === */
+.light {
+  color-scheme: light;
+  
+  /* Text overrides for hardcoded dark elements */
+  .text-white:not(.bg-gradient-button):not(.bg-gradient-button *):not(.bg-linear-to-r):not(.bg-linear-to-r *):not(.bg-gradient-to-r *):not(.bg-gradient-to-br *) {
+    color: var(--text-primary) !important;
+  }
+  
+  .text-gray-100, 
+  .text-gray-200 {
+    color: var(--text-primary) !important;
+  }
+  
+  .text-gray-300, 
+  .text-gray-400,
+  .text-gray-500 {
+    color: var(--text-muted) !important;
+  }
+  
+  /* Border overrides */
+  .border-white\/5,
+  .border-white\/10,
+  .border-white\/20 {
+    border-color: var(--card-border) !important;
+  }
+
+  /* Background overrides */
+  .bg-white\/5,
+  .bg-white\/\[0\.03\],
+  .bg-white\/\[0\.05\],
+  .bg-white\/\[0\.06\] {
+    background-color: rgba(42, 38, 48, 0.05) !important;
+  }
+  
+  /* Glass card overrides */
+  .glass-card {
+    background: var(--glass-bg) !important;
+    border-color: var(--glass-border) !important;
   }
 }

@@ -84,7 +84,7 @@ const About = ({ data }) => {
               }}
             >
               <img
-                src="https://i.postimg.cc/Xvh4LDRc/P1.jpg"
+                src="https://www.image2url.com/r2/default/images/1780716559140-d456d6d9-2929-418e-8186-754db8316721.jpeg"
                 alt="Kanishka Sharma"
                 loading="lazy"
                 className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-500"

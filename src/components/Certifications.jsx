@@ -59,14 +59,14 @@ const Certifications = ({ data }) => {
   const renderPageContent = (pageData, side) => {
     if (pageData.type === 'cover') {
       return (
-        <div className="w-full h-full flex flex-col items-center justify-center bg-[#0F172A] border-y border-r border-[#020617] rounded-r-[12px] shadow-[inset_-8px_0_25px_rgba(0,0,0,0.8),10px_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden group">
+        <div className="w-full h-full flex flex-col items-center justify-center bg-[#201A24] border-y border-r border-[#14101A] rounded-r-[12px] shadow-[inset_-8px_0_25px_rgba(0,0,0,0.8),10px_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden group">
           
           {/* Authentic Leather Texture - Subtle */}
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/leather.png')] opacity-30 mix-blend-multiply"></div>
           <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-black/90 pointer-events-none"></div>
           
           {/* Deep Book Spine (Left Edge) */}
-          <div className="absolute left-0 top-0 w-8 sm:w-12 h-full bg-[#020617] border-r border-black/90 shadow-[4px_0_15px_rgba(0,0,0,0.9)] z-10 flex flex-col justify-between py-16 sm:py-20">
+          <div className="absolute left-0 top-0 w-8 sm:w-12 h-full bg-[#14101A] border-r border-black/90 shadow-[4px_0_15px_rgba(0,0,0,0.9)] z-10 flex flex-col justify-between py-16 sm:py-20">
             {/* Minimal Spine binding ribs */}
             <div className="w-full h-1 bg-black/90 border-y border-white/5 shadow-[0_2px_4px_rgba(0,0,0,1)]"></div>
             <div className="w-full h-1 bg-black/90 border-y border-white/5 shadow-[0_2px_4px_rgba(0,0,0,1)]"></div>
@@ -123,7 +123,7 @@ const Certifications = ({ data }) => {
     
     if (pageData.type === 'inside-cover') {
       return (
-        <div className="w-full h-full bg-[#1E293B] shadow-inner relative overflow-hidden">
+        <div className="w-full h-full bg-[#2D2636] shadow-inner relative overflow-hidden">
            {/* Elegant patterned endpaper */}
            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/argyle.png')] opacity-20"></div>
            {/* Deep spine crease shadow based on side */}
@@ -189,7 +189,7 @@ const Certifications = ({ data }) => {
               target="_blank"
               rel="noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="w-full flex items-center justify-center gap-2 text-[10px] sm:text-xs font-bold text-white bg-[#0F172A] hover:bg-primary-light px-3 py-2 transition-colors shadow-sm mt-auto group-hover:shadow-md"
+              className="w-full flex items-center justify-center gap-2 text-[10px] sm:text-xs font-bold text-text-primary bg-white/5 border border-white/10 hover:border-primary-light hover:bg-primary-light hover:text-[#1C1822] px-3 py-2 transition-all shadow-sm mt-auto group-hover:shadow-md"
             >
               View Credential <ArrowRight size={12} className="sm:w-3.5 sm:h-3.5" />
             </a>

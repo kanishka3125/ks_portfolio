@@ -92,16 +92,16 @@ export default function ChatBot({ data }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed bottom-24 right-6 z-[150] w-80 sm:w-96 max-h-[70vh] flex flex-col rounded-2xl border border-white/10 bg-[#0f0f2e]/98 backdrop-blur-xl shadow-2xl shadow-primary-light/10 overflow-hidden"
+            className="fixed bottom-24 right-6 z-[150] w-80 sm:w-96 max-h-[70vh] flex flex-col rounded-2xl border border-card-border bg-bg-primary/98 backdrop-blur-xl shadow-2xl shadow-primary-light/10 overflow-hidden"
             data-lenis-prevent
           >
             {/* Header */}
-            <div className="px-5 py-4 border-b border-white/5 bg-gradient-to-r from-primary-light/10 to-secondary/10 flex items-center gap-3">
+            <div className="px-5 py-4 border-b border-card-border bg-gradient-to-r from-primary-light/10 to-secondary/10 flex items-center gap-3">
               <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-light to-secondary flex items-center justify-center">
-                <Sparkles size={14} className="text-white" />
+                <Sparkles size={14} className="text-[#1C1822]" />
               </div>
               <div>
-                <h3 className="text-sm font-semibold text-white">Portfolio Assistant</h3>
+                <h3 className="text-sm font-semibold text-text-primary">Portfolio Assistant</h3>
                 <p className="text-[10px] text-green-400 font-medium flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block" /> Online
                 </p>
@@ -121,8 +121,8 @@ export default function ChatBot({ data }) {
                   <div
                     className={`max-w-[80%] px-4 py-2.5 rounded-2xl text-sm whitespace-pre-wrap leading-relaxed ${
                       m.role === 'user'
-                        ? 'bg-gradient-to-r from-primary-light to-primary-light/80 text-white rounded-br-md'
-                        : 'bg-white/[0.06] text-gray-200 rounded-bl-md border border-white/5'
+                        ? 'bg-gradient-to-r from-primary-light to-primary-light/80 text-[#1C1822] font-semibold rounded-br-md'
+                        : 'bg-card-bg text-text-primary rounded-bl-md border border-card-border'
                     }`}
                   >
                     {m.text}
@@ -133,15 +133,15 @@ export default function ChatBot({ data }) {
               {/* Typing indicator */}
               {isTyping && (
                 <div className="flex justify-start">
-                  <div className="bg-white/[0.06] px-4 py-3 rounded-2xl rounded-bl-md border border-white/5 flex gap-1.5">
+                  <div className="bg-card-bg px-4 py-3 rounded-2xl rounded-bl-md border border-card-border flex gap-1.5">
                     {[0, 1, 2].map((i) => (
-                      <span
-                        key={i}
-                        className="w-2 h-2 rounded-full bg-gray-400"
-                        style={{
-                          animation: `typing-dot 1.2s ease-in-out ${i * 0.2}s infinite`,
-                        }}
-                      />
+                       <span
+                         key={i}
+                         className="w-2 h-2 rounded-full bg-text-muted"
+                         style={{
+                           animation: `typing-dot 1.2s ease-in-out ${i * 0.2}s infinite`,
+                         }}
+                       />
                     ))}
                   </div>
                 </div>
@@ -156,7 +156,7 @@ export default function ChatBot({ data }) {
                   <button
                     key={i}
                     onClick={() => send(s.replace(/^[^\s]+ /, ''))}
-                    className="text-[11px] font-medium bg-white/5 hover:bg-white/10 border border-white/10 px-3 py-1.5 rounded-full text-gray-400 hover:text-white transition-all cursor-pointer"
+                    className="text-[11px] font-medium bg-white/5 hover:bg-white/10 border border-card-border px-3 py-1.5 rounded-full text-text-muted hover:text-text-primary transition-all cursor-pointer"
                   >
                     {s}
                   </button>
@@ -167,13 +167,13 @@ export default function ChatBot({ data }) {
             {/* Input */}
             <form
               onSubmit={e => { e.preventDefault(); send() }}
-              className="flex items-center gap-2 p-3 border-t border-white/5 bg-white/[0.02]"
+              className="flex items-center gap-2 p-3 border-t border-card-border bg-bg-primary/40"
             >
               <input
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 placeholder="Type a message..."
-                className="flex-1 bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-500 outline-none focus:border-primary-light/50 transition-colors"
+                className="flex-1 bg-card-bg border border-card-border rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder-text-muted outline-none focus:border-primary-light/50 transition-colors"
               />
               <button
                 type="submit"

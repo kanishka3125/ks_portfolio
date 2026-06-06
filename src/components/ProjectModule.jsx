@@ -14,9 +14,9 @@ const ProjectModule = ({ project, onClick }) => {
       onClick={onClick}
     >
       {/* Holographic Glowing Border */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#3B82F6]/30 via-transparent to-[#8B5CF6]/30 rounded-2xl opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500 z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-light/30 via-transparent to-secondary/30 rounded-2xl opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500 z-0"></div>
       
-      <div className="relative h-full flex flex-col bg-[#0A0F1E] border border-[#1E293B] group-hover:border-[#3B82F6]/50 rounded-2xl overflow-hidden z-10 transition-colors duration-300">
+      <div className="relative h-full flex flex-col bg-card-bg border border-card-border group-hover:border-primary-light/50 rounded-2xl overflow-hidden z-10 transition-colors duration-300">
         
         {/* Module Header / Status */}
         <div className="absolute top-3 left-3 z-20 flex gap-2">
@@ -28,14 +28,14 @@ const ProjectModule = ({ project, onClick }) => {
             {project.status || 'Ongoing'}
           </span>
           {project.difficulty && (
-            <span className="px-2 py-1 text-[9px] font-bold uppercase tracking-widest rounded shadow-md backdrop-blur-md border bg-blue-500/20 text-blue-400 border-blue-500/30">
+            <span className="px-2 py-1 text-[9px] font-bold uppercase tracking-widest rounded shadow-md backdrop-blur-md border bg-accent/20 text-accent border-accent/30">
               {project.difficulty}
             </span>
           )}
         </div>
 
         {/* Thumbnail Preview */}
-        <div className="relative aspect-video w-full overflow-hidden bg-[#050810] border-b border-[#1E293B]">
+        <div className="relative aspect-video w-full overflow-hidden bg-bg-primary border-b border-card-border">
           {project.image ? (
             <img 
               src={project.image} 
@@ -44,37 +44,37 @@ const ProjectModule = ({ project, onClick }) => {
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center">
-              <FolderGit2 size={48} className="text-[#1E293B]" />
+              <FolderGit2 size={48} className="text-accent/30" />
             </div>
           )}
           {/* Overlay gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1E] via-[#0A0F1E]/50 to-transparent opacity-90 group-hover:opacity-70 transition-opacity"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-card-bg via-card-bg/50 to-transparent opacity-90 group-hover:opacity-70 transition-opacity"></div>
         </div>
 
         {/* Content */}
         <div className="p-5 flex flex-col flex-grow">
-          <h3 className="text-lg font-heading font-black text-[#E2E8F0] group-hover:text-[#3B82F6] transition-colors mb-2 line-clamp-1">
+          <h3 className="text-lg font-heading font-black text-text-primary group-hover:text-primary-light transition-colors mb-2 line-clamp-1">
             {project.title}
           </h3>
-          <p className="text-xs text-[#94A3B8] font-sans leading-relaxed mb-4 line-clamp-2 flex-grow">
+          <p className="text-xs text-text-muted font-sans leading-relaxed mb-4 line-clamp-2 flex-grow">
             {project.shortDescription || project.description}
           </p>
           
           {/* Tags */}
           <div className="flex flex-wrap items-center gap-1.5 mt-auto">
             {project.domain && (
-              <span className="text-[10px] font-mono font-bold bg-[#1E293B] text-[#94A3B8] px-2 py-1 rounded">
+              <span className="text-[10px] font-mono font-bold bg-bg-primary text-text-muted border border-card-border px-2 py-1 rounded">
                 {project.domain}
               </span>
             )}
             {project.type && (
-              <span className="text-[10px] font-mono font-bold bg-[#1E293B] text-[#94A3B8] px-2 py-1 rounded">
+              <span className="text-[10px] font-mono font-bold bg-bg-primary text-text-muted border border-card-border px-2 py-1 rounded">
                 {project.type}
               </span>
             )}
             
-            <div className="ml-auto flex items-center justify-center w-7 h-7 rounded-full bg-white/5 group-hover:bg-[#3B82F6] transition-colors">
-              <ArrowUpRight size={14} className="text-gray-400 group-hover:text-white" />
+            <div className="ml-auto flex items-center justify-center w-7 h-7 rounded-full bg-white/5 group-hover:bg-primary-light transition-colors">
+              <ArrowUpRight size={14} className="text-gray-400 group-hover:text-[#1C1822]" />
             </div>
           </div>
         </div>

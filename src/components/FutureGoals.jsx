@@ -70,7 +70,7 @@ export default function FutureGoals() {
                 className="relative pl-14 md:pl-16"
               >
                 {/* Timeline dot */}
-                <div className={`absolute left-3 md:left-4 top-1 w-4 h-4 rounded-full border-2 border-[#0A0A1E] ${colors.dot} ${goal.status === 'current' ? 'animate-glow-pulse' : ''} ${colors.glow ? `shadow-md ${colors.glow}` : ''}`} />
+                <div className={`absolute left-3 md:left-4 top-1 w-4 h-4 rounded-full border-2 border-[#0F0E17] ${colors.dot} ${goal.status === 'current' ? 'animate-glow-pulse' : ''} ${colors.glow ? `shadow-md ${colors.glow}` : ''}`} />
 
                 {/* Card */}
                 <div className={`glass-card rounded-xl p-5 ${goal.status === 'current' ? 'border-primary-light/30' : ''}`}>

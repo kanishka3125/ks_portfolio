@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Sun, Moon } from 'lucide-react'
 
 const navItems = [
   { href: '#about', label: 'About' },
@@ -10,7 +10,7 @@ const navItems = [
   { href: '#contact', label: 'Contact' },
 ]
 
-const Navbar = ({ data }) => {
+const Navbar = ({ data, theme, toggleTheme }) => {
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('')
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -46,8 +46,8 @@ const Navbar = ({ data }) => {
     <>
       <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${scrolled ? 'py-1.5' : 'py-3'}`}>
         <div className="container mx-auto px-4 md:px-6">
-          <div className={`flex items-center justify-between h-12 px-5 md:px-6 rounded-xl transition-all duration-500 ${scrolled ? 'bg-[#0A0A1E]/90 backdrop-blur-xl border border-white/10 shadow-xl shadow-black/20' : 'bg-white/[0.03] backdrop-blur-md border border-white/5'}`}>
-            <a href="#" className="text-lg font-heading font-black tracking-tighter text-white group">
+          <div className={`flex items-center justify-between h-12 px-5 md:px-6 rounded-xl transition-all duration-500 ${scrolled ? 'bg-header-bg backdrop-blur-xl border border-glass-border shadow-xl shadow-black/10' : 'bg-white/[0.03] backdrop-blur-md border border-white/5'}`}>
+            <a href="#" className="text-lg font-heading font-black tracking-tighter text-text-primary group">
               KS<span className="text-primary-light group-hover:text-secondary transition-colors duration-300">.</span>
             </a>
 
@@ -74,6 +74,18 @@ const Navbar = ({ data }) => {
             </div>
 
             <div className="flex items-center gap-2">
+              <button
+                onClick={toggleTheme}
+                className="w-8.5 h-8.5 flex items-center justify-center rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-text-primary transition-all duration-300 cursor-pointer hover:scale-105"
+                aria-label="Toggle light/dark theme"
+              >
+                {theme === 'dark' ? (
+                  <Sun size={15} className="text-primary-light fill-primary-light/10 animate-float" style={{ animationDuration: '4s' }} />
+                ) : (
+                  <Moon size={15} className="text-accent fill-accent/10 animate-float" style={{ animationDuration: '4s' }} />
+                )}
+              </button>
+
               <a
                 href={data.contact.resume}
                 target="_blank"
@@ -104,7 +116,7 @@ const Navbar = ({ data }) => {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-0 z-[99] md:hidden"
           >
-            <div className="absolute inset-0 bg-[#0A0A1E]/98 backdrop-blur-xl" />
+            <div className="absolute inset-0 bg-bg-primary/95 backdrop-blur-xl transition-colors duration-300" />
             <div className="relative flex flex-col items-center justify-center h-full gap-6">
               {navItems.map(({ href, label }, i) => (
                 <motion.a

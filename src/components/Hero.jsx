@@ -14,7 +14,6 @@ const globeNodes = [
   { id: 'internships', label: 'Internships', phi: Math.PI * 0.65, theta: Math.PI * 0.4 },
   { id: 'projects', label: 'Projects', phi: Math.PI * 0.75, theta: -Math.PI * 0.2 },
   { id: 'certifications', label: 'Certifications', phi: Math.PI * 0.45, theta: Math.PI * 0.7 },
-  { id: 'future-goals', label: 'Roadmap', phi: Math.PI * 0.6, theta: Math.PI * 0.9 },
   { id: 'contact', label: 'Contact', phi: Math.PI * 0.85, theta: Math.PI * 0.1 },
 ]
 
@@ -25,7 +24,7 @@ function getSphericalPos(radius, phi, theta) {
   return [x, y, z];
 }
 
-function NeuralGlobe() {
+function NeuralGlobe({ theme }) {
   const groupRef = useRef()
   const globeRadius = 2.5
 
@@ -51,8 +50,8 @@ function NeuralGlobe() {
         <mesh>
           <icosahedronGeometry args={[globeRadius, 3]} />
           <meshStandardMaterial 
-            color="#3B82F6" 
-            emissive="#7C3AED"
+            color={theme === 'light' ? '#DE8755' : '#FED2B4'} 
+            emissive={theme === 'light' ? '#96689F' : '#D3B7D8'}
             emissiveIntensity={0.6}
             wireframe={true}
             transparent
@@ -63,7 +62,7 @@ function NeuralGlobe() {
         <points>
           <icosahedronGeometry args={[globeRadius, 3]} />
           <pointsMaterial 
-            color="#EC4899" 
+            color={theme === 'light' ? '#D96D68' : '#FFAAA6'} 
             size={0.04}
             transparent
             opacity={0.8}
@@ -87,7 +86,7 @@ function NeuralGlobe() {
                     e.stopPropagation();
                     handleNavClick(node.id);
                   }}
-                  className="cursor-pointer group whitespace-nowrap bg-[#0A0A1E]/90 backdrop-blur-md border border-[#7C3AED]/30 hover:border-[#EC4899] px-4 py-2 rounded-xl text-sm font-bold text-gray-200 hover:text-white hover:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(124,58,237,0.3)]"
+                  className="cursor-pointer group whitespace-nowrap bg-glass-bg/95 backdrop-blur-md border border-primary-light/35 hover:border-secondary px-4 py-2 rounded-xl text-sm font-bold text-text-primary hover:text-primary-light hover:scale-110 transition-all duration-300 shadow-md shadow-primary-light/20"
                   style={{ pointerEvents: 'auto' }}
                 >
                   <span className="w-2 h-2 rounded-full bg-[#34D399] inline-block mr-2 animate-pulse shadow-[0_0_8px_#34D399]" />
@@ -102,7 +101,7 @@ function NeuralGlobe() {
   )
 }
 
-const Hero = ({ data }) => {
+const Hero = ({ data, theme }) => {
   const heroRef = useRef(null)
   const parallaxRef = useRef(null)
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
@@ -238,7 +237,7 @@ const Hero = ({ data }) => {
       <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[50%] h-[120%] pointer-events-auto z-10">
         <Canvas camera={{ position: [0, 0, 8], fov: 60 }} dpr={[1, 1.5]}>
           <ambientLight intensity={0.5} />
-          <NeuralGlobe />
+          <NeuralGlobe theme={theme} />
         </Canvas>
       </div>
     </section>

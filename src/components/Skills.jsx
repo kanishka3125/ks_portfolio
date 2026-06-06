@@ -18,9 +18,9 @@ const skillMeta = {
 }
 
 const categories = [
-  { key: 'languages', title: 'Languages', icon: Code2, color: 'primary-light', colorHex: '#7C3AED' },
-  { key: 'tools', title: 'Tools & Frameworks', icon: Terminal, color: 'secondary', colorHex: '#EC4899' },
-  { key: 'communities', title: 'Community', icon: Users, color: 'accent', colorHex: '#60A5FA' },
+  { key: 'languages', title: 'Languages', icon: Code2, color: 'primary-light', colorVar: 'var(--primary-light)' },
+  { key: 'tools', title: 'Tools & Frameworks', icon: Terminal, color: 'secondary', colorVar: 'var(--secondary)' },
+  { key: 'communities', title: 'Community', icon: Users, color: 'accent', colorVar: 'var(--accent)' },
 ]
 
 const Skills = ({ data }) => {
@@ -42,16 +42,16 @@ const Skills = ({ data }) => {
             >
               <div
                 className="absolute top-0 right-0 w-32 h-32 rounded-full blur-[60px] translate-x-1/2 -translate-y-1/2 opacity-15 group-hover:opacity-30 transition-opacity duration-500"
-                style={{ backgroundColor: cat.colorHex }}
+                style={{ backgroundColor: cat.colorVar }}
               />
               <div className="relative z-10">
                 <div className="mb-4 w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
-                  <Icon style={{ color: cat.colorHex }} size={18} />
+                  <Icon style={{ color: cat.colorVar }} size={18} />
                 </div>
                 <h3 className="text-base font-heading font-bold text-white mb-4">{cat.title}</h3>
                 <div className="flex flex-wrap gap-2">
                   {data.skills[cat.key].map((item, index) => (
-                    <SkillPill key={index} name={item} index={index} colorHex={cat.colorHex} meta={skillMeta[item]} />
+                    <SkillPill key={index} name={item} index={index} colorVar={cat.colorVar} meta={skillMeta[item]} />
                   ))}
                 </div>
               </div>
@@ -63,7 +63,7 @@ const Skills = ({ data }) => {
   )
 }
 
-function SkillPill({ name, index, colorHex, meta }) {
+function SkillPill({ name, index, colorVar, meta }) {
   const [hovered, setHovered] = useState(false)
 
   return (
@@ -76,7 +76,7 @@ function SkillPill({ name, index, colorHex, meta }) {
     >
       <span
         className="inline-block text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-gray-400 hover:text-white hover:border-white/20 transition-all duration-300 cursor-default whitespace-nowrap"
-        style={hovered ? { borderColor: `${colorHex}44`, color: colorHex } : {}}
+        style={hovered ? { borderColor: colorVar, color: colorVar } : {}}
       >
         {name}
       </span>
@@ -85,11 +85,11 @@ function SkillPill({ name, index, colorHex, meta }) {
         <motion.div
           initial={{ opacity: 0, y: 6, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2.5 rounded-lg bg-[#141432] border border-white/10 shadow-2xl z-50 min-w-[160px]"
+          className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2.5 rounded-lg bg-card-bg border border-card-border shadow-2xl z-50 min-w-[160px]"
         >
           <div className="flex items-center justify-between mb-1.5">
-            <span className="text-[11px] font-bold text-white">{name}</span>
-            <span className="text-[11px] font-bold" style={{ color: colorHex }}>{meta.proficiency}%</span>
+            <span className="text-[11px] font-bold text-text-primary">{name}</span>
+            <span className="text-[11px] font-bold" style={{ color: colorVar }}>{meta.proficiency}%</span>
           </div>
           <div className="w-full h-1 rounded-full bg-white/10 overflow-hidden mb-1.5">
             <motion.div
@@ -97,15 +97,15 @@ function SkillPill({ name, index, colorHex, meta }) {
               animate={{ width: `${meta.proficiency}%` }}
               transition={{ duration: 0.4, delay: 0.1 }}
               className="h-full rounded-full"
-              style={{ backgroundColor: colorHex }}
+              style={{ backgroundColor: colorVar }}
             />
           </div>
           <div className="flex flex-wrap gap-1">
             {meta.related.map((r, i) => (
-              <span key={i} className="text-[9px] font-medium text-gray-500 bg-white/5 px-1.5 py-0.5 rounded">{r}</span>
+              <span key={i} className="text-[9px] font-medium text-text-muted bg-white/5 px-1.5 py-0.5 rounded">{r}</span>
             ))}
           </div>
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-1.5 h-1.5 rotate-45 bg-[#141432] border-r border-b border-white/10" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-1.5 h-1.5 rotate-45 bg-card-bg border-r border-b border-card-border" />
         </motion.div>
       )}
     </motion.div>

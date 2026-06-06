@@ -2,15 +2,16 @@ import { motion } from 'framer-motion'
 import { Mail, Phone, Link, CodeXml, FileText, ExternalLink, Send } from 'lucide-react'
 import SectionHeading from './SectionHeading'
 
-export default function Contact({ data }) {
+export default function Contact({ data, theme }) {
   const { contact } = data
 
+  const isLight = theme === 'light';
   const links = [
-    { icon: Mail, label: 'Email', value: contact.email, href: `mailto:${contact.email}`, color: '#7C3AED' },
-    { icon: Phone, label: 'Phone', value: contact.phone, href: `tel:${contact.phone.replace(/\s/g, '')}`, color: '#EC4899' },
-    { icon: Link, label: 'LinkedIn', value: 'Connect on LinkedIn', href: contact.linkedin, color: '#60A5FA' },
-    { icon: CodeXml, label: 'GitHub', value: 'github.com/kanishka3125', href: contact.github, color: '#34D399' },
-    { icon: FileText, label: 'Resume', value: 'Download Resume', href: contact.resume, color: '#F59E0B' },
+    { icon: Mail, label: 'Email', value: contact.email, href: `mailto:${contact.email}`, color: isLight ? '#DE8755' : '#FED2B4' },
+    { icon: Phone, label: 'Phone', value: contact.phone, href: `tel:${contact.phone.replace(/\s/g, '')}`, color: isLight ? '#D96D68' : '#FFAAA6' },
+    { icon: Link, label: 'LinkedIn', value: 'Connect on LinkedIn', href: contact.linkedin, color: isLight ? '#96689F' : '#D3B7D8' },
+    { icon: CodeXml, label: 'GitHub', value: 'github.com/kanishka3125', href: contact.github, color: isLight ? '#96689F' : '#B58E9F' },
+    { icon: FileText, label: 'Resume', value: 'Download Resume', href: contact.resume, color: isLight ? '#D96D68' : '#FFAAA6' },
   ]
 
   return (
