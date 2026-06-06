@@ -168,15 +168,21 @@ export default function HackathonModal({ hack, onClose }) {
   const badge = statusConfig[hack.status] || statusConfig.Participant
   const images = hack.images?.length ? hack.images : [hack.banner]
 
-  // ESC to close
+  // Lock/unlock Lenis smooth scroll for the lifetime of this modal
+  useEffect(() => {
+    document.body.style.overflow = 'hidden'
+    if (window.__lenis) window.__lenis.stop()
+    return () => {
+      document.body.style.overflow = ''
+      if (window.__lenis) window.__lenis.start()
+    }
+  }, []) // runs only on mount / unmount
+
+  // ESC key — re-runs if zoomSrc changes (don't want ESC to close modal when zoom is open)
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape' && !zoomSrc) onClose() }
     window.addEventListener('keydown', onKey)
-    document.body.style.overflow = 'hidden'
-    return () => {
-      window.removeEventListener('keydown', onKey)
-      document.body.style.overflow = ''
-    }
+    return () => window.removeEventListener('keydown', onKey)
   }, [onClose, zoomSrc])
 
   // Click outside to close
@@ -199,6 +205,7 @@ export default function HackathonModal({ hack, onClose }) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={handleOverlayClick}
+        onWheel={(e) => e.stopPropagation()}
       >
         <motion.div
           className="relative w-full max-w-2xl max-h-[92vh] flex flex-col rounded-2xl overflow-hidden shadow-2xl border border-card-border bg-card-bg"

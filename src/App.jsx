@@ -57,6 +57,9 @@ function App() {
       smoothWheel: true,
     })
 
+    // Expose instance globally so modals can pause/resume scroll
+    window.__lenis = lenis
+
     // Connect Lenis to GSAP ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update)
     gsap.ticker.add((time) => {
@@ -67,6 +70,7 @@ function App() {
     return () => {
       lenis.destroy()
       gsap.ticker.remove(lenis.raf)
+      window.__lenis = null
     }
   }, [])
 
