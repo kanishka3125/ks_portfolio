@@ -174,9 +174,9 @@ function App() {
             <About data={portfolioData} />
             <Skills data={portfolioData} />
             <Experience data={portfolioData} />
-            <Internships data={portfolioData} />
-            <TechJourney data={portfolioData} />
             <HackathonBattlefield data={portfolioData} />
+            <TechJourney data={portfolioData} />
+            <Internships data={portfolioData} />
             <ProjectsTeaser />
             <Certifications data={portfolioData} />
             <Contact data={portfolioData} theme={theme} />
