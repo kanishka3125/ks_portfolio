@@ -17,29 +17,48 @@ const statusConfig = {
 // ─── Image Carousel ─────────────────────────────────────────────────────────
 function Carousel({ images, onZoom }) {
   const [current, setCurrent] = useState(0)
-  const touchStart = useRef(null)
+  const touchStart   = useRef(null)
+  const autoTimer    = useRef(null)
 
   const prev = useCallback(() =>
     setCurrent(c => (c - 1 + images.length) % images.length), [images.length])
   const next = useCallback(() =>
     setCurrent(c => (c + 1) % images.length), [images.length])
 
+  // Reset the 10-second auto-advance timer (called on any manual interaction)
+  const resetTimer = useCallback(() => {
+    if (autoTimer.current) clearInterval(autoTimer.current)
+    autoTimer.current = setInterval(() => {
+      setCurrent(c => (c + 1) % images.length)
+    }, 10000)
+  }, [images.length])
+
+  // Start auto-advance on mount, clear on unmount
+  useEffect(() => {
+    resetTimer()
+    return () => { if (autoTimer.current) clearInterval(autoTimer.current) }
+  }, [resetTimer])
+
+  // Wrap prev/next to also reset the timer after manual navigation
+  const handlePrev = useCallback(() => { prev(); resetTimer() }, [prev, resetTimer])
+  const handleNext = useCallback(() => { next(); resetTimer() }, [next, resetTimer])
+
   // Keyboard arrows
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === 'ArrowLeft')  prev()
-      if (e.key === 'ArrowRight') next()
+      if (e.key === 'ArrowLeft')  handlePrev()
+      if (e.key === 'ArrowRight') handleNext()
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [prev, next])
+  }, [handlePrev, handleNext])
 
   // Touch swipe
   const onTouchStart = (e) => { touchStart.current = e.touches[0].clientX }
   const onTouchEnd   = (e) => {
     if (touchStart.current === null) return
     const delta = touchStart.current - e.changedTouches[0].clientX
-    if (Math.abs(delta) > 40) delta > 0 ? next() : prev()
+    if (Math.abs(delta) > 40) delta > 0 ? handleNext() : handlePrev()
     touchStart.current = null
   }
 
@@ -76,13 +95,13 @@ function Carousel({ images, onZoom }) {
       {images.length > 1 && (
         <>
           <button
-            onClick={prev}
+            onClick={handlePrev}
             className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/50 border border-white/10 text-white hover:bg-black/80 transition-all"
           >
             <ChevronLeft size={16} />
           </button>
           <button
-            onClick={next}
+            onClick={handleNext}
             className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/50 border border-white/10 text-white hover:bg-black/80 transition-all"
           >
             <ChevronRight size={16} />
@@ -93,7 +112,7 @@ function Carousel({ images, onZoom }) {
             {images.map((_, i) => (
               <button
                 key={i}
-                onClick={() => setCurrent(i)}
+                onClick={() => { setCurrent(i); resetTimer() }}
                 className={`rounded-full transition-all duration-300 ${
                   i === current
                     ? 'w-5 h-2 bg-white'
@@ -103,6 +122,19 @@ function Carousel({ images, onZoom }) {
             ))}
           </div>
         </>
+      )}
+
+      {/* Auto-advance progress bar */}
+      {images.length > 1 && (
+        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-white/10 z-10 overflow-hidden">
+          <div
+            key={current} // re-mounts on slide change, restarting animation
+            className="h-full bg-white/60"
+            style={{
+              animation: 'slideProgress 10s linear forwards',
+            }}
+          />
+        </div>
       )}
     </div>
   )
