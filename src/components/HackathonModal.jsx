@@ -1,182 +1,26 @@
-import { useEffect, useState, useCallback, useRef } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
-  X, ChevronLeft, ChevronRight, Trophy, MapPin, Calendar,
-  Users, BookOpen, CodeXml, ExternalLink, ZoomIn, ZoomOut
+  X, Trophy, MapPin, Calendar,
+  Users, BookOpen, CodeXml, ExternalLink
 } from 'lucide-react'
 
-// ─── Status Badge Config ────────────────────────────────────────────────────
-const statusConfig = {
-  Winner:      { cls: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40', dot: 'bg-emerald-400' },
-  Finalist:    { cls: 'bg-amber-500/20   text-amber-400   border-amber-500/40',   dot: 'bg-amber-400'   },
-  Qualified:   { cls: 'bg-blue-500/20    text-blue-400    border-blue-500/40',    dot: 'bg-blue-400'    },
-  Participant: { cls: 'bg-accent/20      text-accent      border-accent/40',       dot: 'bg-accent'      },
+
+// ─── Status Badge Config ─────────────────────────────────────────────────────
+// Handles both exact strings and partial matches (e.g. "Top 10 Finalist")
+const STATUS_MAP = [
+  { test: /winner/i,     cls: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40', dot: 'bg-emerald-400' },
+  { test: /top\s*\d/i,  cls: 'bg-amber-500/20   text-amber-400   border-amber-500/40',   dot: 'bg-amber-400'   },
+  { test: /finalist/i,  cls: 'bg-amber-500/20   text-amber-400   border-amber-500/40',   dot: 'bg-amber-400'   },
+  { test: /qualified/i, cls: 'bg-blue-500/20    text-blue-400    border-blue-500/40',    dot: 'bg-blue-400'    },
+]
+const DEFAULT_BADGE = { cls: 'bg-accent/20 text-accent border-accent/40', dot: 'bg-accent' }
+function getBadge(status = '') {
+  return STATUS_MAP.find(m => m.test.test(status)) || DEFAULT_BADGE
 }
 
-// ─── Image Carousel ─────────────────────────────────────────────────────────
-function Carousel({ images, onZoom }) {
-  const [current, setCurrent] = useState(0)
-  const touchStart   = useRef(null)
-  const autoTimer    = useRef(null)
 
-  const prev = useCallback(() =>
-    setCurrent(c => (c - 1 + images.length) % images.length), [images.length])
-  const next = useCallback(() =>
-    setCurrent(c => (c + 1) % images.length), [images.length])
-
-  // Reset the 10-second auto-advance timer (called on any manual interaction)
-  const resetTimer = useCallback(() => {
-    if (autoTimer.current) clearInterval(autoTimer.current)
-    autoTimer.current = setInterval(() => {
-      setCurrent(c => (c + 1) % images.length)
-    }, 10000)
-  }, [images.length])
-
-  // Start auto-advance on mount, clear on unmount
-  useEffect(() => {
-    resetTimer()
-    return () => { if (autoTimer.current) clearInterval(autoTimer.current) }
-  }, [resetTimer])
-
-  // Wrap prev/next to also reset the timer after manual navigation
-  const handlePrev = useCallback(() => { prev(); resetTimer() }, [prev, resetTimer])
-  const handleNext = useCallback(() => { next(); resetTimer() }, [next, resetTimer])
-
-  // Keyboard arrows
-  useEffect(() => {
-    const onKey = (e) => {
-      if (e.key === 'ArrowLeft')  handlePrev()
-      if (e.key === 'ArrowRight') handleNext()
-    }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [handlePrev, handleNext])
-
-  // Touch swipe
-  const onTouchStart = (e) => { touchStart.current = e.touches[0].clientX }
-  const onTouchEnd   = (e) => {
-    if (touchStart.current === null) return
-    const delta = touchStart.current - e.changedTouches[0].clientX
-    if (Math.abs(delta) > 40) delta > 0 ? handleNext() : handlePrev()
-    touchStart.current = null
-  }
-
-  return (
-    <div className="relative w-full bg-black select-none" style={{ aspectRatio: '16/9' }}>
-      {/* Images */}
-      <AnimatePresence mode="wait">
-        <motion.img
-          key={current}
-          src={images[current]}
-          alt={`Slide ${current + 1}`}
-          initial={{ opacity: 0, scale: 1.03 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.97 }}
-          transition={{ duration: 0.35, ease: 'easeInOut' }}
-          className="w-full h-full object-cover cursor-zoom-in"
-          onTouchStart={onTouchStart}
-          onTouchEnd={onTouchEnd}
-          onClick={() => onZoom(images[current])}
-          draggable={false}
-        />
-      </AnimatePresence>
-
-      {/* Zoom hint */}
-      <button
-        onClick={() => onZoom(images[current])}
-        className="absolute top-3 right-3 z-10 p-1.5 rounded-lg bg-black/50 border border-white/10 text-white/70 hover:text-white hover:bg-black/70 transition-all"
-        title="Click to zoom"
-      >
-        <ZoomIn size={14} />
-      </button>
-
-      {/* Prev / Next — only if multiple images */}
-      {images.length > 1 && (
-        <>
-          <button
-            onClick={handlePrev}
-            className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/50 border border-white/10 text-white hover:bg-black/80 transition-all"
-          >
-            <ChevronLeft size={16} />
-          </button>
-          <button
-            onClick={handleNext}
-            className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/50 border border-white/10 text-white hover:bg-black/80 transition-all"
-          >
-            <ChevronRight size={16} />
-          </button>
-
-          {/* Dot indicators */}
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
-            {images.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => { setCurrent(i); resetTimer() }}
-                className={`rounded-full transition-all duration-300 ${
-                  i === current
-                    ? 'w-5 h-2 bg-white'
-                    : 'w-2 h-2 bg-white/40 hover:bg-white/70'
-                }`}
-              />
-            ))}
-          </div>
-        </>
-      )}
-
-      {/* Auto-advance progress bar */}
-      {images.length > 1 && (
-        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-white/10 z-10 overflow-hidden">
-          <div
-            key={current} // re-mounts on slide change, restarting animation
-            className="h-full bg-white/60"
-            style={{
-              animation: 'slideProgress 10s linear forwards',
-            }}
-          />
-        </div>
-      )}
-    </div>
-  )
-}
-
-// ─── Zoom Lightbox (full-screen image) ───────────────────────────────────────
-function ZoomLightbox({ src, onClose }) {
-  useEffect(() => {
-    const onKey = (e) => { if (e.key === 'Escape') onClose() }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [onClose])
-
-  return createPortal(
-    <motion.div
-      className="fixed inset-0 z-[200] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      onClick={onClose}
-    >
-      <button
-        onClick={onClose}
-        className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition"
-      >
-        <X size={18} />
-      </button>
-      <motion.img
-        src={src}
-        alt="Zoomed"
-        initial={{ scale: 0.85, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.85, opacity: 0 }}
-        transition={{ duration: 0.25, ease: 'easeOut' }}
-        className="max-w-full max-h-[90vh] rounded-xl shadow-2xl cursor-zoom-out object-contain"
-        onClick={(e) => e.stopPropagation()}
-        draggable={false}
-      />
-    </motion.div>,
-    document.body
-  )
-}
 
 // ─── Info Row helper ─────────────────────────────────────────────────────────
 function InfoRow({ icon: Icon, label, value, accent }) {
@@ -195,10 +39,9 @@ function InfoRow({ icon: Icon, label, value, accent }) {
 
 // ─── Main Modal ──────────────────────────────────────────────────────────────
 export default function HackathonModal({ hack, onClose }) {
-  const [zoomSrc, setZoomSrc] = useState(null)
   const overlayRef = useRef(null)
-  const badge = statusConfig[hack.status] || statusConfig.Participant
-  const images = hack.images?.length ? hack.images : [hack.banner]
+  const badge  = getBadge(hack.status)
+
 
   // Lock/unlock Lenis smooth scroll for the lifetime of this modal
   useEffect(() => {
@@ -208,14 +51,14 @@ export default function HackathonModal({ hack, onClose }) {
       document.body.style.overflow = ''
       if (window.__lenis) window.__lenis.start()
     }
-  }, []) // runs only on mount / unmount
+  }, [])
 
-  // ESC key — re-runs if zoomSrc changes (don't want ESC to close modal when zoom is open)
+  // ESC to close (lightbox inside ImageCarousel handles its own ESC)
   useEffect(() => {
-    const onKey = (e) => { if (e.key === 'Escape' && !zoomSrc) onClose() }
+    const onKey = (e) => { if (e.key === 'Escape') onClose() }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [onClose, zoomSrc])
+  }, [onClose])
 
   // Click outside to close
   const handleOverlayClick = (e) => {
@@ -224,11 +67,6 @@ export default function HackathonModal({ hack, onClose }) {
 
   return createPortal(
     <>
-      <AnimatePresence>
-        {zoomSrc && (
-          <ZoomLightbox src={zoomSrc} onClose={() => setZoomSrc(null)} />
-        )}
-      </AnimatePresence>
 
       <motion.div
         ref={overlayRef}
@@ -255,10 +93,7 @@ export default function HackathonModal({ hack, onClose }) {
             <X size={15} />
           </button>
 
-          {/* ── Image Carousel ── */}
-          <div className="flex-shrink-0">
-            <Carousel images={images} onZoom={setZoomSrc} />
-          </div>
+
 
           {/* ── Scrollable Content ── */}
           <div className="overflow-y-auto flex-1 p-5 sm:p-6 space-y-5 scrollbar-thin scrollbar-thumb-card-border scrollbar-track-transparent">

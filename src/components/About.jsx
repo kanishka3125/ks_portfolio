@@ -77,7 +77,7 @@ const About = ({ data }) => {
             className="flex-shrink-0 mx-auto md:mx-0"
           >
             <div
-              className="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-primary-light/30 shadow-lg shadow-primary-light/10"
+              className="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-2 border-primary-light/30 shadow-lg shadow-primary-light/10"
               style={{
                 transform: `perspective(600px) rotateY(${tilt.x}deg) rotateX(${tilt.y}deg)`,
                 transition: 'transform 0.15s ease-out',

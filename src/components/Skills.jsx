@@ -3,6 +3,33 @@ import { motion } from 'framer-motion'
 import { Code2, Terminal, Users } from 'lucide-react'
 import SectionHeading from './SectionHeading'
 
+/* ─── Skill logo map (Devicon / Simple Icons CDN) ─────────────────────────── */
+const SKILL_ICONS = {
+  // Languages
+  'Python':           'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
+  'C':                'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg',
+  'C++':              'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg',
+  'HTML':             'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg',
+  'Java':             'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg',
+  'JavaScript':       'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg',
+  'JavaScript, SQL':  'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg',
+  'SQL':              'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg',
+
+  // Tools
+  'Git & GitHub':     'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg',
+  'NumPy/Pandas':     'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original.svg',
+  'VS Code':          'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg',
+  'Jupyter Notebook': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jupyter/jupyter-original.svg',
+  'Google Colab':     'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg',
+
+  // Communities
+  'GirlScript Summer of Code':  'https://cdn.simpleicons.org/opensourceinitiative/3DA639',
+  'Open Source Connect Global':  'https://cdn.simpleicons.org/github/white',
+  'Open Source Connect India':   'https://cdn.simpleicons.org/github/white',
+  'Google Developer Community':  'https://cdn.simpleicons.org/google/4285F4',
+  'Google and NVIDIA Community': 'https://cdn.simpleicons.org/nvidia/76B900',
+}
+
 const skillMeta = {
   'Python': { proficiency: 90, related: ['TensorFlow', 'NumPy', 'Pandas'] },
   'C': { proficiency: 75, related: ['Data Structures', 'Algorithms'] },
@@ -10,6 +37,7 @@ const skillMeta = {
   'HTML': { proficiency: 85, related: ['CSS', 'Tailwind'] },
   'Java': { proficiency: 70, related: ['OOP', 'Collections'] },
   'JavaScript': { proficiency: 80, related: ['React', 'Node.js'] },
+  'JavaScript, SQL': { proficiency: 80, related: ['React', 'Node.js', 'MySQL'] },
   'Git & GitHub': { proficiency: 85, related: ['Version Control', 'CI/CD'] },
   'NumPy/Pandas': { proficiency: 80, related: ['Data Analysis', 'ML'] },
   'VS Code': { proficiency: 90, related: ['Extensions', 'Debugging'] },
@@ -51,7 +79,7 @@ const Skills = ({ data }) => {
                 <h3 className="text-base font-heading font-bold text-white mb-4">{cat.title}</h3>
                 <div className="flex flex-wrap gap-2">
                   {data.skills[cat.key].map((item, index) => (
-                    <SkillPill key={index} name={item} index={index} colorVar={cat.colorVar} meta={skillMeta[item]} />
+                    <SkillPill key={index} name={item} index={index} colorVar={cat.colorVar} meta={skillMeta[item]} logo={SKILL_ICONS[item]} />
                   ))}
                 </div>
               </div>
@@ -63,7 +91,7 @@ const Skills = ({ data }) => {
   )
 }
 
-function SkillPill({ name, index, colorVar, meta }) {
+function SkillPill({ name, index, colorVar, meta, logo }) {
   const [hovered, setHovered] = useState(false)
 
   return (
@@ -75,9 +103,17 @@ function SkillPill({ name, index, colorVar, meta }) {
       onMouseLeave={() => setHovered(false)}
     >
       <span
-        className="inline-block text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-gray-400 hover:text-white hover:border-white/20 transition-all duration-300 cursor-default whitespace-nowrap"
+        className="inline-flex items-center gap-1.5 text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-gray-400 hover:text-white hover:border-white/20 transition-all duration-300 cursor-default whitespace-nowrap"
         style={hovered ? { borderColor: colorVar, color: colorVar } : {}}
       >
+        {logo && (
+          <img
+            src={logo}
+            alt=""
+            className="w-4 h-4 object-contain flex-shrink-0"
+            style={{ filter: hovered ? 'none' : 'grayscale(80%) brightness(0.7)' , transition: 'filter 0.3s ease' }}
+          />
+        )}
         {name}
       </span>
 
@@ -87,8 +123,9 @@ function SkillPill({ name, index, colorVar, meta }) {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2.5 rounded-lg bg-card-bg border border-card-border shadow-2xl z-50 min-w-[160px]"
         >
-          <div className="flex items-center justify-between mb-1.5">
-            <span className="text-[11px] font-bold text-text-primary">{name}</span>
+          <div className="flex items-center gap-2 mb-1.5">
+            {logo && <img src={logo} alt="" className="w-4 h-4 object-contain" />}
+            <span className="text-[11px] font-bold text-text-primary flex-1">{name}</span>
             <span className="text-[11px] font-bold" style={{ color: colorVar }}>{meta.proficiency}%</span>
           </div>
           <div className="w-full h-1 rounded-full bg-white/10 overflow-hidden mb-1.5">

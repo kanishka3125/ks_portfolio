@@ -5,11 +5,15 @@ import SectionHeading from './SectionHeading'
 import HackathonModal from './HackathonModal'
 
 // ─── Status Config ───────────────────────────────────────────────────────────
-const statusConfig = {
-  Winner:      "bg-emerald-500/20 text-emerald-400 border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.35)]",
-  Finalist:    "bg-amber-500/20   text-amber-400   border-amber-500/30   shadow-[0_0_15px_rgba(245,158,11,0.35)]",
-  Qualified:   "bg-blue-500/20    text-blue-400    border-blue-500/30    shadow-[0_0_15px_rgba(59,130,246,0.35)]",
-  Participant: "bg-accent/20      text-accent       border-accent/30      shadow-[0_0_15px_var(--glow-purple)]",
+const STATUS_RULES = [
+  { test: /winner/i,     cls: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.35)]" },
+  { test: /top\s*\d/i,  cls: "bg-amber-500/20   text-amber-400   border-amber-500/30   shadow-[0_0_15px_rgba(245,158,11,0.35)]" },
+  { test: /finalist/i,  cls: "bg-amber-500/20   text-amber-400   border-amber-500/30   shadow-[0_0_15px_rgba(245,158,11,0.35)]" },
+  { test: /qualified/i, cls: "bg-blue-500/20    text-blue-400    border-blue-500/30    shadow-[0_0_15px_rgba(59,130,246,0.35)]" },
+]
+const FALLBACK_CLS = "bg-accent/20 text-accent border-accent/30 shadow-[0_0_15px_var(--glow-purple)]"
+function getBadgeClass(status = '') {
+  return (STATUS_RULES.find(r => r.test.test(status)) || { cls: FALLBACK_CLS }).cls
 }
 
 // ─── Mission Card ────────────────────────────────────────────────────────────
@@ -35,7 +39,7 @@ function MissionCard({ hack, index, onOpen }) {
     setTilt({ x: 0, y: 0 })
   }
 
-  const badgeClass = statusConfig[hack.status] || statusConfig.Participant
+  const badgeClass = getBadgeClass(hack.status)
 
   return (
     <motion.div
@@ -107,7 +111,7 @@ function MissionCard({ hack, index, onOpen }) {
             Project: {hack.projectName}
           </span>
 
-          <p className="text-xs text-text-muted mt-2.5 leading-relaxed line-clamp-3 group-hover:line-clamp-none transition-all duration-300">
+          <p className="text-sm font-heading text-text-muted mt-2.5 leading-relaxed line-clamp-3 group-hover:line-clamp-none transition-all duration-300">
             {hack.description}
           </p>
 
@@ -123,9 +127,9 @@ function MissionCard({ hack, index, onOpen }) {
           {/* Hover drawer */}
           <div className="max-h-0 opacity-0 overflow-hidden group-hover:max-h-48 group-hover:opacity-100 group-hover:mt-4 transition-all duration-500 ease-in-out border-t border-card-border/40 pt-0 group-hover:pt-3">
             {hack.achievements && (
-              <div className="flex items-start gap-1.5 text-xs text-emerald-400/90 mb-2 font-medium">
+              <div className="flex items-start gap-1.5 text-xs text-amber-400/90 mb-2 font-medium">
                 <Trophy size={13} className="mt-0.5 flex-shrink-0" />
-                <span><strong className="text-emerald-400">Accomplished:</strong> {hack.achievements}</span>
+                <span><strong className="text-amber-400">Accomplished:</strong> {hack.achievements}</span>
               </div>
             )}
             {hack.learnings && (

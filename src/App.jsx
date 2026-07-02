@@ -4,11 +4,10 @@ import { portfolioData } from './data/portfolioData'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
-import Skills from './components/Skills'
+import SkillGalaxy from './components/SkillGalaxy'
 import Experience from './components/Experience'
 import Internships from './components/Internships'
-import ProjectsTeaser from './components/ProjectsTeaser'
-import ProjectsHub from './components/Projects'
+import Projects from './components/Projects'
 import Certifications from './components/Certifications'
 import Contact from './components/Contact'
 import ChatBot from './components/ChatBot'
@@ -16,6 +15,8 @@ import CustomCursor from './components/CustomCursor'
 import StatsGrid from './components/StatsGrid'
 import TechJourney from './components/TechJourney'
 import HackathonBattlefield from './components/HackathonBattlefield'
+import RecruiterOverview from './components/RecruiterOverview'
+import ContactBar from './components/ContactBar'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lenis from 'lenis'
@@ -26,10 +27,12 @@ const ParticleField = lazy(() => import('./components/ParticleField'))
 gsap.registerPlugin(ScrollTrigger)
 
 function App() {
-  const [currentView, setCurrentView] = useState('home') // 'home' | 'projects-hub'
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('ks_portfolio_theme') || 'dark'
   })
+  
+  const [isRecruiterMode, setIsRecruiterMode] = useState(false)
+  const toggleRecruiterMode = () => setIsRecruiterMode(prev => !prev)
 
   // Sync theme class to documentElement
   useEffect(() => {
@@ -74,33 +77,23 @@ function App() {
     }
   }, [])
 
-  // Listen to hash changes for view routing
+  // Listen to hash changes for smooth scrolling
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash
-      if (hash === '#projects-hub') {
-        setCurrentView('projects-hub')
-        window.scrollTo({ top: 0, behavior: 'instant' })
+      if (hash && hash !== '#') {
+        const targetId = hash === '#projects-hub' ? '#projects' : hash
+        setTimeout(() => {
+          const targetElement = document.querySelector(targetId)
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' })
+          }
+          ScrollTrigger.refresh()
+        }, 150)
+      } else {
         setTimeout(() => {
           ScrollTrigger.refresh()
-        }, 100)
-      } else {
-        setCurrentView('home')
-        
-        // If coming back from projects hub, wait a moment for home view to mount before scrolling
-        if (hash && hash !== '#') {
-          setTimeout(() => {
-            const targetElement = document.querySelector(hash)
-            if (targetElement) {
-              targetElement.scrollIntoView({ behavior: 'smooth' })
-            }
-            ScrollTrigger.refresh()
-          }, 150)
-        } else {
-          setTimeout(() => {
-            ScrollTrigger.refresh()
-          }, 150)
-        }
+        }, 150)
       }
     }
 
@@ -112,10 +105,8 @@ function App() {
     }
   }, [])
 
-  // Global 3D scroll reveal animations for sections (runs on mount and view changes)
+  // Global 3D scroll reveal animations for sections (runs on mount)
   useEffect(() => {
-    if (currentView !== 'home') return
-
     const sections = document.querySelectorAll('.section-reveal')
     sections.forEach((section) => {
       // Create a 3D smooth transition
@@ -149,7 +140,7 @@ function App() {
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill())
     }
-  }, [currentView])
+  }, [])
 
   return (
     <div className="min-h-screen bg-bg-primary text-text-primary overflow-x-hidden relative transition-colors duration-300">
@@ -168,29 +159,41 @@ function App() {
       {/* Custom Cursor (desktop only) */}
       <CustomCursor />
 
-      <Navbar data={portfolioData} theme={theme} toggleTheme={toggleTheme} />
+      <Navbar data={portfolioData} theme={theme} toggleTheme={toggleTheme} isRecruiterMode={isRecruiterMode} toggleRecruiterMode={toggleRecruiterMode} />
 
       <main className="container mx-auto px-4 md:px-6 pt-24 relative z-10 flex flex-col gap-6 md:gap-10 pb-20">
-        {currentView === 'home' ? (
+        {!isRecruiterMode ? (
           <>
             <Hero data={portfolioData} theme={theme} />
             <StatsGrid data={portfolioData} />
             <About data={portfolioData} />
-            <Skills data={portfolioData} />
+            <SkillGalaxy data={portfolioData} />
             <Experience data={portfolioData} />
             <HackathonBattlefield data={portfolioData} />
             <TechJourney data={portfolioData} />
             <Internships data={portfolioData} />
-            <ProjectsTeaser />
+            <Projects data={portfolioData} />
             <Certifications data={portfolioData} />
             <Contact data={portfolioData} theme={theme} />
           </>
         ) : (
-          <ProjectsHub data={portfolioData} />
+          <div className="animate-in fade-in slide-in-from-bottom-8 duration-700">
+            <div className="flex flex-col gap-6 md:gap-10">
+              <RecruiterOverview data={portfolioData} />
+              <Experience data={portfolioData} />
+              <Internships data={portfolioData} />
+              <Projects data={portfolioData} />
+              <SkillGalaxy data={portfolioData} />
+              <HackathonBattlefield data={portfolioData} />
+              <Certifications data={portfolioData} />
+            </div>
+          </div>
         )}
       </main>
 
       <ChatBot data={portfolioData} />
+      
+      <ContactBar data={portfolioData} isVisible={isRecruiterMode} />
 
       <footer className="py-8 border-t border-white/10 text-center relative z-10 bg-black/20 backdrop-blur-sm">
         <p className="text-gray-500 text-sm">

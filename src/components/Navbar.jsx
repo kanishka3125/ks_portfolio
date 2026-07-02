@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Sun, Moon } from 'lucide-react'
+import { Menu, X, Sun, Moon, Briefcase } from 'lucide-react'
 
 const navItems = [
   { href: '#about', label: 'About' },
@@ -10,7 +10,7 @@ const navItems = [
   { href: '#contact', label: 'Contact' },
 ]
 
-const Navbar = ({ data, theme, toggleTheme }) => {
+const Navbar = ({ data, theme, toggleTheme, isRecruiterMode, toggleRecruiterMode }) => {
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('')
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -52,7 +52,7 @@ const Navbar = ({ data, theme, toggleTheme }) => {
             </a>
 
             <div className="hidden md:flex items-center gap-0.5">
-              {navItems.map(({ href, label }) => (
+              {!isRecruiterMode && navItems.map(({ href, label }) => (
                 <a
                   key={href}
                   href={href}
@@ -74,6 +74,19 @@ const Navbar = ({ data, theme, toggleTheme }) => {
             </div>
 
             <div className="flex items-center gap-2">
+              <button
+                onClick={toggleRecruiterMode}
+                className={`hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all duration-300 text-[11px] font-bold uppercase tracking-wider ${
+                  isRecruiterMode
+                    ? 'bg-green-500/10 text-green-400 border-green-500/40 shadow-[0_0_10px_rgba(34,197,94,0.15)]'
+                    : 'bg-white/5 text-text-muted border-white/10 hover:text-white hover:bg-white/10'
+                }`}
+                title="Toggle Recruiter Mode"
+              >
+                <Briefcase size={13} className={isRecruiterMode ? "animate-pulse" : ""} />
+                <span>{isRecruiterMode ? 'Recruiter Mode' : 'Recruiter Mode'}</span>
+              </button>
+
               <button
                 onClick={toggleTheme}
                 className="w-8.5 h-8.5 flex items-center justify-center rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-text-primary transition-all duration-300 cursor-pointer hover:scale-105"
@@ -118,6 +131,22 @@ const Navbar = ({ data, theme, toggleTheme }) => {
           >
             <div className="absolute inset-0 bg-bg-primary/95 backdrop-blur-xl transition-colors duration-300" />
             <div className="relative flex flex-col items-center justify-center h-full gap-6">
+              
+              <button
+                onClick={() => {
+                  toggleRecruiterMode()
+                  setMobileOpen(false)
+                }}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-xl border transition-all duration-300 text-sm font-bold uppercase tracking-wider mb-4 ${
+                  isRecruiterMode
+                    ? 'bg-green-500/10 text-green-400 border-green-500/40 shadow-[0_0_15px_rgba(34,197,94,0.2)]'
+                    : 'bg-white/5 text-text-muted border-white/10 hover:text-white'
+                }`}
+              >
+                <Briefcase size={16} />
+                <span>{isRecruiterMode ? 'Recruiter Mode ON' : 'Recruiter Mode'}</span>
+              </button>
+
               {navItems.map(({ href, label }, i) => (
                 <motion.a
                   key={href}

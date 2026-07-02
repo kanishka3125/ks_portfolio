@@ -1,592 +1,301 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Plus, RotateCcw, X, Save, Sparkles, FolderGit2 } from 'lucide-react';
-import FilterBar from './FilterBar';
-import ProjectModule from './ProjectModule';
-import ProjectWindow from './ProjectWindow';
+import { 
+  CodeXml, ExternalLink, FolderGit2, Play, ChevronDown, GitBranch
+} from 'lucide-react';
+import SectionHeading from './SectionHeading';
 
-const ProjectsHub = ({ data }) => {
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [activeFilters, setActiveFilters] = useState({
-    domain: "All Domains",
-    type: "All Types",
-    difficulty: "All Levels"
-  });
+// ─── Cinematic Details Sequence ──────────────────────────────────────────────
+const CINEMATIC_STEPS = [
+  { key: 'architecture', label: 'ARCHITECTURE', color: 'text-primary-light', glowColor: 'rgba(254,210,180,0.4)' },
+  { key: 'dataset',      label: 'DATASET',      color: 'text-secondary',     glowColor: 'rgba(255,170,166,0.4)' },
+  { key: 'training',     label: 'TRAINING',     color: 'text-accent',        glowColor: 'rgba(211,183,216,0.4)' },
+  { key: 'results',      label: 'RESULTS',      color: 'text-green-400',     glowColor: 'rgba(74,222,128,0.4)' },
+]
 
-  // State to hold projects list, loaded from localStorage or default data
-  const [projectsList, setProjectsList] = useState([]);
-  const [showAddForm, setShowAddForm] = useState(false);
+const stepVariants = {
+  hidden:  { opacity: 0, y: 14, filter: 'blur(4px)' },
+  visible: (i) => ({ opacity: 1, y: 0, filter: 'blur(0px)', transition: { delay: 0.1 + i * 0.18, duration: 0.4, ease: 'easeOut' } }),
+  exit:    { opacity: 0, transition: { duration: 0.1 } },
+}
 
-  // Form input state
-  const [formData, setFormData] = useState({
-    title: "",
-    domain: "Web",
-    type: "Personal",
-    difficulty: "Advanced",
-    status: "Completed",
-    shortDescription: "",
-    description: "",
-    image: "",
-    frontendTech: "",
-    backendTech: "",
-    aiTech: "",
-    toolsTech: "",
-    features: "",
-    architecture: "",
-    challenges: "",
-    takeaways: "",
-    future: "",
-    github: "",
-    demoLink: ""
-  });
+// ─── Status Config ───────────────────────────────────────────────────────────
+const STATUS_RULES = [
+  { test: /completed/i, cls: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.35)]" },
+  { test: /ongoing/i,   cls: "bg-amber-500/20   text-amber-400   border-amber-500/30   shadow-[0_0_15px_rgba(245,158,11,0.35)]" },
+]
+const FALLBACK_STATUS_CLS = "bg-blue-500/20 text-blue-400 border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.35)]"
+function getStatusClass(status = '') {
+  return (STATUS_RULES.find(r => r.test.test(status)) || { cls: FALLBACK_STATUS_CLS }).cls
+}
 
-  // Load from localStorage on mount
-  useEffect(() => {
-    const saved = localStorage.getItem('ks_portfolio_projects');
-    if (saved) {
-      try {
-        setProjectsList(JSON.parse(saved));
-        return;
-      } catch (e) {
-        console.error("Failed to parse saved projects", e);
-      }
-    }
-    setProjectsList(data.projects);
-  }, [data.projects]);
+// ─── Project Card with Hover Overlay Details ────────────────────────────────
+function ProjectCard({ project, index }) {
+  const cardRef = useRef(null)
+  const [spotlightPos, setSpotlightPos] = useState({ x: 0, y: 0 })
+  const [tilt, setTilt] = useState({ x: 0, y: 0 })
+  const [isHovered, setIsHovered] = useState(false)
 
-  const handleFilterToggle = (category, value) => {
-    setActiveFilters(prev => ({
-      ...prev,
-      [category]: value
-    }));
-  };
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return
+    const rect = cardRef.current.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    setSpotlightPos({ x, y })
+    const xc = rect.width / 2
+    const yc = rect.height / 2
+    setTilt({ x: -(y - yc) / (rect.height / 15), y: (x - xc) / (rect.width / 15) })
+  }
 
-  const filteredProjects = useMemo(() => {
-    return projectsList.filter(project => {
-      const matchDomain = activeFilters.domain === "All Domains" || project.domain === activeFilters.domain;
-      const matchType = activeFilters.type === "All Types" || project.type === activeFilters.type;
-      const matchDifficulty = activeFilters.difficulty === "All Levels" || project.difficulty === activeFilters.difficulty;
-      return matchDomain && matchType && matchDifficulty;
-    });
-  }, [projectsList, activeFilters]);
+  const handleMouseLeave = () => {
+    setIsHovered(false)
+    setTilt({ x: 0, y: 0 })
+  }
 
-  // Lock body scroll when windows/modals are open
-  useEffect(() => {
-    if (selectedProject || showAddForm) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [selectedProject, showAddForm]);
+  const statusClass = getStatusClass(project.status)
 
-  // Form handle change
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  // Submit form to add project
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!formData.title || !formData.shortDescription || !formData.description) {
-      alert("Please fill in Title, Short Description, and Full Description.");
-      return;
-    }
-
-    const newProject = {
-      id: `project-${Date.now()}`,
-      title: formData.title,
-      domain: formData.domain,
-      type: formData.type,
-      difficulty: formData.difficulty,
-      status: formData.status,
-      shortDescription: formData.shortDescription,
-      description: formData.description,
-      image: formData.image || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop", // high-quality placeholder image
-      tech: {
-        frontend: formData.frontendTech ? formData.frontendTech.split(',').map(s => s.trim()).filter(Boolean) : [],
-        backend: formData.backendTech ? formData.backendTech.split(',').map(s => s.trim()).filter(Boolean) : [],
-        ai: formData.aiTech ? formData.aiTech.split(',').map(s => s.trim()).filter(Boolean) : [],
-        tools: formData.toolsTech ? formData.toolsTech.split(',').map(s => s.trim()).filter(Boolean) : []
-      },
-      features: formData.features ? formData.features.split('\n').map(s => s.trim()).filter(Boolean) : [],
-      architecture: formData.architecture || "",
-      learnings: {
-        challenges: formData.challenges || "Managing project requirements and technical constraints.",
-        takeaways: formData.takeaways || "Learned how to design scalable modular application architectures.",
-        future: formData.future || "Optimize rendering performance and write comprehensive unit tests."
-      },
-      github: formData.github || "https://github.com",
-      demoLink: formData.demoLink || ""
-    };
-
-    const updatedProjects = [newProject, ...projectsList];
-    setProjectsList(updatedProjects);
-    localStorage.setItem('ks_portfolio_projects', JSON.stringify(updatedProjects));
-    
-    // Reset form and close
-    setFormData({
-      title: "",
-      domain: "Web",
-      type: "Personal",
-      difficulty: "Advanced",
-      status: "Completed",
-      shortDescription: "",
-      description: "",
-      image: "",
-      frontendTech: "",
-      backendTech: "",
-      aiTech: "",
-      toolsTech: "",
-      features: "",
-      architecture: "",
-      challenges: "",
-      takeaways: "",
-      future: "",
-      github: "",
-      demoLink: ""
-    });
-    setShowAddForm(false);
-  };
-
-  // Reset projects to default data list
-  const handleResetToDefaults = () => {
-    if (window.confirm("Are you sure you want to reset the projects list to defaults? All custom added projects will be removed.")) {
-      localStorage.removeItem('ks_portfolio_projects');
-      setProjectsList(data.projects);
-    }
-  };
+  const techStack = useMemo(() => {
+    const { frontend = [], backend = [], ai = [], tools = [] } = project.tech || {};
+    return [...frontend, ...backend, ...ai, ...tools];
+  }, [project.tech]);
 
   return (
-    <section id="projects" className="py-8 md:py-12 relative min-h-screen">
-      {/* Background Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-light/5 via-bg-primary/80 to-bg-primary z-0 pointer-events-none"></div>
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+        transformStyle: 'preserve-3d',
+        transition: 'transform 0.1s ease-out',
+      }}
+      className="group relative rounded-2xl bg-card-bg border border-card-border overflow-hidden shadow-xl hover:shadow-primary-light/5 hover:border-primary-light/25 flex flex-col h-full cursor-default"
+    >
+      {/* Spotlight gradient */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
+        style={{
+          background: `radial-gradient(350px circle at ${spotlightPos.x}px ${spotlightPos.y}px, rgba(254,210,180,0.08), transparent 45%)`,
+        }}
+      />
 
-      <div className="container mx-auto relative z-10">
-        
-        {/* Header Action Row */}
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-10 border-b border-white/5 pb-6">
-          <button 
-            onClick={() => { window.location.hash = '#'; }}
-            className="flex items-center gap-2 text-xs font-bold text-gray-400 hover:text-white bg-white/5 border border-white/10 hover:border-primary-light/30 px-3.5 py-2 rounded-xl transition-all cursor-pointer shadow-md"
-          >
-            <ArrowLeft size={14} />
-            Back to Home
-          </button>
-
-          <div className="flex gap-2.5">
-            <button
-              onClick={handleResetToDefaults}
-              className="flex items-center gap-2 text-xs font-bold text-gray-400 hover:text-red-400 bg-white/5 border border-white/10 hover:border-red-500/20 px-3.5 py-2 rounded-xl transition-all cursor-pointer shadow-md"
-              title="Reset projects list to defaults"
-            >
-              <RotateCcw size={14} />
-              Reset List
-            </button>
-
-            <button
-              onClick={() => setShowAddForm(true)}
-              className="flex items-center gap-2 text-xs font-bold bg-gradient-button text-white px-4 py-2 rounded-xl shadow-lg hover:shadow-primary-light/30 hover:scale-[1.02] transition-all cursor-pointer"
-            >
-              <Plus size={15} />
-              Add Project
-            </button>
+      {/* ── Hero Banner ── */}
+      <div className="relative h-[220px] w-full overflow-hidden bg-black/30 border-b border-card-border flex-shrink-0 z-0">
+        {project.image ? (
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-bg-primary/50 text-text-muted">
+            <FolderGit2 size={48} className="opacity-40" />
           </div>
-        </div>
-
-        {/* Title Section */}
-        <div className="mb-10 text-center md:text-left">
-          <h2 className="text-3xl md:text-5xl font-heading font-black text-white mb-3 tracking-tight">
-            Projects <span className="text-gradient">Hub</span>
-          </h2>
-          <p className="text-gray-400 max-w-2xl text-sm md:text-base leading-relaxed">
-            Welcome to my technical projects archives. Explore the interactive modules below detailing system architectures, tech stacks, and source codes.
-          </p>
-        </div>
-
-        {/* Filters */}
-        <FilterBar activeFilters={activeFilters} onFilterToggle={handleFilterToggle} />
-
-        {/* Projects Grid */}
-        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
-              <ProjectModule 
-                key={project.id} 
-                project={project} 
-                onClick={() => setSelectedProject(project)} 
-              />
-            ))}
-          </AnimatePresence>
-        </motion.div>
-
-        {filteredProjects.length === 0 && (
-          <motion.div 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            className="text-center py-24 text-text-muted font-mono text-sm border border-dashed border-card-border rounded-2xl bg-bg-primary/40 backdrop-blur-sm"
-          >
-            {">"} No projects match the active filter parameters.
-          </motion.div>
         )}
+        <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-transparent to-transparent opacity-95 group-hover:opacity-75 transition-opacity" />
+
+        {/* Status & Difficulty Badges */}
+        <div className="absolute top-4 left-4 z-20 flex gap-2">
+          <span className={`px-2.5 py-1 text-[9px] font-mono font-black uppercase tracking-widest rounded border backdrop-blur-md ${statusClass}`}>
+            {project.status || 'Ongoing'}
+          </span>
+          {project.difficulty && (
+            <span className="px-2.5 py-1 text-[9px] font-mono font-black uppercase tracking-widest rounded border backdrop-blur-md bg-accent/20 text-accent border-accent/30 shadow-[0_0_15px_var(--glow-purple)]">
+              {project.difficulty}
+            </span>
+          )}
+        </div>
+
+        {/* Domain + Type overlay */}
+        <div className="absolute bottom-4 left-4 z-20">
+          <span className="text-[10px] font-mono font-bold text-text-muted bg-bg-primary/80 border border-card-border px-2 py-0.5 rounded-md animate-float">
+            {project.domain} · {project.type}
+          </span>
+          <h3 className="text-base sm:text-lg font-heading font-black text-white mt-1 leading-tight drop-shadow-md line-clamp-1">
+            {project.title}
+          </h3>
+        </div>
       </div>
 
-      {/* Details Window / Modal */}
-      {selectedProject && (
-        <ProjectWindow 
-          project={selectedProject} 
-          onClose={() => setSelectedProject(null)} 
-        />
-      )}
+      {/* ── Card Body ── */}
+      <div className="p-5 flex flex-col justify-between flex-grow relative z-20" style={{ transform: 'translateZ(30px)' }}>
+        <p className="text-xs text-text-muted mt-1 leading-relaxed line-clamp-4 font-medium font-sans">
+          {project.shortDescription || project.description}
+        </p>
+      </div>
 
-      {/* Add Project Modal */}
+      {/* ── Cinematic Hover Overlay ── */}
       <AnimatePresence>
-        {showAddForm && (
-          <motion.div 
+        {isHovered && (
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm overflow-y-auto"
+            transition={{ duration: 0.3 }}
+            className="absolute inset-0 z-30 rounded-2xl overflow-hidden cursor-default"
+            style={{ background: 'linear-gradient(180deg, #0a0810 0%, #1C1822 60%, #0f0d14 100%)' }}
           >
-            {/* Backdrop click to close */}
-            <div className="absolute inset-0 cursor-pointer" onClick={() => setShowAddForm(false)}></div>
+            {/* Cinematic letterbox bars */}
+            <div className="absolute top-0 left-0 right-0 h-5 bg-black z-40" />
+            <div className="absolute bottom-0 left-0 right-0 h-5 bg-black z-40" />
 
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95, y: 30 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ type: "spring", damping: 25, stiffness: 280 }}
-              className="relative w-full max-w-2xl bg-card-bg border border-card-border rounded-2xl shadow-2xl shadow-black/30 z-10 overflow-hidden flex flex-col max-h-[85vh]"
-            >
-              {/* Modal Header */}
-              <div className="h-14 bg-bg-primary border-b border-card-border flex items-center justify-between px-6 select-none shrink-0">
-                <div className="flex items-center gap-2">
-                  <Sparkles size={16} className="text-primary-light animate-pulse" />
-                  <span className="text-sm font-heading font-bold text-text-primary">Add New Project</span>
-                </div>
-                <button 
-                  onClick={() => setShowAddForm(false)} 
-                  className="text-text-muted hover:text-text-primary transition-colors cursor-pointer"
-                >
-                  <X size={18} />
-                </button>
+            {/* Scanning line effect */}
+            <motion.div
+              initial={{ scaleX: 0, opacity: 0.6 }}
+              animate={{ scaleX: 1, opacity: 0 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+              className="absolute top-0 left-0 w-full h-full origin-left z-30"
+              style={{ background: 'linear-gradient(90deg, transparent, rgba(254,210,180,0.08), transparent)' }}
+            />
+
+            {/* Vignette */}
+            <div className="absolute inset-0 pointer-events-none z-10" style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.85) 100%)' }} />
+
+            {/* Content */}
+            <div className="relative z-20 h-full flex flex-col px-5 pt-7 pb-6">
+
+              {/* Title + Watch Demo */}
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ delay: 0.05, duration: 0.35 }}
+                className="flex items-center justify-between mb-3"
+              >
+                <h4 className="text-[9px] font-mono font-black uppercase tracking-[0.2em] text-neutral-400 truncate">
+                  {project.title}
+                </h4>
+                {project.demoLink && (
+                  <a
+                    href={project.demoLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-[9px] font-mono font-bold text-primary-light border border-primary-light/40 bg-primary-light/10 px-2 py-0.5 rounded-full hover:bg-primary-light/20 transition-all whitespace-nowrap ml-2 flex-shrink-0"
+                  >
+                    <Play size={8} className="fill-primary-light" /> WATCH DEMO
+                  </a>
+                )}
+              </motion.div>
+
+              {/* Cinematic Steps */}
+              <div className="flex-1 flex flex-col justify-center gap-0">
+                {CINEMATIC_STEPS.map((step, i) => {
+                  const value = project.cinematicDetails?.[step.key]
+                  if (!value) return null
+                  return (
+                    <div key={step.key}>
+                      <motion.div
+                        custom={i}
+                        variants={stepVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                        className="flex flex-col"
+                      >
+                        <span className={`text-[7px] font-mono font-black uppercase tracking-[0.25em] ${step.color} mb-0`}
+                          style={{ textShadow: `0 0 10px ${step.glowColor}` }}
+                        >
+                          {step.label}
+                        </span>
+                        <span className="text-[11px] font-heading font-bold text-neutral-100 leading-snug">
+                          {value}
+                        </span>
+                      </motion.div>
+                      {i < CINEMATIC_STEPS.length - 1 && (
+                        <motion.div
+                          custom={i + 0.5}
+                          variants={stepVariants}
+                          initial="hidden"
+                          animate="visible"
+                          exit="exit"
+                          className="flex items-center my-1 gap-1.5"
+                        >
+                          <div className="flex-1 h-px bg-white/10" />
+                          <ChevronDown size={9} className="text-white/20 flex-shrink-0" />
+                          <div className="flex-1 h-px bg-white/10" />
+                        </motion.div>
+                      )}
+                    </div>
+                  )
+                })}
               </div>
 
-              {/* Form Body */}
-              <form onSubmit={handleSubmit} className="flex-grow p-6 overflow-y-auto space-y-6 scrollbar-thin scrollbar-thumb-primary-light/20 scrollbar-track-transparent">
-                
-                {/* section: Basic Info */}
-                <div className="space-y-4">
-                  <h3 className="text-xs font-mono text-gray-400 uppercase tracking-widest border-b border-white/5 pb-2">1. Basic Information</h3>
-                  
-                  <div>
-                    <label className="block text-xs font-bold text-gray-300 mb-1.5">Project Title *</label>
-                    <input 
-                      type="text" 
-                      name="title"
-                      required
-                      value={formData.title}
-                      onChange={handleInputChange}
-                      placeholder="e.g. Distributed Neural System"
-                      className="w-full bg-white/[0.03] border border-white/10 focus:border-primary-light focus:ring-1 focus:ring-primary-light text-text-primary text-sm rounded-xl px-4 py-2.5 outline-none transition-all"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold text-gray-300 mb-1.5">Domain</label>
-                      <select 
-                        name="domain"
-                        value={formData.domain}
-                        onChange={handleInputChange}
-                        className="w-full bg-white/[0.03] border border-white/10 focus:border-primary-light text-text-primary text-sm rounded-xl px-3 py-2.5 outline-none transition-all"
-                      >
-                        <option value="Web">Web</option>
-                        <option value="AI/ML">AI/ML</option>
-                        <option value="App">App</option>
-                        <option value="Cybersecurity">Cybersecurity</option>
-                        <option value="Data Science">Data Science</option>
-                        <option value="Other">Other</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-gray-300 mb-1.5">Type</label>
-                      <select 
-                        name="type"
-                        value={formData.type}
-                        onChange={handleInputChange}
-                        className="w-full bg-white/[0.03] border border-white/10 focus:border-primary-light text-text-primary text-sm rounded-xl px-3 py-2.5 outline-none transition-all"
-                      >
-                        <option value="Personal">Personal</option>
-                        <option value="Internship">Internship</option>
-                        <option value="Hackathon">Hackathon</option>
-                        <option value="Academic">Academic</option>
-                        <option value="Corporate">Corporate</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold text-gray-300 mb-1.5">Difficulty Level</label>
-                      <select 
-                        name="difficulty"
-                        value={formData.difficulty}
-                        onChange={handleInputChange}
-                        className="w-full bg-white/[0.03] border border-white/10 focus:border-primary-light text-text-primary text-sm rounded-xl px-3 py-2.5 outline-none transition-all"
-                      >
-                        <option value="Beginner">Beginner</option>
-                        <option value="Intermediate">Intermediate</option>
-                        <option value="Advanced">Advanced</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-gray-300 mb-1.5">Status</label>
-                      <select 
-                        name="status"
-                        value={formData.status}
-                        onChange={handleInputChange}
-                        className="w-full bg-white/[0.03] border border-white/10 focus:border-primary-light text-text-primary text-sm rounded-xl px-3 py-2.5 outline-none transition-all"
-                      >
-                        <option value="Completed">Completed</option>
-                        <option value="Ongoing">Ongoing</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-gray-300 mb-1.5">Short Description * (Displayed on Card)</label>
-                    <input 
-                      type="text" 
-                      name="shortDescription"
-                      required
-                      value={formData.shortDescription}
-                      onChange={handleInputChange}
-                      placeholder="Brief one-liner summarizing the project."
-                      className="w-full bg-white/[0.03] border border-white/10 focus:border-primary-light focus:ring-1 focus:ring-primary-light text-text-primary text-sm rounded-xl px-4 py-2.5 outline-none transition-all"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-gray-300 mb-1.5">Full Description * (For Detailed Window)</label>
-                    <textarea 
-                      name="description"
-                      required
-                      rows={3}
-                      value={formData.description}
-                      onChange={handleInputChange}
-                      placeholder="Explain the background, core function, and impact of the project."
-                      className="w-full bg-white/[0.03] border border-white/10 focus:border-primary-light focus:ring-1 focus:ring-primary-light text-text-primary text-sm rounded-xl px-4 py-2.5 outline-none transition-all resize-none"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-gray-300 mb-1.5">Cover Image URL</label>
-                    <input 
-                      type="text" 
-                      name="image"
-                      value={formData.image}
-                      onChange={handleInputChange}
-                      placeholder="Leave empty for premium design placeholder image"
-                      className="w-full bg-white/[0.03] border border-white/10 focus:border-primary-light focus:ring-1 focus:ring-primary-light text-text-primary text-sm rounded-xl px-4 py-2.5 outline-none transition-all"
-                    />
-                  </div>
-                </div>
-
-                {/* section: Tech Stack */}
-                <div className="space-y-4">
-                  <h3 className="text-xs font-mono text-gray-400 uppercase tracking-widest border-b border-white/5 pb-2">2. Technologies (Comma-Separated)</h3>
-                  
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold text-gray-300 mb-1.5">Frontend</label>
-                      <input 
-                        type="text" 
-                        name="frontendTech"
-                        value={formData.frontendTech}
-                        onChange={handleInputChange}
-                        placeholder="React, Framer Motion, GSAP"
-                        className="w-full bg-white/[0.03] border border-white/10 focus:border-primary-light text-text-primary text-sm rounded-xl px-4 py-2.5 outline-none"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-gray-300 mb-1.5">Backend</label>
-                      <input 
-                        type="text" 
-                        name="backendTech"
-                        value={formData.backendTech}
-                        onChange={handleInputChange}
-                        placeholder="Node.js, Express, FastAPI"
-                        className="w-full bg-white/[0.03] border border-white/10 focus:border-primary-light text-text-primary text-sm rounded-xl px-4 py-2.5 outline-none"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold text-gray-300 mb-1.5">AI / ML</label>
-                      <input 
-                        type="text" 
-                        name="aiTech"
-                        value={formData.aiTech}
-                        onChange={handleInputChange}
-                        placeholder="TensorFlow, OpenCV, PyTorch"
-                        className="w-full bg-white/[0.03] border border-white/10 focus:border-primary-light text-text-primary text-sm rounded-xl px-4 py-2.5 outline-none"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-gray-300 mb-1.5">Tools / Other</label>
-                      <input 
-                        type="text" 
-                        name="toolsTech"
-                        value={formData.toolsTech}
-                        onChange={handleInputChange}
-                        placeholder="Git, Docker, Kubernetes"
-                        className="w-full bg-white/[0.03] border border-white/10 focus:border-primary-light text-text-primary text-sm rounded-xl px-4 py-2.5 outline-none"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* section: Key Features & Architecture */}
-                <div className="space-y-4">
-                  <h3 className="text-xs font-mono text-gray-400 uppercase tracking-widest border-b border-white/5 pb-2">3. Features & Architecture</h3>
-                  
-                  <div>
-                    <label className="block text-xs font-bold text-gray-300 mb-1.5">Key Features (One feature per line)</label>
-                    <textarea 
-                      name="features"
-                      rows={3}
-                      value={formData.features}
-                      onChange={handleInputChange}
-                      placeholder="Real-time face tracking&#10;Temporal voting classifier&#10;Responsive glassmorphism layout"
-                      className="w-full bg-white/[0.03] border border-white/10 focus:border-primary-light text-text-primary text-sm rounded-xl px-4 py-2.5 outline-none resize-none font-mono text-xs"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-gray-300 mb-1.5">System Architecture (Markdown Supported)</label>
-                    <textarea 
-                      name="architecture"
-                      rows={2.5}
-                      value={formData.architecture}
-                      onChange={handleInputChange}
-                      placeholder="Explain system dataflow or service communication patterns."
-                      className="w-full bg-white/[0.03] border border-white/10 focus:border-primary-light text-text-primary text-sm rounded-xl px-4 py-2.5 outline-none resize-none"
-                    />
-                  </div>
-                </div>
-
-                {/* section: Challenges & Learnings */}
-                <div className="space-y-4">
-                  <h3 className="text-xs font-mono text-gray-400 uppercase tracking-widest border-b border-white/5 pb-2">4. Learnings & Challenges</h3>
-                  
-                  <div>
-                    <label className="block text-xs font-bold text-gray-300 mb-1.5">Challenges Faced</label>
-                    <textarea 
-                      name="challenges"
-                      rows={2}
-                      value={formData.challenges}
-                      onChange={handleInputChange}
-                      placeholder="e.g. Optimizing canvas renderings on legacy mobile hardware."
-                      className="w-full bg-white/[0.03] border border-white/10 focus:border-primary-light text-text-primary text-sm rounded-xl px-4 py-2.5 outline-none resize-none"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-gray-300 mb-1.5">Key Takeaways</label>
-                    <textarea 
-                      name="takeaways"
-                      rows={2}
-                      value={formData.takeaways}
-                      onChange={handleInputChange}
-                      placeholder="e.g. Mastered math computations behind 3D bezier transformations."
-                      className="w-full bg-white/[0.03] border border-white/10 focus:border-primary-light text-text-primary text-sm rounded-xl px-4 py-2.5 outline-none resize-none"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-gray-300 mb-1.5">Future Improvements</label>
-                    <textarea 
-                      name="future"
-                      rows={2}
-                      value={formData.future}
-                      onChange={handleInputChange}
-                      placeholder="e.g. Add distributed cache layers using Redis."
-                      className="w-full bg-white/[0.03] border border-white/10 focus:border-primary-light text-text-primary text-sm rounded-xl px-4 py-2.5 outline-none resize-none"
-                    />
-                  </div>
-                </div>
-
-                {/* section: Links */}
-                <div className="space-y-4">
-                  <h3 className="text-xs font-mono text-gray-400 uppercase tracking-widest border-b border-white/5 pb-2">5. Repository & Deployment Links</h3>
-                  
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold text-gray-300 mb-1.5">GitHub URL</label>
-                      <input 
-                        type="text" 
-                        name="github"
-                        value={formData.github}
-                        onChange={handleInputChange}
-                        placeholder="https://github.com/..."
-                        className="w-full bg-white/[0.03] border border-white/10 focus:border-primary-light text-text-primary text-sm rounded-xl px-4 py-2.5 outline-none"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-gray-300 mb-1.5">Live Demo URL</label>
-                      <input 
-                        type="text" 
-                        name="demoLink"
-                        value={formData.demoLink}
-                        onChange={handleInputChange}
-                        placeholder="https://..."
-                        className="w-full bg-white/[0.03] border border-white/10 focus:border-primary-light text-text-primary text-sm rounded-xl px-4 py-2.5 outline-none"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-              </form>
-
-              {/* Modal Footer */}
-              <div className="h-16 bg-bg-primary border-t border-card-border flex items-center justify-end px-6 gap-3 shrink-0">
-                <button 
-                  type="button"
-                  onClick={() => setShowAddForm(false)} 
-                  className="px-4 py-2 rounded-xl text-xs font-bold text-text-muted hover:text-text-primary bg-white/5 border border-white/10 hover:border-card-border transition-all cursor-pointer"
+              {/* Footer: GitHub + Demo */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ delay: 0.9, duration: 0.35 }}
+                className="pt-2 mt-2 border-t border-white/20 flex items-center gap-2"
+              >
+                {/* GitHub button — full bright */}
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 flex items-center justify-center gap-1.5 text-[10px] font-mono font-black uppercase tracking-wider text-white bg-white/10 hover:bg-white/20 border border-white/25 hover:border-white/50 px-3 py-1.5 rounded-lg transition-all shadow-lg hover:shadow-white/10"
+                  style={{ textShadow: '0 0 8px rgba(255,255,255,0.4)' }}
                 >
-                  Cancel
-                </button>
-                <button 
-                  type="submit"
-                  onClick={handleSubmit}
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold bg-gradient-button text-white shadow-md hover:shadow-primary-light/20 transition-all cursor-pointer"
-                >
-                  <Save size={14} />
-                  Save Project
-                </button>
-              </div>
+                  {/* GitHub Octocat SVG */}
+                  <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" className="flex-shrink-0">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                  </svg>
+                  GitHub
+                </a>
 
-            </motion.div>
+                {/* Live Demo button — glowing accent */}
+                {project.demoLink ? (
+                  <a
+                    href={project.demoLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-1.5 text-[10px] font-mono font-black uppercase tracking-wider text-[#1C1822] bg-primary-light hover:bg-secondary px-3 py-1.5 rounded-lg transition-all shadow-lg shadow-primary-light/30 hover:shadow-primary-light/50"
+                    style={{ textShadow: 'none' }}
+                  >
+                    <ExternalLink size={11} className="flex-shrink-0" /> Live Demo
+                  </a>
+                ) : (
+                  <span className="flex-1 flex items-center justify-center gap-1.5 text-[10px] font-mono font-black uppercase tracking-wider text-neutral-600 bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg cursor-not-allowed select-none">
+                    <ExternalLink size={11} className="flex-shrink-0" /> No Demo
+                  </span>
+                )}
+              </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
+    </motion.div>
+  )
+}
+
+// ─── Main Projects Section ──────────────────────────────────────────────────
+const Projects = ({ data }) => {
+  return (
+    <section id="projects" className="section-reveal py-8 md:py-12 relative">
+      <div className="mb-8">
+        <SectionHeading>Projects Lab</SectionHeading>
+        <p className="text-text-muted max-w-lg text-sm leading-relaxed -mt-4 font-medium font-sans">
+          Explore interactive modules detailing my technical projects, system architectures, and engineering learnings in artificial intelligence and web engineering.
+        </p>
+      </div>
+
+      {/* Projects Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {data.projects.map((project, index) => (
+          <ProjectCard 
+            key={project.id} 
+            project={project} 
+            index={index}
+          />
+        ))}
+      </div>
     </section>
   );
 };
 
-export default ProjectsHub;
-
+export default Projects;
