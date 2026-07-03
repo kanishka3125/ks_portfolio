@@ -196,6 +196,31 @@ export const portfolioData = {
       }
     },
     {
+      id: "DSA Arena",
+      title: "DSA Arena",
+      domain: "Web",
+      type: "Personal",
+      difficulty: "Advanced",
+      status: "Completed",
+      shortDescription: "Computer vision classification system for dermatological anomalies trained on clinical datasets.",
+      description: "Computer vision classification system for dermatological anomalies trained on clinical datasets.",
+      image: "https://www.image2url.com/r2/default/images/1783066016794-7a0208b2-474b-4293-a0d4-cabf4cb23d0a.png",
+      tech: {
+        frontend: [],
+        backend: ["Python"],
+        ai: ["PyTorch", "CNN", "OpenCV"],
+        tools: ["Jupyter", "Git"]
+      },
+      demoLink: "",
+      github: "https://github.com/kanishka3125/DSA-Arena",
+      cinematicDetails: {
+        architecture: "PyTorch CNN (ResNet Backbone)",
+        dataset: "ISIC Archive Clinical Imagery",
+        training: "100 Epochs, Cross-Entropy Loss",
+        results: "92.8% Diagnostic Accuracy"
+      }
+    },
+    {
       id: "emotion-recognition",
       title: "Adaptive Real-Time Emotion Recognition",
       domain: "AI/ML",
@@ -237,7 +262,7 @@ export const portfolioData = {
         tools: ["Git", "GitHub"]
       },
       demoLink: "",
-      github: "https://github.com/kanishka3125/SAR_Ship_Detection_System.git"
+      github: "https://github.com/kanishka3125/SAR_Ship_Detection_System"
     },
     {
       id: "jur-ai",
@@ -264,29 +289,30 @@ export const portfolioData = {
         results: "<50ms Latency on Frame Analysis"
       }
     },
+
     {
-      id: "nexion",
-      title: "Nexion - Wellness Hub",
-      domain: "Web",
-      type: "Personal",
+      id: "AI Data Anomaly Detection & Root Cause Analyzer",
+      title: "AI Data Anomaly Detection & Root Cause Analyzer",
+      domain: "AI/ML",
+      type: "Project",
       difficulty: "Intermediate",
       status: "Completed",
-      shortDescription: "Real-time mental wellness platform with secure chat, multi-peer synchronization, and mood logs.",
-      description: "Engineered robust multi-peer synchronization layouts with WebSocket communication, temporal versioning, and auto-conflict resolutions.",
-      image: "https://cdn.phototourl.com/member/2026-07-03-95e0134a-53c4-45ac-bd25-ca3a4d95f370.png",
+      shortDescription: "Green footprint tracker and sustainable lifestyle platform with Django backend and React frontend.",
+      description: "Green footprint tracker and sustainable lifestyle platform with Django backend and React frontend.",
+      image: "https://cdn.phototourl.com/free/2026-07-03-80973bc2-40c4-4b0a-bcb9-090127017087.png",
       tech: {
         frontend: ["React", "Tailwind CSS"],
-        backend: ["Node.js", "Express"],
+        backend: ["Python", "Django"],
         ai: [],
-        tools: ["WebSockets", "Docker", "Git"]
+        tools: ["PostgreSQL", "Git"]
       },
       demoLink: "",
-      github: "https://github.com/Nitesh-code-droid/pulse-robot-template-37443.git",
+      github: "https://github.com/kanishka3125/Anomaly-Detection-Root-Cause-Analyzer.git",
       cinematicDetails: {
-        architecture: "Node.js WebSocket Cluster + React",
-        dataset: "Real-time user state arrays",
-        training: "Auto-conflict resolution algorithms",
-        results: "10k+ Concurrent Peer Sync"
+        architecture: "Django REST Framework + PostgreSQL",
+        dataset: "Aggregated footprint emission factors",
+        training: "Sustainability rule-engine logic",
+        results: "Comprehensive carbon tracking"
       }
     },
     {
@@ -331,7 +357,7 @@ export const portfolioData = {
         tools: ["Google Cloud", "Git"]
       },
       demoLink: "",
-      github: "https://github.com/Nitesh-code-droid/pulse-robot-template-37443.git",
+      github: "https://github.com/kanishka3125/Algorithmic-Trading-Backtesting-Platform.git",
       cinematicDetails: {
         architecture: "Google Cloud Vertex AI + Gemini API",
         dataset: "Autonomous task instructions",
@@ -348,7 +374,7 @@ export const portfolioData = {
       status: "Completed",
       shortDescription: "Computer vision classification system for dermatological anomalies trained on clinical datasets.",
       description: "Computer vision classification system for dermatological anomalies trained on clinical datasets.",
-      image: "https://cdn.phototourl.com/free/2026-07-03-519d028e-1d42-440b-b8bb-4a5cd54afb4e.png",
+      image: "https://www.image2url.com/r2/default/images/1783065928936-5ae2805a-b9c2-461d-a603-d7f301d3a9e0.png",
       tech: {
         frontend: [],
         backend: ["Python"],
@@ -356,32 +382,7 @@ export const portfolioData = {
         tools: ["Jupyter", "Git"]
       },
       demoLink: "",
-      github: "https://github.com/kanishka3125",
-      cinematicDetails: {
-        architecture: "PyTorch CNN (ResNet Backbone)",
-        dataset: "ISIC Archive Clinical Imagery",
-        training: "100 Epochs, Cross-Entropy Loss",
-        results: "92.8% Diagnostic Accuracy"
-      }
-    },
-    {
-      id: "encryptor-decryptor",
-      title: "Encryptor/Decryptor",
-      domain: "Web",
-      type: "Personal",
-      difficulty: "Advanced",
-      status: "Completed",
-      shortDescription: "Computer vision classification system for dermatological anomalies trained on clinical datasets.",
-      description: "Computer vision classification system for dermatological anomalies trained on clinical datasets.",
-      image: "https://img.sanishtech.com/u/94b3517262dd6d226618e43fdff52aa8.png",
-      tech: {
-        frontend: [],
-        backend: ["Python"],
-        ai: ["PyTorch", "CNN", "OpenCV"],
-        tools: ["Jupyter", "Git"]
-      },
-      demoLink: "",
-      github: "https://github.com/kanishka3125",
+      github: "https://github.com/kanishka3125/Rule-Based-Engagement-Predictor",
       cinematicDetails: {
         architecture: "PyTorch CNN (ResNet Backbone)",
         dataset: "ISIC Archive Clinical Imagery",
@@ -389,6 +390,7 @@ export const portfolioData = {
         results: "92.8% Diagnostic Accuracy"
       }
     }
+
   ],
   certifications: [
     {
