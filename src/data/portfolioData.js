@@ -229,7 +229,7 @@ export const portfolioData = {
       status: "Completed",
       shortDescription: "Synthetic Aperture Radar (SAR) ship detection system using Deep Learning and SVM classifiers.",
       description: "Designed a secure ML pipeline using SVM classifiers for predictive diabetes analysis, running on a FastAPI backend and interactive React UI. Ensured strict input validation and accuracy optimizations.",
-      image: "https://img.sanishtech.com/u/f860fef9e272b4839c13711844d121a8.png",
+      image: "https://cdn.phototourl.com/free/2026-07-03-9a10362b-ebd0-45fb-ae82-cbe1d85b3a40.png",
       tech: {
         frontend: ["React", "Tailwind CSS"],
         backend: ["FastAPI", "Python"],
@@ -419,7 +419,7 @@ export const portfolioData = {
       location: "SRM University, Chennai",
       description: "Winner of SRM FEUD organized by the Quiz Club , Department of English and Foreign Languages.",
       banner: "https://cdn.phototourl.com/member/2026-07-03-9bb2a3fd-cb62-4199-8ec9-f44461c9ae08.png",
-      verifyLink: "https://img.sanishtech.com/u/7cb386c14f4216165cb80f67b3d1a618.png"
+      verifyLink: "https://cdn.phototourl.com/free/2026-07-03-5bf69f6f-9e2b-4a2c-84b0-23534ece8bd5.png"
     },
     {
       id: "madras",
@@ -498,7 +498,7 @@ export const portfolioData = {
       status: "Qualified",
       date: "December 2025",
       location: "Hindustan Institute of Science and Technology, Chennai",
-      banner: "https://img.sanishtech.com/u/8c53eb223fefef062b18110a9383c4f6.png",
+      banner: "https://cdn.phototourl.com/free/2026-07-03-4dc000a2-ebc9-4f82-af29-891033f234d8.png",
       description: "Engineered robust multi-peer synchronization layouts with WebSocket communication, temporal versioning, and auto-conflict resolutions.",
       techStack: ["Node.js", "Express", "WebSockets", "Docker", "Tailwind CSS"],
       teamMembers: ["Kanishka Sharma", "Teammate D", "Teammate E", "Teammate F"],
