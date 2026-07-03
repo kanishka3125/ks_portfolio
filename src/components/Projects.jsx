@@ -5,19 +5,6 @@ import {
 } from 'lucide-react';
 import SectionHeading from './SectionHeading';
 
-// ─── Cinematic Details Sequence ──────────────────────────────────────────────
-const CINEMATIC_STEPS = [
-  { key: 'architecture', label: 'ARCHITECTURE', color: 'text-primary-light', glowColor: 'rgba(254,210,180,0.4)' },
-  { key: 'dataset',      label: 'DATASET',      color: 'text-secondary',     glowColor: 'rgba(255,170,166,0.4)' },
-  { key: 'training',     label: 'TRAINING',     color: 'text-accent',        glowColor: 'rgba(211,183,216,0.4)' },
-  { key: 'results',      label: 'RESULTS',      color: 'text-green-400',     glowColor: 'rgba(74,222,128,0.4)' },
-]
-
-const stepVariants = {
-  hidden:  { opacity: 0, y: 14, filter: 'blur(4px)' },
-  visible: (i) => ({ opacity: 1, y: 0, filter: 'blur(0px)', transition: { delay: 0.1 + i * 0.18, duration: 0.4, ease: 'easeOut' } }),
-  exit:    { opacity: 0, transition: { duration: 0.1 } },
-}
 
 // ─── Status Config ───────────────────────────────────────────────────────────
 const STATUS_RULES = [
@@ -182,47 +169,45 @@ function ProjectCard({ project, index }) {
                 )}
               </motion.div>
 
-              {/* Cinematic Steps */}
-              <div className="flex-1 flex flex-col justify-center gap-0">
-                {CINEMATIC_STEPS.map((step, i) => {
-                  const value = project.cinematicDetails?.[step.key]
-                  if (!value) return null
-                  return (
-                    <div key={step.key}>
-                      <motion.div
-                        custom={i}
-                        variants={stepVariants}
-                        initial="hidden"
-                        animate="visible"
-                        exit="exit"
-                        className="flex flex-col"
-                      >
-                        <span className={`text-[7px] font-mono font-black uppercase tracking-[0.25em] ${step.color} mb-0`}
-                          style={{ textShadow: `0 0 10px ${step.glowColor}` }}
-                        >
-                          {step.label}
-                        </span>
-                        <span className="text-[11px] font-heading font-bold text-neutral-100 leading-snug">
-                          {value}
-                        </span>
-                      </motion.div>
-                      {i < CINEMATIC_STEPS.length - 1 && (
-                        <motion.div
-                          custom={i + 0.5}
-                          variants={stepVariants}
-                          initial="hidden"
-                          animate="visible"
-                          exit="exit"
-                          className="flex items-center my-1 gap-1.5"
-                        >
-                          <div className="flex-1 h-px bg-white/10" />
-                          <ChevronDown size={9} className="text-white/20 flex-shrink-0" />
-                          <div className="flex-1 h-px bg-white/10" />
-                        </motion.div>
-                      )}
-                    </div>
-                  )
-                })}
+              {/* About and Tech Stack */}
+              <div className="flex-1 flex flex-col justify-start gap-4 mt-2 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
+                {/* About Project */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10, filter: 'blur(4px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  transition={{ delay: 0.1, duration: 0.4, ease: 'easeOut' }}
+                  className="flex flex-col"
+                >
+                  <span className="text-[7px] font-mono font-black uppercase tracking-[0.25em] text-primary-light mb-1.5"
+                    style={{ textShadow: `0 0 10px rgba(254,210,180,0.4)` }}
+                  >
+                    ABOUT PROJECT
+                  </span>
+                  <p className="text-[11px] font-sans font-medium text-neutral-300 leading-relaxed">
+                    {project.description}
+                  </p>
+                </motion.div>
+
+                {/* Tech Stack */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10, filter: 'blur(4px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  transition={{ delay: 0.25, duration: 0.4, ease: 'easeOut' }}
+                  className="flex flex-col"
+                >
+                  <span className="text-[7px] font-mono font-black uppercase tracking-[0.25em] text-secondary mb-2"
+                    style={{ textShadow: `0 0 10px rgba(255,170,166,0.4)` }}
+                  >
+                    TECH STACK
+                  </span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {techStack.map((tech, i) => (
+                      <span key={i} className="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-neutral-300">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
               </div>
 
               {/* Footer: GitHub + Demo */}

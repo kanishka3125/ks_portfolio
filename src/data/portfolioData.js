@@ -357,7 +357,7 @@ export const portfolioData = {
         tools: ["Google Cloud", "Git"]
       },
       demoLink: "",
-      github: "https://github.com/kanishka3125/Algorithmic-Trading-Backtesting-Platform.git",
+      github: "https://github.com/kanishka3125/Algorithmic-Trading-Backtesting-Platform",
       cinematicDetails: {
         architecture: "Google Cloud Vertex AI + Gemini API",
         dataset: "Autonomous task instructions",
@@ -430,7 +430,7 @@ export const portfolioData = {
       date: "May 2025 - August 2025",
       location: "IIT Madras, Chennai, Tamil Nadu",
       description: "Contributed to major open-source web assets, reviewed pull requests, led contributor sessions, and promoted collaborative Git workflows among student teams. Built several interactive custom web layouts.",
-      banner: "https://www.image2url.com/r2/default/images/1783065575534-399e6c35-b338-442a-9783-ed34cf3e89f7.png",
+      banner: "https://www.image2url.com/r2/default/images/1783067854832-266d8327-73ff-40b0-a28d-247d573c90e3.png",
       verifyLink: "https://www.image2url.com/r2/default/images/1783065556531-76b5e2d2-4b28-4e47-82da-fb331a7686a8.png"
     },
 
