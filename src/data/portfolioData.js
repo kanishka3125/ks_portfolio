@@ -1,5 +1,6 @@
 export const portfolioData = {
   name: "Kanishka Sharma",
+  image: "https://cdn.phototourl.com/free/2026-07-03-2e35190c-5a61-4977-a019-c10574507ba7.jpg", // Add your profile photo URL here
   role: "B.Tech CSE Student | Aspiring AIML Engineer",
   specialization: "Artificial Intelligence and Machine Learning",
   university: "SRM Institute of Science and Technology",
@@ -30,11 +31,14 @@ export const portfolioData = {
     languages: ["Python", "C", "C++", "HTML", "Java", "JavaScript, SQL"],
     tools: ["Git & GitHub", "NumPy/Pandas", "VS Code", "Jupyter Notebook", "Google Colab"],
     communities: [
+      "E-cell IIT Bombay",
       "GirlScript Summer of Code",
       "Open Source Connect Global",
+      "E-cell IIT Delhi",
       "Open Source Connect India",
       "Google Developer Community",
-      "Google and NVIDIA Community"
+      "Google and NVIDIA Community",
+      "Elite Summer of Code"
     ]
   },
   workspaceSkills: {
@@ -44,10 +48,11 @@ export const portfolioData = {
       color: "#00E5FF",
       description: "Writing clean, optimized, and structured code using modern paradigms.",
       skills: [
-        { id: "python", name: "Python", level: "Advanced", experience: "3+ Years", icon: "https://cdn.simpleicons.org/python/3776AB", color: "#3776AB", projects: ["Adaptive Real-Time Emotion Recognition", "Diabetes Prediction", "Skin Disease Classification"], certifications: ["Google AI"] },
-        { id: "cpp", name: "C++", level: "Advanced", experience: "2+ Years", icon: "https://cdn.simpleicons.org/cplusplus/00599C", color: "#00599C", projects: ["Data Structures & Algorithms", "Core Logic Implementation"], certifications: ["HackerRank Problem Solving"] },
-        { id: "java", name: "Java", level: "Intermediate", experience: "1.5 Years", icon: "https://cdn.simpleicons.org/java/007396", color: "#F0982F", projects: ["OOP Implementations", "Android Logic"], certifications: [] },
-        { id: "dsa", name: "DSA", level: "Advanced", experience: "2 Years", icon: "https://cdn.simpleicons.org/geeksforgeeks/29854B", color: "#29854B", projects: ["Competitive Programming", "Algorithmic Optimizations"], certifications: ["HackerRank Problem Solving"] }
+        { id: "python", name: "Python", level: "Intermediate", experience: "3 Years", icon: "https://cdn.simpleicons.org/python/3776AB", color: "#3776AB", Application: ["Adaptive Real-Time Emotion Recognition", "Diabetes Prediction", "Car Price Prediction Model"], certifications: ["Hackerrank"] },
+        { id: "cpp", name: "C++", level: "Intermediate", experience: "2 Years", icon: "https://cdn.simpleicons.org/cplusplus/00599C", color: "#00599C", Application: ["Data Structures & Algorithms", "Core Logic Implementation"], certifications: ["HackerRank Problem Solving"] },
+        { id: "java", name: "Java", level: "Intermediate", experience: "1 Year", icon: "https://cdn.simpleicons.org/java/007396", color: "#F0982F", Application: ["OOP Implementations"], certifications: ["Hackerrank"] },
+        { id: "C", name: "C", level: "Basic", experience: "1 Year", icon: "https://cdn.simpleicons.org/c/B74132", color: "#B74132", Application: ["Basic Programming"], certifications: ["Hackerrank"] },
+        { id: "dsa", name: "DSA", level: "Intermediate", experience: "2 Years", icon: "https://cdn.simpleicons.org/geeksforgeeks/29854B", color: "#29854B", Application: ["Competitive Programming", "Algorithmic Optimizations"], certifications: ["HackerRank Problem Solving"] }
       ]
     },
     aiml: {
@@ -56,11 +61,10 @@ export const portfolioData = {
       color: "#FF4F8B",
       description: "Developing intelligent algorithms, deep learning models, and computer vision pipelines.",
       skills: [
-        { id: "ml", name: "ML (Machine Learning)", level: "Advanced", experience: "2 Years", icon: "https://cdn.simpleicons.org/scikitlearn/F7931E", color: "#FFB300", projects: ["Diabetes Prediction", "SAR Ship Detection System"], certifications: ["IBM ML"] },
-        { id: "deeplearning", name: "Deep Learning", level: "Intermediate", experience: "1 Year", icon: "https://cdn.simpleicons.org/pytorch/EE4C2C", color: "#EE4C2C", projects: ["Emotion Recognition", "CV Models"], certifications: ["Google GenAI"] },
-        { id: "tensorflow", name: "TensorFlow", level: "Intermediate", experience: "1.5 Years", icon: "https://cdn.simpleicons.org/tensorflow/FF6F00", color: "#FF6F00", projects: ["Emotion Recognition", "Deepfake Detection"], certifications: ["Coursera Deep Learning"] },
-        { id: "opencv", name: "OpenCV", level: "Intermediate", experience: "1 Year", icon: "https://cdn.simpleicons.org/opencv/5C3EE8", color: "#5C3EE8", projects: ["Emotion Recognition"], certifications: [] },
-        { id: "scikitlearn", name: "Scikit-learn", level: "Advanced", experience: "2 Years", icon: "https://cdn.simpleicons.org/scikitlearn/F7931E", color: "#F7931E", projects: ["Diabetes Prediction", "Churn Analysis"], certifications: ["IBM ML"] }
+        { id: "ml", name: "ML (Machine Learning)", level: "Beginner", experience: "2 Years", icon: "https://cdn.simpleicons.org/scikitlearn/F7931E", color: "#FFB300", Application: ["Diabetes Prediction", "SAR Ship Detection System"], certifications: ["IBM ML"] },
+        { id: "deeplearning", name: "Deep Learning", level: "Beginner", experience: "4 months", icon: "https://cdn.simpleicons.org/pytorch/EE4C2C", color: "#EE4C2C", Application: ["Emotion Recognition", "CV Models"], certifications: ["Google GenAI"] },
+        { id: "opencv", name: "OpenCV", level: "Beginner", experience: "6 months", icon: "https://cdn.simpleicons.org/opencv/5C3EE8", color: "#5C3EE8", Application: ["Emotion Recognition"], certifications: [] },
+        { id: "scikitlearn", name: "Scikit-learn", level: "Beginner", experience: "2 Years", icon: "https://cdn.simpleicons.org/scikitlearn/F7931E", color: "#F7931E", Application: ["Diabetes Prediction", "Churn Analysis"], certifications: ["IBM ML"] }
       ]
     },
     webdev: {
@@ -69,10 +73,11 @@ export const portfolioData = {
       color: "#7E57C2",
       description: "Creating highly interactive and responsive web platforms and user interfaces.",
       skills: [
-        { id: "react", name: "React", level: "Intermediate", experience: "1.5 Years", icon: "https://cdn.simpleicons.org/react/61DAFB", color: "#61DAFB", projects: ["Personal Portfolio OS", "UrbanSage AI Frontend"], certifications: [] },
-        { id: "firebase", name: "Firebase", level: "Beginner", experience: "6 Months", icon: "https://cdn.simpleicons.org/firebase/FFCA28", color: "#FFCA28", projects: ["Auth & Database for Web Apps"], certifications: [] },
-        { id: "apis", name: "APIs", level: "Advanced", experience: "2 Years", icon: "https://cdn.simpleicons.org/postman/FF6C37", color: "#FF6C37", projects: ["FastAPI Backend integration", "REST APIs"], certifications: [] },
-        { id: "htmlcss", name: "HTML/CSS", level: "Advanced", experience: "3 Years", icon: "https://cdn.simpleicons.org/html5/E34F26", color: "#E34F26", projects: ["Frontend Layouts", "DOM Manipulation"], certifications: [] }
+        { id: "react", name: "React", level: "Intermediate", experience: "1.5 Years", icon: "https://cdn.simpleicons.org/react/61DAFB", color: "#61DAFB", Application: ["Personal Portfolio OS", "UrbanSage AI Frontend"], certifications: [] },
+        { id: "firebase", name: "Firebase", level: "Beginner", experience: "6 Months", icon: "https://cdn.simpleicons.org/firebase/FFCA28", color: "#FFCA28", Application: ["Auth & Database for Web Apps"], certifications: [] },
+        { id: "htmlcss", name: "HTML/CSS", level: "Advanced", experience: "3 Years", icon: "https://cdn.simpleicons.org/html5/E34F26", color: "#E34F26", Application: ["Frontend Layouts", "DOM Manipulation"], certifications: [] },
+        { id: "Javascript", name: "Javascript", level: "Beginner", experience: "6 Months", icon: "https://cdn.simpleicons.org/html5/E34F26", color: "#E34F26", Application: ["Auth & Database for Web Apps"], certifications: [] },
+        { id: "SQL", name: "SQL", level: "Advanced", experience: "1 Year", icon: "https://cdn.simpleicons.org/html5/E34F26", color: "#E34F26", Application: [], certifications: [] },
       ]
     },
     tools: {
@@ -81,33 +86,71 @@ export const portfolioData = {
       color: "#00E676",
       description: "Utilizing software development systems, IDEs, and data engineering sandboxes.",
       skills: [
-        { id: "git", name: "Git/GitHub", level: "Advanced", experience: "3 Years", icon: "https://cdn.simpleicons.org/git/F05032", color: "#FFFFFF", projects: ["Open Source Connect Global", "GirlScript Summer of Code"], certifications: [] },
-        { id: "vscode", name: "VS Code", level: "Advanced", experience: "3 Years", icon: "https://cdn.simpleicons.org/visualstudiocode/007ACC", color: "#007ACC", projects: ["Development Environment"], certifications: [] },
-        { id: "jupyter", name: "Jupyter", level: "Advanced", experience: "2 Years", icon: "https://cdn.simpleicons.org/jupyter/F37626", color: "#F37626", projects: ["Data Exploration", "Model Training"], certifications: [] }
+        { id: "git", name: "Git/GitHub", level: "Intermediate", experience: "3 Years", icon: "https://cdn.simpleicons.org/git/F05032", color: "#FFFFFF", Application: ["Open Source Connect Global", "GirlScript Summer of Code"], certifications: [] },
+        { id: "vscode", name: "VS Code", level: "Advanced", experience: "5 Years", icon: "https://cdn.simpleicons.org/visualstudiocode/007ACC", color: "#007ACC", Application: ["Development Environment"], certifications: [] },
+        { id: "jupyter", name: "Jupyter", level: "Advanced", experience: "2 Years", icon: "https://cdn.simpleicons.org/jupyter/F37626", color: "#F37626", Application: ["Exploratory Data Analysis", "Model Training"], certifications: [] },
+        { id: "Google collab", name: "Google Collab", level: "Intermediate", experience: "2 Years", icon: "https://cdn.simpleicons.org/jupyter/F37626", color: "#F37626", Application: ["Exploratory Data Analysis", "Model Training"], certifications: [] }
       ]
+
     }
   },
   experience: [
     {
       year: "2026",
-      role: "Campus Lead",
-      company: "Open Source Connect Global (OSCG'26)"
+      role: "Campus Ambassador",
+      company: "E-cell IIT Bombay",
+      proof: "https://cdn.corenexis.com/f/xjP83wmZum7.png"
     },
     {
-      year: "2025",
-      role: "Campus Ambassador and Contributor",
-      company: "GirlScript Summer of Code (GSSoC'25)"
+      year: "2026",
+      role: "Community Member",
+      company: "Google and NVIDIA Community",
+      proof: "https://cdn.corenexis.com/f/idNNKiGRRBZ.png"
+    },
+    {
+      year: "2026",
+      role: "Contributor",
+      company: "Elite Summer of Code 2026",
+      proof: "https://cdn.corenexis.com/f/obN0g4q29ht.png"
+    },
+    {
+      year: "2026",
+      role: "Campus Lead",
+      company: "Open Source Connect Global (OSCG'26)",
+      proof: "https://cdn.phototourl.com/member/2026-07-03-4b1110a7-249c-45b3-be04-befca94cc601.png"
     },
     {
       year: "2025",
       role: "Contributor",
-      company: "Open Source Connect India (OSCI'25)"
+      company: "GirlScript Summer of Code (GSSoC'25)",
+      proof: "https://cdn.phototourl.com/free/2026-07-03-12c26c10-aeb6-401a-84fe-e5c8f8b69694.png"
+    },
+    {
+      year: "2025",
+      role: "Campus Ambassador",
+      company: "GirlScript Summer of Code (GSSoC'25)",
+      proof: "https://cdn.phototourl.com/free/2026-07-03-5289df1d-8ba4-4c19-9fdd-9d44be9a112b.png"
+    },
+    {
+      year: "2025",
+      role: "Contributor",
+      company: "Open Source Connect India (OSCI'25)",
+      proof: "https://cdn.corenexis.com/f/5SokRc4M0U7.png"
+    },
+    {
+      year: "2025",
+      role: "Campus Ambassador",
+      company: "E-cell IIT Delhi",
+      proof: "https://cdn.phototourl.com/member/2026-07-03-12437edf-889a-4a4b-91ae-538d0ff696c8.png"
     },
     {
       year: "2025",
       role: "Community Member",
-      company: "Google Developer Community"
-    }
+      company: "Google Developer Community",
+      proof: "https://cdn.phototourl.com/free/2026-07-03-35d7b244-dff3-406a-b66c-ddf96e1488ab.png"
+    },
+
+
   ],
   internships: [
     {

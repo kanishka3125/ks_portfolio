@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FileText, Trophy, Code, GraduationCap, MapPin, Briefcase } from 'lucide-react'
+import { FileText, Trophy, Code, GraduationCap, MapPin, Briefcase, User } from 'lucide-react'
 
 const RecruiterOverview = ({ data }) => {
   return (
@@ -12,18 +12,29 @@ const RecruiterOverview = ({ data }) => {
 
         <div className="relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8">
-            <div>
-              <div className="flex items-center gap-3 mb-2">
-                <h1 className="text-3xl md:text-4xl font-heading font-black text-text-primary tracking-tight">
-                  {data.name}
-                </h1>
-                <span className="bg-green-500/20 text-green-400 text-[10px] font-bold px-2 py-1 rounded border border-green-500/30 uppercase tracking-widest animate-pulse">
-                  Open to Work
-                </span>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+              {/* Profile Photo */}
+              <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden border-2 border-primary-light/30 shadow-[0_0_20px_rgba(255,171,145,0.1)] flex-shrink-0 bg-white/5 flex items-center justify-center">
+                {data.image ? (
+                  <img src={data.image} alt={data.name} className="w-full h-full object-cover" />
+                ) : (
+                  <User size={36} className="text-gray-400" />
+                )}
               </div>
-              <p className="text-primary-light font-medium text-lg md:text-xl">
-                {data.role}
-              </p>
+              
+              <div>
+                <div className="flex flex-wrap items-center gap-3 mb-2">
+                  <h1 className="text-3xl md:text-4xl font-heading font-black text-text-primary tracking-tight">
+                    {data.name}
+                  </h1>
+                  <span className="bg-green-500/20 text-green-400 text-[10px] font-bold px-2 py-1 rounded border border-green-500/30 uppercase tracking-widest animate-pulse whitespace-nowrap">
+                    Open to Work
+                  </span>
+                </div>
+                <p className="text-primary-light font-medium text-lg md:text-xl">
+                  {data.role}
+                </p>
+              </div>
             </div>
             
             <a 

@@ -155,8 +155,8 @@ function CategoryCard({ category, index }) {
       <div 
         className="absolute top-0 left-0 right-0 h-[3px] rounded-t-3xl opacity-80 transition-all duration-300 group-hover:h-[4px]"
         style={{ 
-          backgroundColor: category.color,
-          boxShadow: `0 2px 14px ${category.color}50`
+          backgroundColor: '#FFAB91',
+          boxShadow: '0 2px 14px rgba(255, 171, 145, 0.3)'
         }}
       />
 
