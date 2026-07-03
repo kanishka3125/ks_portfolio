@@ -428,8 +428,8 @@ export const portfolioData = {
       date: "May 2025 - August 2025",
       location: "IIT Madras, Chennai, Tamil Nadu",
       description: "Contributed to major open-source web assets, reviewed pull requests, led contributor sessions, and promoted collaborative Git workflows among student teams. Built several interactive custom web layouts.",
-      banner: "https://cdn.phototourl.com/member/2026-07-03-1b45546e-6d63-4bbb-a9ad-ae63c82669ed.png",
-      verifyLink: "https://img.sanishtech.com/u/ae511aecdf7db4e8726f75363382a992.png"
+      banner: "https://www.image2url.com/r2/default/images/1783065575534-399e6c35-b338-442a-9783-ed34cf3e89f7.png",
+      verifyLink: "https://www.image2url.com/r2/default/images/1783065556531-76b5e2d2-4b28-4e47-82da-fb331a7686a8.png"
     },
 
     {
@@ -439,7 +439,7 @@ export const portfolioData = {
       date: "February 2026",
       location: "SRM Campus",
       description: "Acquired deep insight into generative modeling, transformer architectures, and CUDA optimizations. Trained custom embeddings and deployed fine-tuned LLM architectures on local inference pipelines.",
-      banner: "https://cdn.phototourl.com/member/2026-07-03-6510344b-7923-46ac-9192-2c29c7214811.png",
+      banner: "https://cdn.phototourl.com/member/2026-07-03-1908bd9e-c9da-40d3-bccd-443340c53e31.png",
       verifyLink: "https://img.sanishtech.com/u/843057c424a812405171ac5d0a17aa80.png"
     },
     {
@@ -450,7 +450,7 @@ export const portfolioData = {
       location: "SRM Campus",
       description: "Acquired deep insight into generative modeling, transformer architectures, and CUDA optimizations. Trained custom embeddings and deployed fine-tuned LLM architectures on local inference pipelines.",
       banner: "https://cdn.phototourl.com/member/2026-07-03-46a5a5d5-7c18-40ee-83f0-e197872dd815.png",
-      verifyLink: "https://img.sanishtech.com/u/4e76dc18a92e93d8e2c838077f6e2a38.png"
+      verifyLink: "https://www.image2url.com/r2/default/images/1783065350435-78daee72-0df8-4ddf-b86b-f6dcd41fad0e.png"
     }
   ],
   hackathons: [
