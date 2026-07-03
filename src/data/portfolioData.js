@@ -299,7 +299,7 @@ export const portfolioData = {
       status: "Completed",
       shortDescription: "Green footprint tracker and sustainable lifestyle platform with Django backend and React frontend.",
       description: "Green footprint tracker and sustainable lifestyle platform with Django backend and React frontend.",
-      image: "https://cdn.phototourl.com/free/2026-07-03-80973bc2-40c4-4b0a-bcb9-090127017087.png",
+      image: "https://cdn.phototourl.com/member/2026-07-03-1c0d0a64-2254-41a5-9633-492790cdcca8.png",
       tech: {
         frontend: ["React", "Tailwind CSS"],
         backend: ["Python", "Django"],
@@ -374,7 +374,7 @@ export const portfolioData = {
       status: "Completed",
       shortDescription: "Tic-Tac-Toe Game Application.",
       description: "Tic-Tac-Toe Game Application.",
-      image: "https://cdn.phototourl.com/member/2026-07-03-7dc7f2b1-2a35-4ef9-b013-115952bbbd9d.png",
+      image: "https://cdn.phototourl.com/member/2026-07-03-66b9f3f6-f0a3-4819-a3b0-6fcb269669db.png",
       tech: {
         frontend: ["React", "Tailwind CSS"],
         backend: ["Node.js", "Express"],
@@ -432,7 +432,7 @@ export const portfolioData = {
         ai: ["PyTorch", "CNN", "OpenCV"],
         tools: ["Jupyter", "Git"]
       },
-      demoLink: "",
+      demoLink: "https://rule-based-engagement-predictor.streamlit.app",
       github: "https://github.com/kanishka3125/Rule-Based-Engagement-Predictor",
       cinematicDetails: {
         architecture: "PyTorch CNN (ResNet Backbone)",
