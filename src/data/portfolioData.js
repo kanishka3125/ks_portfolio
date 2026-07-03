@@ -186,7 +186,7 @@ export const portfolioData = {
         ai: [],
         tools: ["Three.js", "Vite", "Git"]
       },
-      demoLink: "http://localhost:5174",
+      demoLink: "https://ks-portfolio-pied.vercel.app/",
       github: "https://github.com/kanishka3125/ks_portfolio",
       cinematicDetails: {
         architecture: "React + Three.js + Framer Motion",
@@ -211,7 +211,7 @@ export const portfolioData = {
         ai: ["PyTorch", "CNN", "OpenCV"],
         tools: ["Jupyter", "Git"]
       },
-      demoLink: "",
+      demoLink: "https://dsa-arena-iota.vercel.app/",
       github: "https://github.com/kanishka3125/DSA-Arena",
       cinematicDetails: {
         architecture: "PyTorch CNN (ResNet Backbone)",
@@ -331,7 +331,7 @@ export const portfolioData = {
         ai: [],
         tools: ["PostgreSQL", "Git"]
       },
-      demoLink: "",
+      demoLink: "https://eco-life-ten.vercel.app",
       github: "https://github.com/Nitesh-code-droid/TechLads_EcoLife.git",
       cinematicDetails: {
         architecture: "Django REST Framework + PostgreSQL",
@@ -365,6 +365,57 @@ export const portfolioData = {
         results: "Reduced workflow latency by 40%"
       }
     },
+    {
+      id: "tic tac toe",
+      title: "Tic-Tac-Toe Game Application",
+      domain: "Game",
+      type: "Team Project",
+      difficulty: "Advanced",
+      status: "Completed",
+      shortDescription: "Tic-Tac-Toe Game Application.",
+      description: "Tic-Tac-Toe Game Application.",
+      image: "https://cdn.phototourl.com/member/2026-07-03-7dc7f2b1-2a35-4ef9-b013-115952bbbd9d.png",
+      tech: {
+        frontend: ["React", "Tailwind CSS"],
+        backend: ["Node.js", "Express"],
+        ai: ["Vertex AI", "Gemini API"],
+        tools: ["Google Cloud", "Git"]
+      },
+      demoLink: "https://interactive-animated-tic-tac-toe.vercel.app",
+      github: "https://github.com/kanishka3125/interactive-tic-tac-toe-game-web-application",
+      cinematicDetails: {
+        architecture: "Google Cloud Vertex AI + Gemini API",
+        dataset: "Autonomous task instructions",
+        training: "Zero-shot prompt engineering",
+        results: "Reduced workflow latency by 40%"
+      }
+    },
+    {
+      id: "advanced calculator",
+      title: "All in one calculator",
+      domain: "Web",
+      type: "Team Project",
+      difficulty: "Beginner",
+      status: "Completed",
+      shortDescription: "All in one calculator.",
+      description: "All in one calculator.",
+      image: "https://cdn.phototourl.com/member/2026-07-03-7dc7f2b1-2a35-4ef9-b013-115952bbbd9d.png",
+      tech: {
+        frontend: ["HTML", "CSS", "JavaScript"],
+        backend: ["Node.js", "Express"],
+        ai: ["Vertex AI", "Gemini API"],
+        tools: ["Google Cloud", "Git"]
+      },
+      demoLink: "https://interactive-animated-tic-tac-toe.vercel.app",
+      github: "https://github.com/kanishka3125/interactive-tic-tac-toe-game-web-application",
+      cinematicDetails: {
+        architecture: "Google Cloud Vertex AI + Gemini API",
+        dataset: "Autonomous task instructions",
+        training: "Zero-shot prompt engineering",
+        results: "Reduced workflow latency by 40%"
+      }
+    },
+
     {
       id: "predictor",
       title: "Instagram Post Predictor",

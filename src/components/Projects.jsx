@@ -136,7 +136,7 @@ function ProjectCard({ project, index }) {
               initial={{ scaleX: 0, opacity: 0.6 }}
               animate={{ scaleX: 1, opacity: 0 }}
               transition={{ duration: 0.6, ease: 'easeOut' }}
-              className="absolute top-0 left-0 w-full h-full origin-left z-30"
+              className="absolute top-0 left-0 w-full h-full origin-left z-30 pointer-events-none"
               style={{ background: 'linear-gradient(90deg, transparent, rgba(254,210,180,0.08), transparent)' }}
             />
 
@@ -215,7 +215,7 @@ function ProjectCard({ project, index }) {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                transition={{ delay: 0.9, duration: 0.35 }}
+                transition={{ delay: 0.4, duration: 0.35 }}
                 className="pt-2 mt-2 border-t border-white/20 flex items-center gap-2"
               >
                 {/* GitHub button — full bright */}
