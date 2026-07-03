@@ -229,14 +229,14 @@ export const portfolioData = {
       status: "Completed",
       shortDescription: "AI-driven application for real-time emotion detection with adaptive user calibration.",
       description: "AI-driven application for real-time emotion detection from video streams with adaptive user calibration. The system uses DeepFace and OpenCV to analyze facial expressions, applying temporal voting for prediction stabilization and low-light enhancement for challenging environments.",
-      image: "https://image2url.com/images/1765877608873-49b36c01-941a-4537-8b46-e27aa04f9fef.jpg",
+      image: "https://www.image2url.com/r2/default/images/1783085532020-05fd525f-faa8-4724-b78d-5dc46270d1a8.png",
       tech: {
         frontend: ["React", "Tailwind CSS"],
         backend: ["Python", "FastAPI"],
         ai: ["DeepFace", "TensorFlow", "OpenCV"],
         tools: ["Docker", "Git"]
       },
-      demoLink: "",
+      demoLink: "https://emotion-detector-boh1.onrender.com/",
       github: "https://github.com/kanishka3125/emotion_detector.git",
       cinematicDetails: {
         architecture: "DeepFace CNN Pipeline + WebSockets",
@@ -356,7 +356,7 @@ export const portfolioData = {
         ai: ["Vertex AI", "Gemini API"],
         tools: ["Google Cloud", "Git"]
       },
-      demoLink: "",
+      demoLink: "https://algorithmic-trading-backtesting-pla.vercel.app/",
       github: "https://github.com/kanishka3125/Algorithmic-Trading-Backtesting-Platform",
       cinematicDetails: {
         architecture: "Google Cloud Vertex AI + Gemini API",
