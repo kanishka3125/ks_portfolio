@@ -418,7 +418,7 @@ export const portfolioData = {
       date: "October 2025",
       location: "SRM University, Chennai",
       description: "Winner of SRM FEUD organized by the Quiz Club , Department of English and Foreign Languages.",
-      banner: "https://img.sanishtech.com/u/3170073c1d9ef51fde1c4ef6f329d92b.png",
+      banner: "https://cdn.phototourl.com/member/2026-07-03-9bb2a3fd-cb62-4199-8ec9-f44461c9ae08.png",
       verifyLink: "https://img.sanishtech.com/u/7cb386c14f4216165cb80f67b3d1a618.png"
     },
     {
