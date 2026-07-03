@@ -179,7 +179,7 @@ export const portfolioData = {
       status: "Ongoing",
       shortDescription: "A highly interactive, 3D and OS-style portfolio experience built with React.",
       description: "A modern, responsive portfolio website built with React, Tailwind CSS, and Three.js. Features immersive 3D particle backgrounds, OS-style project modals, and dynamic certificate books.",
-      image: "https://img.sanishtech.com/u/7a1fed6283d5aa61ca50c2b21298b94e.png",
+      image: "https://cdn.phototourl.com/member/2026-07-03-1336e33b-c077-46a6-87d1-4dddf00b6313.png",
       tech: {
         frontend: ["React", "Tailwind CSS v4", "Framer Motion"],
         backend: ["Node.js", "Express"],
@@ -248,7 +248,7 @@ export const portfolioData = {
       status: "Completed",
       shortDescription: "AI-powered compliance and legal document scanner using NLP and Retrieval-Augmented Generation.",
       description: "Created a real-time computer vision expression analyzer using DeepFace and OpenCV over high-performance WebSocket channels, with baseline calibration to resolve user resting-face variance.",
-      image: "https://img.sanishtech.com/u/60dde1c1711df23cb5d8655fcb9224a7.png",
+      image: "https://cdn.phototourl.com/free/2026-07-03-215adfca-3512-4c16-9221-a83ca0c87d31.png",
       tech: {
         frontend: ["React", "Tailwind CSS"],
         backend: ["Python", "FastAPI"],
@@ -273,7 +273,7 @@ export const portfolioData = {
       status: "Completed",
       shortDescription: "Real-time mental wellness platform with secure chat, multi-peer synchronization, and mood logs.",
       description: "Engineered robust multi-peer synchronization layouts with WebSocket communication, temporal versioning, and auto-conflict resolutions.",
-      image: "https://img.sanishtech.com/u/6f0d34dfff70b832727612bc1b36d373.png",
+      image: "https://cdn.phototourl.com/member/2026-07-03-95e0134a-53c4-45ac-bd25-ca3a4d95f370.png",
       tech: {
         frontend: ["React", "Tailwind CSS"],
         backend: ["Node.js", "Express"],
@@ -298,7 +298,7 @@ export const portfolioData = {
       status: "Completed",
       shortDescription: "Green footprint tracker and sustainable lifestyle platform with Django backend and React frontend.",
       description: "Green footprint tracker and sustainable lifestyle platform with Django backend and React frontend.",
-      image: "https://img.sanishtech.com/u/a4dfc76255071ba2f7539841adca38be.png",
+      image: "https://cdn.phototourl.com/free/2026-07-03-80973bc2-40c4-4b0a-bcb9-090127017087.png",
       tech: {
         frontend: ["React", "Tailwind CSS"],
         backend: ["Python", "Django"],
@@ -428,7 +428,7 @@ export const portfolioData = {
       date: "May 2025 - August 2025",
       location: "IIT Madras, Chennai, Tamil Nadu",
       description: "Contributed to major open-source web assets, reviewed pull requests, led contributor sessions, and promoted collaborative Git workflows among student teams. Built several interactive custom web layouts.",
-      banner: "https://img.sanishtech.com/u/de3e84d612ad3b119f56ec81c00b7890.png",
+      banner: "https://cdn.phototourl.com/member/2026-07-03-1b45546e-6d63-4bbb-a9ad-ae63c82669ed.png",
       verifyLink: "https://img.sanishtech.com/u/ae511aecdf7db4e8726f75363382a992.png"
     },
 
@@ -439,7 +439,7 @@ export const portfolioData = {
       date: "February 2026",
       location: "SRM Campus",
       description: "Acquired deep insight into generative modeling, transformer architectures, and CUDA optimizations. Trained custom embeddings and deployed fine-tuned LLM architectures on local inference pipelines.",
-      banner: "https://img.sanishtech.com/u/c7b7bd69cf699beeaa0bb3c296f2b39e.png",
+      banner: "https://cdn.phototourl.com/member/2026-07-03-6510344b-7923-46ac-9192-2c29c7214811.png",
       verifyLink: "https://img.sanishtech.com/u/843057c424a812405171ac5d0a17aa80.png"
     },
     {
@@ -449,7 +449,7 @@ export const portfolioData = {
       date: "September 2025",
       location: "SRM Campus",
       description: "Acquired deep insight into generative modeling, transformer architectures, and CUDA optimizations. Trained custom embeddings and deployed fine-tuned LLM architectures on local inference pipelines.",
-      banner: "https://img.sanishtech.com/u/fed5eb65cfa7ce37eca8e529ded123e7.png",
+      banner: "https://cdn.phototourl.com/member/2026-07-03-46a5a5d5-7c18-40ee-83f0-e197872dd815.png",
       verifyLink: "https://img.sanishtech.com/u/4e76dc18a92e93d8e2c838077f6e2a38.png"
     }
   ],
@@ -461,7 +461,7 @@ export const portfolioData = {
       status: "Top 10 Finalist",
       date: "March 2026",
       location: "IIIT Sricity, Andhra Pradesh",
-      banner: "https://img.sanishtech.com/u/9048e017e0976f0c5fd0dec8d64c62e5.png",
+      banner: "https://cdn.phototourl.com/member/2026-07-03-01341825-b834-4e0e-9620-68f27023977d.png",
       description: "Designed a secure ML pipeline using SVM classifiers for predictive diabetes analysis, running on a FastAPI backend and interactive React UI. Ensured strict input validation and accuracy optimizations.",
       techStack: ["React", "FastAPI", "Python", "Scikit-learn", "SVM"],
       teamMembers: ["Kanishka Sharma", "Hari Pooreni Balaji", "Rik Mukherjee", "Aadhidev MS"],
