@@ -167,127 +167,95 @@ export const portfolioData = {
           description: "Designed and trained an SVM-based Machine Learning model for diabetes prediction using the PIMA Diabetes dataset."
         }
       ]
+    },
+    {
+      role: "Data Analtics",
+      company: "Deloitte",
+      duration: "15|12|2025 - 11|01|2026",
+      description: "",
+      skills: ["Machine Learning", "Python", "TensorFlow", "NumPy", "Pandas", "Scikit-learn"],
+      logo: "https://image2url.com/images/1765895074258-5ed13062-fcc5-450b-aea0-4fa4e9e43afa.png",
+      certificate: "https://image2url.com/images/1765896226429-bbdefc28-1539-425e-9df0-01485f43266d.png",
+      projects: [
+        {
+          title: "Diabetes Prediction with ML",
+          description: "Designed and trained an SVM-based Machine Learning model for diabetes prediction using the PIMA Diabetes dataset."
+        }
+      ]
     }
   ],
   projects: [
     {
       id: "portfolio",
-      title: "Personal Portfolio OS",
+      title: "Personal Portfolio",
       domain: "Web",
       type: "Personal",
       difficulty: "Advanced",
       status: "Ongoing",
-      shortDescription: "A highly interactive, 3D and OS-style portfolio experience built with React.",
-      description: "A modern, responsive portfolio website built with React, Tailwind CSS, and Three.js. Features immersive 3D particle backgrounds, OS-style project modals, and dynamic certificate books.",
+      shortDescription: "Immersive developer portfolio that transforms projects, certifications, internships, and achievements into interactive storytelling experiences with custom motion-driven interfaces.",
+      description: "Immersive developer portfolio that transforms projects, certifications, internships, and achievements into interactive storytelling experiences with custom motion-driven interfaces.",
       image: "https://cdn.phototourl.com/member/2026-07-03-1336e33b-c077-46a6-87d1-4dddf00b6313.png",
-      tech: {
-        frontend: ["React", "Tailwind CSS v4", "Framer Motion"],
-        backend: ["Node.js", "Express"],
-        ai: [],
-        tools: ["Three.js", "Vite", "Git"]
-      },
+      tech: ["React", "Vite", "Tailwind CSS", "Framer Motion", "GSAP", "JavaScript"],
       demoLink: "https://ks-portfolio-pied.vercel.app/",
-      github: "https://github.com/kanishka3125/ks_portfolio",
-      cinematicDetails: {
-        architecture: "React + Three.js + Framer Motion",
-        dataset: "Component-driven Static Data",
-        training: "Iterative UX/UI Prototyping",
-        results: "Sub-100ms Load Times, 60 FPS 3D"
-      }
+      github: "https://github.com/kanishka3125/ks_portfolio"
     },
     {
       id: "DSA Arena",
-      title: "DSA Arena",
-      domain: "Web",
+      title: "DSA Arena - Competitive Coding Progress Tracker",
+      domain: "Web App · Productivity",
       type: "Personal",
-      difficulty: "Advanced",
+      difficulty: "Intermediate",
       status: "Completed",
-      shortDescription: "Computer vision classification system for dermatological anomalies trained on clinical datasets.",
-      description: "Computer vision classification system for dermatological anomalies trained on clinical datasets.",
+      shortDescription: "Competitive DSA progress tracker for monitoring Striver A2Z Sheet completion, comparing performance with friends, and visualizing consistency through rankings and analytics.",
+      description: "Competitive DSA progress tracker for monitoring Striver A2Z Sheet completion, comparing performance with friends, and visualizing consistency through rankings and analytics.",
       image: "https://www.image2url.com/r2/default/images/1783066016794-7a0208b2-474b-4293-a0d4-cabf4cb23d0a.png",
-      tech: {
-        frontend: [],
-        backend: ["Python"],
-        ai: ["PyTorch", "CNN", "OpenCV"],
-        tools: ["Jupyter", "Git"]
-      },
+      tech: ["React", "Firebase Firestore", "Tailwind CSS", "Recharts", "Vite"],
       demoLink: "https://dsa-arena-iota.vercel.app/",
-      github: "https://github.com/kanishka3125/DSA-Arena",
-      cinematicDetails: {
-        architecture: "PyTorch CNN (ResNet Backbone)",
-        dataset: "ISIC Archive Clinical Imagery",
-        training: "100 Epochs, Cross-Entropy Loss",
-        results: "92.8% Diagnostic Accuracy"
-      }
+      github: "https://github.com/kanishka3125/DSA-Arena"
     },
     {
       id: "emotion-recognition",
-      title: "Adaptive Real-Time Emotion Recognition",
-      domain: "AI/ML",
-      type: "Hackathon",
+      title: "Emotion AI - Adaptive Real-Time Emotion Recognition",
+      domain: "AI/ML · Computer Vision",
+      type: "Personal",
       difficulty: "Advanced",
       status: "Completed",
       shortDescription: "AI-driven application for real-time emotion detection with adaptive user calibration.",
-      description: "AI-driven application for real-time emotion detection from video streams with adaptive user calibration. The system uses DeepFace and OpenCV to analyze facial expressions, applying temporal voting for prediction stabilization and low-light enhancement for challenging environments.",
+      description: "Real-time facial emotion intelligence system that calibrates a personal baseline, detects relative emotional shifts, and stabilizes predictions across seven emotions.",
       image: "https://www.image2url.com/r2/default/images/1783085532020-05fd525f-faa8-4724-b78d-5dc46270d1a8.png",
-      tech: {
-        frontend: ["React", "Tailwind CSS"],
-        backend: ["Python", "FastAPI"],
-        ai: ["DeepFace", "TensorFlow", "OpenCV"],
-        tools: ["Docker", "Git"]
-      },
+      tech: ["Python", "DeepFace", "OpenCV", "Flask", "TensorFlow", "JavaScript"],
       demoLink: "https://emotion-detector-boh1.onrender.com/",
       github: "https://github.com/kanishka3125/emotion_detector.git",
-      cinematicDetails: {
-        architecture: "DeepFace CNN Pipeline + WebSockets",
-        dataset: "FER-2013 + Custom Calibrated Sets",
-        training: "Real-time stream evaluation",
-        results: "94% Emotion Inference Accuracy"
-      }
     },
     {
       id: "sar-detection",
       title: "Zenith - SAR Ship Detection",
-      domain: "AI/ML",
+      domain: "AI/ML · Computer Vision · Geospatial",
       type: "Hackathon",
       difficulty: "Advanced",
-      status: "Completed",
+      status: "Ongoing",
       shortDescription: "Synthetic Aperture Radar (SAR) ship detection system using Deep Learning and SVM classifiers.",
-      description: "Designed a secure ML pipeline using SVM classifiers for predictive diabetes analysis, running on a FastAPI backend and interactive React UI. Ensured strict input validation and accuracy optimizations.",
+      description: "AI-powered maritime intelligence system that detects vessels in SAR satellite imagery, correlates them with AIS data, and identifies dark, spoofed, and high-risk vessels.",
       image: "https://cdn.phototourl.com/free/2026-07-03-9a10362b-ebd0-45fb-ae82-cbe1d85b3a40.png",
-      tech: {
-        frontend: ["React", "Tailwind CSS"],
-        backend: ["FastAPI", "Python"],
-        ai: ["Scikit-learn", "SVM", "OpenCV"],
-        tools: ["Git", "GitHub"]
-      },
+      tech: ["YOLOv8", "FastAPI", "React", "Leaflet", "React Three Fiber", "Python"],
       demoLink: "",
-      github: "https://github.com/kanishka3125/SAR_Ship_Detection_System"
+      github: "https://github.com/kanishka3125/SAR_Ship_Detection_System",
+
     },
     {
       id: "jur-ai",
       title: "Jur AI - Legal Scanner",
-      domain: "AI/ML",
+      domain: "AI/ML · LegalTech · NLP",
       type: "Hackathon",
       difficulty: "Advanced",
-      status: "Completed",
+      status: "Ongoing",
       shortDescription: "AI-powered compliance and legal document scanner using NLP and Retrieval-Augmented Generation.",
-      description: "Created a real-time computer vision expression analyzer using DeepFace and OpenCV over high-performance WebSocket channels, with baseline calibration to resolve user resting-face variance.",
+      description: "Jur AI is an intelligent legal document compliance scanner that uses NLP and Retrieval-Augmented Generation (RAG) to analyze contracts, policies, and regulatory filings. It identifies risk clauses, flags non-compliant sections, and provides plain-language summaries powered by a FastAPI backend and React frontend.",
       image: "https://cdn.phototourl.com/free/2026-07-03-215adfca-3512-4c16-9221-a83ca0c87d31.png",
-      tech: {
-        frontend: ["React", "Tailwind CSS"],
-        backend: ["Python", "FastAPI"],
-        ai: ["TensorFlow", "DeepFace", "OpenCV", "WebSockets"],
-        tools: ["Git", "Docker"]
-      },
+      tech: ["React", "Tailwind CSS", "Python", "FastAPI", "LangChain", "RAG", "NLP", "Gemini API", "Docker"],
       demoLink: "",
-      github: "https://github.com/kanishka3125/emotion_detector.git",
-      cinematicDetails: {
-        architecture: "Multi-threaded OpenCV + DeepFace",
-        dataset: "Real-time webcam feed extraction",
-        training: "Baseline resting-face calibration",
-        results: "<50ms Latency on Frame Analysis"
-      }
+      github: "https://github.com/kanishka3125",
+
     },
 
     {
@@ -297,123 +265,73 @@ export const portfolioData = {
       type: "Project",
       difficulty: "Intermediate",
       status: "Completed",
-      shortDescription: "Green footprint tracker and sustainable lifestyle platform with Django backend and React frontend.",
-      description: "Green footprint tracker and sustainable lifestyle platform with Django backend and React frontend.",
+      shortDescription: "ML-powered anomaly detection system that identifies data irregularities and performs automated root cause analysis.",
+      description: "Interactive time-series analysis dashboard that detects statistical anomalies using Z-scores and explains unusual spikes and drops through visual insights.",
       image: "https://cdn.phototourl.com/member/2026-07-03-1c0d0a64-2254-41a5-9633-492790cdcca8.png",
-      tech: {
-        frontend: ["React", "Tailwind CSS"],
-        backend: ["Python", "Django"],
-        ai: [],
-        tools: ["PostgreSQL", "Git"]
-      },
+      tech: ["Python", "Streamlit", "Pandas", "NumPy", "Matplotlib", "Z-Score"],
       demoLink: "",
       github: "https://github.com/kanishka3125/Anomaly-Detection-Root-Cause-Analyzer.git",
-      cinematicDetails: {
-        architecture: "Django REST Framework + PostgreSQL",
-        dataset: "Aggregated footprint emission factors",
-        training: "Sustainability rule-engine logic",
-        results: "Comprehensive carbon tracking"
-      }
+
     },
     {
       id: "ecolife",
-      title: "Ecolife - Green Footprint",
-      domain: "Web",
+      title: "EcoLife — Gamified Sustainable Living",
+      domain: "Full Stack · Sustainability",
       type: "Hackathon",
       difficulty: "Intermediate",
       status: "Completed",
       shortDescription: "Green footprint tracker and sustainable lifestyle platform with Django backend and React frontend.",
-      description: "Green footprint tracker and sustainable lifestyle platform with Django backend and React frontend.",
+      description: "Gamified sustainability platform that rewards eco-friendly habits with Green Credits, analyzes product carbon impact, and turns sustainable living into a competitive experience.",
       image: "https://cdn.phototourl.com/free/2026-07-03-80973bc2-40c4-4b0a-bcb9-090127017087.png",
-      tech: {
-        frontend: ["React", "Tailwind CSS"],
-        backend: ["Python", "Django"],
-        ai: [],
-        tools: ["PostgreSQL", "Git"]
-      },
+      tech: ["React", "TypeScript", "Firebase", "Tailwind CSS", "Framer Motion", "Recharts"],
       demoLink: "https://eco-life-ten.vercel.app",
       github: "https://github.com/Nitesh-code-droid/TechLads_EcoLife.git",
-      cinematicDetails: {
-        architecture: "Django REST Framework + PostgreSQL",
-        dataset: "Aggregated footprint emission factors",
-        training: "Sustainability rule-engine logic",
-        results: "Comprehensive carbon tracking"
-      }
+
     },
     {
       id: "AlgoBacktest Terminal",
       title: "AlgoBacktest Terminal",
-      domain: "AI/ML",
+      domain: "FinTech . Full Stack . DBMS",
       type: "Team Project",
       difficulty: "Advanced",
       status: "Completed",
-      shortDescription: "Multi-agent autonomous workflow coordinator using Google Cloud Vertex AI and Node.js.",
-      description: "Multi-agent autonomous workflow coordinator using Google Cloud Vertex AI and Node.js.",
+      shortDescription: "Full-stack algorithmic trading platform for configuring strategies, backtesting on historical market data, and analyzing performance.",
+      description: "AlgoBacktest Terminal is a full-stack algorithmic trading platform where users can configure custom trading strategies, run them against historical market data, and analyze performance through interactive charts, key metrics (Sharpe ratio, drawdown), and detailed trade logs. Built with a React frontend and Node.js + PostgreSQL backend.",
       image: "https://cdn.phototourl.com/member/2026-07-03-7dc7f2b1-2a35-4ef9-b013-115952bbbd9d.png",
-      tech: {
-        frontend: ["React", "Tailwind CSS"],
-        backend: ["Node.js", "Express"],
-        ai: ["Vertex AI", "Gemini API"],
-        tools: ["Google Cloud", "Git"]
-      },
+      tech: ["React", "FastAPI", "PostgreSQL", "Pandas", "NumPy", "Recharts"],
       demoLink: "https://algorithmic-trading-backtesting-pla.vercel.app/",
       github: "https://github.com/kanishka3125/Algorithmic-Trading-Backtesting-Platform",
-      cinematicDetails: {
-        architecture: "Google Cloud Vertex AI + Gemini API",
-        dataset: "Autonomous task instructions",
-        training: "Zero-shot prompt engineering",
-        results: "Reduced workflow latency by 40%"
-      }
+
     },
     {
       id: "tic tac toe",
       title: "Tic-Tac-Toe Game Application",
       domain: "Game",
-      type: "Team Project",
-      difficulty: "Advanced",
+      type: "Personal",
+      difficulty: "Beginner",
       status: "Completed",
-      shortDescription: "Tic-Tac-Toe Game Application.",
-      description: "Tic-Tac-Toe Game Application.",
+      shortDescription: "Interactive animated Tic-Tac-Toe game with AI opponent, smooth animations, and score tracking.",
+      description: "A polished, interactive Tic-Tac-Toe game featuring an AI opponent (minimax algorithm), smooth CSS animations, real-time score tracking, and responsive design. Built with React and deployed on Vercel.",
       image: "https://cdn.phototourl.com/member/2026-07-03-66b9f3f6-f0a3-4819-a3b0-6fcb269669db.png",
-      tech: {
-        frontend: ["React", "Tailwind CSS"],
-        backend: ["Node.js", "Express"],
-        ai: ["Vertex AI", "Gemini API"],
-        tools: ["Google Cloud", "Git"]
-      },
+      tech: ["React", "Tailwind CSS", "CSS Animations", "Vite", "Git"],
       demoLink: "https://interactive-animated-tic-tac-toe.vercel.app",
       github: "https://github.com/kanishka3125/interactive-tic-tac-toe-game-web-application",
-      cinematicDetails: {
-        architecture: "Google Cloud Vertex AI + Gemini API",
-        dataset: "Autonomous task instructions",
-        training: "Zero-shot prompt engineering",
-        results: "Reduced workflow latency by 40%"
-      }
+
     },
     {
       id: "advanced calculator",
-      title: "All in one calculator",
+      title: "Advanced Calculator",
       domain: "Web",
-      type: "Team Project",
+      type: "Personal",
       difficulty: "Beginner",
       status: "Completed",
-      shortDescription: "All in one calculator.",
-      description: "All in one calculator.",
+      shortDescription: "A feature-rich all-in-one calculator supporting standard, scientific, unit conversion, and BMI modes.",
+      description: "A feature-rich all-in-one calculator web app with multiple modes — standard arithmetic, scientific calculations, unit converter, and BMI calculator — built with vanilla HTML, CSS, and JavaScript.",
       image: "https://cdn.phototourl.com/member/2026-07-03-7dc7f2b1-2a35-4ef9-b013-115952bbbd9d.png",
-      tech: {
-        frontend: ["HTML", "CSS", "JavaScript"],
-        backend: ["Node.js", "Express"],
-        ai: ["Vertex AI", "Gemini API"],
-        tools: ["Google Cloud", "Git"]
-      },
-      demoLink: "https://interactive-animated-tic-tac-toe.vercel.app",
-      github: "https://github.com/kanishka3125/interactive-tic-tac-toe-game-web-application",
-      cinematicDetails: {
-        architecture: "Google Cloud Vertex AI + Gemini API",
-        dataset: "Autonomous task instructions",
-        training: "Zero-shot prompt engineering",
-        results: "Reduced workflow latency by 40%"
-      }
+      tech: ["HTML", "CSS", "JavaScript", "Git"],
+      demoLink: "",
+      github: "https://github.com/kanishka3125",
+
     },
 
     {
@@ -421,25 +339,15 @@ export const portfolioData = {
       title: "Instagram Post Predictor",
       domain: "AI/ML",
       type: "Personal",
-      difficulty: "Advanced",
+      difficulty: "Intermediate",
       status: "Completed",
-      shortDescription: "Computer vision classification system for dermatological anomalies trained on clinical datasets.",
-      description: "Computer vision classification system for dermatological anomalies trained on clinical datasets.",
+      shortDescription: "Rule-based ML tool that predicts Instagram post engagement using content features and timing patterns.",
+      description: "A rule-based engagement predictor for Instagram posts that analyzes content features (hashtags, caption length, media type) and posting time patterns to estimate expected reach, likes, and engagement rate. Built with Python and deployed as an interactive Streamlit web app.",
       image: "https://www.image2url.com/r2/default/images/1783065928936-5ae2805a-b9c2-461d-a603-d7f301d3a9e0.png",
-      tech: {
-        frontend: [],
-        backend: ["Python"],
-        ai: ["PyTorch", "CNN", "OpenCV"],
-        tools: ["Jupyter", "Git"]
-      },
+      tech: ["Streamlit", "Python", "Pandas", "Scikit-learn", "Jupyter", "Git"],
       demoLink: "https://rule-based-engagement-predictor.streamlit.app",
       github: "https://github.com/kanishka3125/Rule-Based-Engagement-Predictor",
-      cinematicDetails: {
-        architecture: "PyTorch CNN (ResNet Backbone)",
-        dataset: "ISIC Archive Clinical Imagery",
-        training: "100 Epochs, Cross-Entropy Loss",
-        results: "92.8% Diagnostic Accuracy"
-      }
+
     }
 
   ],
@@ -461,7 +369,24 @@ export const portfolioData = {
       image: "https://i.postimg.cc/BnBr7ZzC/Microsoft-and-Linkedin-PROFESSIONAL-CERTIFICATE.png",
       verifyLink: "https://image2url.com/pdfs/1765886917981-81c3d275-8732-472c-b2b6-99295450d656.pdf",
       skills: ["Generative AI", "Microsoft Copilot", "AI Ethics"]
-    }
+    },
+    {
+      id: "Professional Certificate in Python",
+      organization: "Microsoft Professional Certificate",
+      orgLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/120px-Microsoft_logo.svg.png",
+      image: "https://i.postimg.cc/BnBr7ZzC/Microsoft-and-Linkedin-PROFESSIONAL-CERTIFICATE.png",
+      verifyLink: "https://image2url.com/pdfs/1765886917981-81c3d275-8732-472c-b2b6-99295450d656.pdf",
+      skills: ["Generative AI", "Microsoft Copilot", "AI Ethics"]
+    },
+    {
+      id: "Professional Certificate in MLOps",
+      organization: "Microsoft Professional Certificate",
+      orgLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/120px-Microsoft_logo.svg.png",
+      image: "https://i.postimg.cc/BnBr7ZzC/Microsoft-and-Linkedin-PROFESSIONAL-CERTIFICATE.png",
+      verifyLink: "https://image2url.com/pdfs/1765886917981-81c3d275-8732-472c-b2b6-99295450d656.pdf",
+      skills: ["Generative AI", "Microsoft Copilot", "AI Ethics"]
+    },
+
   ],
   techJourney: [
     {

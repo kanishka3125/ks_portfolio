@@ -22,29 +22,63 @@ const Internships = ({ data }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[200] flex items-center justify-center p-4"
+            className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-8"
             onClick={() => setLightbox(null)}
           >
-            <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
+            {/* Backdrop */}
+            <div className="absolute inset-0 bg-black/75 backdrop-blur-md" />
+
+            {/* Glass modal */}
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              className="relative z-10 max-w-2xl w-full"
+              initial={{ scale: 0.88, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.92, opacity: 0, y: 10 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 28 }}
+              className="relative z-10 w-full max-w-lg flex flex-col rounded-2xl overflow-hidden"
+              style={{
+                height: 'min(85vh, 600px)',
+                background: 'var(--glass-bg)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                border: '1px solid var(--glass-border)',
+                boxShadow: '0 0 30px var(--glow-pink), 0 25px 60px rgba(0,0,0,0.6)',
+              }}
               onClick={(e) => e.stopPropagation()}
             >
-              <button
-                onClick={() => setLightbox(null)}
-                className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors cursor-pointer z-20"
-                aria-label="Close"
-              >
-                <X size={16} className="text-white" />
-              </button>
-              <img src={lightbox} alt="Certificate" className="w-full rounded-xl shadow-2xl" loading="lazy" />
+              {/* Header */}
+              <div className="flex items-center justify-between px-5 py-3.5 border-b border-white/10 flex-shrink-0">
+                <div className="flex items-center gap-2.5">
+                  <Award size={16} className="text-secondary" />
+                  <span className="text-sm font-bold text-white tracking-wide">Certificate</span>
+                </div>
+                <button
+                  onClick={() => setLightbox(null)}
+                  className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors cursor-pointer"
+                  aria-label="Close"
+                >
+                  <X size={14} className="text-white" />
+                </button>
+              </div>
+
+              {/* Image — stretches to fill, scales down to fit */}
+              <div className="flex-1 min-h-0 overflow-hidden p-4">
+                <img
+                  src={lightbox}
+                  alt="Certificate"
+                  className="rounded-xl shadow-2xl"
+                  style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
+                />
+              </div>
+
+              {/* Footer */}
+              <div className="px-5 py-2 border-t border-white/10 flex-shrink-0 text-center">
+                <span className="text-[10px] text-gray-500 tracking-wider">Click outside to close</span>
+              </div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
+
     </section>
   )
 }
@@ -65,7 +99,6 @@ function InternCard({ intern, index, onViewCert }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="tilt-card"
       style={{ perspective: '800px' }}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setTilt({ x: 0, y: 0 })}
@@ -77,7 +110,7 @@ function InternCard({ intern, index, onViewCert }) {
           transition: 'transform 0.15s ease-out',
         }}
       >
-        <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/5 blur-[80px] rounded-full translate-x-1/2 -translate-y-1/2 group-hover:bg-secondary/10 transition-all" />
+        <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/5 blur-[80px] rounded-full translate-x-1/2 -translate-y-1/2 group-hover:bg-secondary/10 transition-all pointer-events-none" />
 
         <div className="flex items-start gap-4 mb-4 relative z-10">
           <div className="w-11 h-11 bg-white/5 rounded-xl flex items-center justify-center p-2 border border-white/10 group-hover:scale-110 group-hover:border-secondary/30 transition-all duration-500 flex-shrink-0">

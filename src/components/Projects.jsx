@@ -41,10 +41,7 @@ function ProjectCard({ project, index }) {
 
   const statusClass = getStatusClass(project.status)
 
-  const techStack = useMemo(() => {
-    const { frontend = [], backend = [], ai = [], tools = [] } = project.tech || {};
-    return [...frontend, ...backend, ...ai, ...tools];
-  }, [project.tech]);
+  const techStack = project.tech || [];
 
   return (
     <motion.div
