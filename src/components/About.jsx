@@ -35,6 +35,17 @@ function AnimatedCounter({ target, suffix = '' }) {
   )
 }
 
+// Wraps specific keywords in a peach highlight span
+function highlightBio(text, keywords) {
+  const pattern = new RegExp(`(${keywords.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'gi')
+  const parts = text.split(pattern)
+  return parts.map((part, i) =>
+    keywords.some(k => k.toLowerCase() === part.toLowerCase())
+      ? <span key={i} className="text-secondary font-bold">{part}</span>
+      : part
+  )
+}
+
 const About = ({ data }) => {
   const imgRef = useRef(null)
   const [tilt, setTilt] = useState({ x: 0, y: 0 })
@@ -103,11 +114,13 @@ const About = ({ data }) => {
                 transition={{ duration: 0.4, delay: i * 0.1 }}
                 className={`leading-relaxed ${i === 0 ? 'text-sm md:text-base text-gray-200' : 'text-sm text-gray-400'}`}
               >
-                {i === 0 ? (
-                  <>
-                    Hello! I am <span className="font-bold text-white">Kanishka</span>, a B.Tech Computer Science student specializing in AI & ML at <span className="text-secondary font-bold">SRM Institute</span>, with a strong academic foundation (CGPA {data.cgpa}).
-                  </>
-                ) : para}
+                {highlightBio(para, [
+                  data.name,
+                  data.specialization,
+                  `${data.cgpa} CGPA`,
+                  'AI systems and data-driven products',
+                  'hackathons, open-source initiatives, and technology communities',
+                ])}
               </motion.p>
             ))}
           </div>

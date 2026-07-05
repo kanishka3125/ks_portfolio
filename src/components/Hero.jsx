@@ -49,8 +49,8 @@ function NeuralGlobe({ theme }) {
       <group ref={groupRef} position={[0, 0, 0]} scale={1.2}>
         <mesh>
           <icosahedronGeometry args={[globeRadius, 3]} />
-          <meshStandardMaterial 
-            color={theme === 'light' ? '#DE8755' : '#FED2B4'} 
+          <meshStandardMaterial
+            color={theme === 'light' ? '#DE8755' : '#FED2B4'}
             emissive={theme === 'light' ? '#96689F' : '#D3B7D8'}
             emissiveIntensity={0.6}
             wireframe={true}
@@ -58,11 +58,11 @@ function NeuralGlobe({ theme }) {
             opacity={0.25}
           />
         </mesh>
-        
+
         <points>
           <icosahedronGeometry args={[globeRadius, 3]} />
-          <pointsMaterial 
-            color={theme === 'light' ? '#D96D68' : '#FFAAA6'} 
+          <pointsMaterial
+            color={theme === 'light' ? '#D96D68' : '#FFAAA6'}
             size={0.04}
             transparent
             opacity={0.8}
@@ -80,7 +80,7 @@ function NeuralGlobe({ theme }) {
                 <meshBasicMaterial color="#34D399" />
               </mesh>
               <Html center distanceFactor={10} zIndexRange={[100, 0]}>
-                <button 
+                <button
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -136,21 +136,21 @@ const Hero = ({ data, theme }) => {
         stagger: 0.12,
         ease: "power4.out"
       })
-      .from(".hero-social", {
-        scale: 0,
-        opacity: 0,
-        duration: 0.4,
-        stagger: 0.08,
-        ease: "back.out(1.7)"
-      }, "-=0.4")
-      .from(".hero-scroll", {
-        y: -8,
-        opacity: 0,
-        repeat: -1,
-        yoyo: true,
-        duration: 1.5,
-        ease: "sine.inOut"
-      })
+        .from(".hero-social", {
+          scale: 0,
+          opacity: 0,
+          duration: 0.4,
+          stagger: 0.08,
+          ease: "back.out(1.7)"
+        }, "-=0.4")
+        .from(".hero-scroll", {
+          y: -8,
+          opacity: 0,
+          repeat: -1,
+          yoyo: true,
+          duration: 1.5,
+          ease: "sine.inOut"
+        })
     }, heroRef)
     return () => ctx.revert()
   }, [])
@@ -208,7 +208,7 @@ const Hero = ({ data, theme }) => {
           className="hero-line text-sm md:text-base text-gray-400 max-w-xl mb-8 leading-relaxed"
           style={{ transform: `translate(${mousePos.x * -1}px, ${mousePos.y * -1}px)` }}
         >
-          Transforming ideas into impactful and elegant software solutions through innovation, continuous learning, and community-driven development.
+          Turning complex ideas into intelligent systems - from AI and data-driven products to immersive digital experiences.
         </p>
 
         <div className="hero-line flex flex-wrap items-center gap-3 md:gap-4">

@@ -6,19 +6,19 @@ export const portfolioData = {
   university: "SRM Institute of Science and Technology",
   cgpa: "9.35",
   bio: [
-    "I’m Kanishka Sharma, a B.Tech Computer Science student specializing in Artificial Intelligence and Machine Learning at SRM Institute of Science and Technology, with a strong academic foundation and a 9.35 CGPA.",
+    "I'm Kanishka Sharma, a B.Tech Computer Science student specializing in Artificial Intelligence and Machine Learning at SRM Institute of Science and Technology, with a strong academic foundation and a 9.35 CGPA.",
     "I build AI systems and data-driven products that solve real problems. My work spans computer vision, machine learning, geospatial intelligence, financial analytics, and full-stack development — from detecting vessels in satellite imagery and analyzing algorithmic trading strategies to building adaptive emotion intelligence systems.",
     "Beyond building projects, I actively contribute to hackathons, open-source initiatives, and technology communities, where I collaborate, experiment, and turn ambitious ideas into working systems. I’m driven by continuous learning and the challenge of building technology that is both technically meaningful and genuinely useful."
   ],
   stats: {
-    projects: 7,
+    projects: 10,
     communities: 5,
     skills: 15,
     internships: 2,
     hackathons: 5,
-    events: 6,
+    events: 4,
     certificates: 12,
-    connections: 450,
+    connections: 500
   },
   contact: {
     email: "kanishkasharma3125@gmail.com",
