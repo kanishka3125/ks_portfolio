@@ -208,7 +208,7 @@ const Hero = ({ data, theme }) => {
           className="hero-line text-sm md:text-base text-gray-400 max-w-xl mb-8 leading-relaxed"
           style={{ transform: `translate(${mousePos.x * -1}px, ${mousePos.y * -1}px)` }}
         >
-          Turning complex ideas into intelligent systems - from AI and data-driven products to immersive digital experiences.
+          Turning complex ideas into intelligent systems from AI and data-driven products to immersive digital experiences.
         </p>
 
         <div className="hero-line flex flex-wrap items-center gap-3 md:gap-4">

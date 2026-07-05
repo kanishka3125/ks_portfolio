@@ -238,7 +238,7 @@ export const portfolioData = {
       description: "AI-powered maritime intelligence system that detects vessels in SAR satellite imagery, correlates them with AIS data, and identifies dark, spoofed, and high-risk vessels.",
       image: "https://cdn.phototourl.com/free/2026-07-03-9a10362b-ebd0-45fb-ae82-cbe1d85b3a40.png",
       tech: ["YOLOv8", "FastAPI", "React", "Leaflet", "React Three Fiber", "Python"],
-      demoLink: "",
+      demoLink: "https://sar-ship-detection-system.vercel.app/",
       github: "https://github.com/kanishka3125/SAR_Ship_Detection_System",
 
     },
@@ -253,7 +253,7 @@ export const portfolioData = {
       description: "Jur AI is an intelligent legal document compliance scanner that uses NLP and Retrieval-Augmented Generation (RAG) to analyze contracts, policies, and regulatory filings. It identifies risk clauses, flags non-compliant sections, and provides plain-language summaries powered by a FastAPI backend and React frontend.",
       image: "https://cdn.phototourl.com/free/2026-07-03-215adfca-3512-4c16-9221-a83ca0c87d31.png",
       tech: ["React", "Tailwind CSS", "Python", "FastAPI", "LangChain", "RAG", "NLP", "Gemini API", "Docker"],
-      demoLink: "",
+      demoLink: "https://jurai-frontend.vercel.app/",
       github: "https://github.com/kanishka3125",
 
     },
@@ -445,13 +445,7 @@ export const portfolioData = {
       teamMembers: ["Kanishka Sharma", "Hari Pooreni Balaji", "Rik Mukherjee", "Aadhidev MS"],
       achievements: "One of the Top 10 Finalist",
       github: "https://github.com/kanishka3125/SAR_Ship_Detection_System.git",
-      cinematicDetails: {
-        architecture: "Deep Learning Feature Extractor + SVM",
-        dataset: "Large-Scale SAR Imagery (LS-SSDD-v1)",
-        training: "Scikit-Learn SVM Optimization",
-        results: "96.2% Precision, Robust to Noise"
-      },
-      demoLink: "https://github.com/kanishka3125/SAR_Ship_Detection_System.git"
+      demoLink: "https://sar-ship-detection-system.vercel.app/"
     },
     {
       id: "Threx_srm",
@@ -467,7 +461,7 @@ export const portfolioData = {
       achievements: "Nominated in Top 5 overall hacks. Highlighted for architectural elegance in stream handling.",
       learnings: "Gained insights into low-latency frame serialization and multi-threading models in Python server setups.",
       github: "https://github.com/kanishka3125/emotion_detector.git",
-      demoLink: "https://github.com/kanishka3125"
+      demoLink: "https://jurai-frontend.vercel.app/"
     },
     {
       id: "hits",
