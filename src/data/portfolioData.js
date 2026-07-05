@@ -1,14 +1,14 @@
 export const portfolioData = {
   name: "Kanishka Sharma",
   image: "https://cdn.phototourl.com/free/2026-07-03-2e35190c-5a61-4977-a019-c10574507ba7.jpg", // Add your profile photo URL here
-  role: "B.Tech CSE Student | Aspiring AIML Engineer",
+  role: "B. Tech CSE AIML Student | AI/ML Developer",
   specialization: "Artificial Intelligence and Machine Learning",
   university: "SRM Institute of Science and Technology",
   cgpa: "9.35",
   bio: [
-    "Hello! I am Kanishka, a B.Tech Computer Science student specializing in Artificial Intelligence and Machine Learning at SRM Institute of Science and Technology, with a strong academic foundation (CGPA 9.12).",
-    "My experience includes building adaptive AI systems, web applications, and analytics-driven solutions, with a focus on creating practical, impactful technology.",
-    "Beyond academics, I actively contribute to the tech community as a Campus Lead at Open Source Connect Global and as a member of GSSoC'25 and Google Developer Groups."
+    "I’m Kanishka Sharma, a B.Tech Computer Science student specializing in Artificial Intelligence and Machine Learning at SRM Institute of Science and Technology, with a strong academic foundation and a 9.35 CGPA.",
+    "I build AI systems and data-driven products that solve real problems. My work spans computer vision, machine learning, geospatial intelligence, financial analytics, and full-stack development — from detecting vessels in satellite imagery and analyzing algorithmic trading strategies to building adaptive emotion intelligence systems.",
+    "Beyond building projects, I actively contribute to hackathons, open-source initiatives, and technology communities, where I collaborate, experiment, and turn ambitious ideas into working systems. I’m driven by continuous learning and the challenge of building technology that is both technically meaningful and genuinely useful."
   ],
   stats: {
     projects: 7,
@@ -175,7 +175,7 @@ export const portfolioData = {
       description: "Completed a data analytics job simulation involving business data analysis, interactive dashboard development, and forensic investigation through structured data insights.",
       skills: ["Tableau", "Excel", "Data Analytics", "Data Visualization", "Forensic Analysis", "Business Insights"],
       logo: "https://www.image2url.com/r2/default/images/1783218567186-51799b29-69e2-41fc-bc01-4f2f313b12fe.png",
-      certificate: "https://www.image2url.com/r2/default/images/1783218567186-51799b29-69e2-41fc-bc01-4f2f313b12fe.png",
+      certificate: "https://www.image2url.com/r2/default/images/1783225547713-6d2c0c28-8a68-4c9a-9dff-11e6b262f292.png",
       projects: [
         {
           title: "Diabetes Prediction with ML",
