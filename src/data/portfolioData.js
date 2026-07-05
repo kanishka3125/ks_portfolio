@@ -169,13 +169,13 @@ export const portfolioData = {
       ]
     },
     {
-      role: "Data Analtics",
+      role: "Data Analytics Virtual Intern",
       company: "Deloitte",
-      duration: "15|12|2025 - 11|01|2026",
-      description: "",
-      skills: ["Machine Learning", "Python", "TensorFlow", "NumPy", "Pandas", "Scikit-learn"],
-      logo: "https://image2url.com/images/1765895074258-5ed13062-fcc5-450b-aea0-4fa4e9e43afa.png",
-      certificate: "https://image2url.com/images/1765896226429-bbdefc28-1539-425e-9df0-01485f43266d.png",
+      duration: "01|07|2026 - 11|01|2026",
+      description: "Completed a data analytics job simulation involving business data analysis, interactive dashboard development, and forensic investigation through structured data insights.",
+      skills: ["Tableau", "Excel", "Data Analytics", "Data Visualization", "Forensic Analysis", "Business Insights"],
+      logo: "https://www.image2url.com/r2/default/images/1783218567186-51799b29-69e2-41fc-bc01-4f2f313b12fe.png",
+      certificate: "https://www.image2url.com/r2/default/images/1783218567186-51799b29-69e2-41fc-bc01-4f2f313b12fe.png",
       projects: [
         {
           title: "Diabetes Prediction with ML",
