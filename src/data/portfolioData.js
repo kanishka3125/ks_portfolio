@@ -459,7 +459,6 @@ export const portfolioData = {
       techStack: ["TensorFlow", "DeepFace", "OpenCV", "FastAPI", "WebSockets"],
       teamMembers: ["Kanishka Sharma", "Teammate C"],
       achievements: "Nominated in Top 5 overall hacks. Highlighted for architectural elegance in stream handling.",
-      learnings: "Gained insights into low-latency frame serialization and multi-threading models in Python server setups.",
       github: "https://github.com/kanishka3125/emotion_detector.git",
       demoLink: "https://jurai-frontend.vercel.app/"
     },
@@ -491,7 +490,7 @@ export const portfolioData = {
       teamMembers: ["Kanishka Sharma", "Hari Pooreni Balaji", "Nitesh", "Derby David"],
       achievements: "Top 10 Finalist",
       github: "https://github.com/Nitesh-code-droid/TechLads_EcoLife.git",
-      demoLink: "https://github.com/Nitesh-code-droid/TechLads_EcoLife.git"
+      demoLink: "https://eco-life-ten.vercel.app"
     },
     {
       id: "agenticAI",
