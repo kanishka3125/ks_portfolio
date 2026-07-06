@@ -179,7 +179,7 @@ function App() {
         ) : (
           <div className="animate-in fade-in slide-in-from-bottom-8 duration-700">
             <div className="flex flex-col gap-6 md:gap-10">
-              <RecruiterOverview data={portfolioData} />
+              <RecruiterOverview data={portfolioData} theme={theme} />
               <Experience data={portfolioData} />
               <Internships data={portfolioData} />
               <Projects data={portfolioData} />
@@ -191,7 +191,7 @@ function App() {
         )}
       </main>
 
-      <ChatBot data={portfolioData} />
+      <ChatBot data={portfolioData} theme={theme} />
       
       <ContactBar data={portfolioData} isVisible={isRecruiterMode} />
 

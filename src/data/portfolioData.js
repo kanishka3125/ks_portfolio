@@ -25,7 +25,7 @@ export const portfolioData = {
     phone: "+91 95483 02781",
     linkedin: "https://www.linkedin.com/in/kanishka-sharma-bb8981350/",
     github: "https://github.com/kanishka3125",
-    resume: "https://image2url.com/pdfs/1765900700693-8087f547-d4c1-4029-a1e6-cde68857b6e7.pdf"
+    resume: "https://www.image2url.com/r2/default/documents/1783330775779-48220260-c94f-4cbc-a068-fa762ef092f9.pdf"
   },
   skills: {
     languages: ["Python", "C", "C++", "HTML", "Java", "JavaScript, SQL"],
@@ -61,10 +61,10 @@ export const portfolioData = {
       color: "#FF4F8B",
       description: "Developing intelligent algorithms, deep learning models, and computer vision pipelines.",
       skills: [
-        { id: "ml", name: "ML (Machine Learning)", level: "Beginner", experience: "2 Years", icon: "https://cdn.simpleicons.org/scikitlearn/F7931E", color: "#FFB300", Application: ["Diabetes Prediction", "SAR Ship Detection System"], certifications: ["IBM ML"] },
+        { id: "ml", name: "ML (Machine Learning)", level: "Beginner", experience: "1 Year", icon: "https://cdn.simpleicons.org/scikitlearn/F7931E", color: "#FFB300", Application: ["Diabetes Prediction", "SAR Ship Detection System"], certifications: ["IBM ML"] },
         { id: "deeplearning", name: "Deep Learning", level: "Beginner", experience: "4 months", icon: "https://cdn.simpleicons.org/pytorch/EE4C2C", color: "#EE4C2C", Application: ["Emotion Recognition", "CV Models"], certifications: ["Google GenAI"] },
         { id: "opencv", name: "OpenCV", level: "Beginner", experience: "6 months", icon: "https://cdn.simpleicons.org/opencv/5C3EE8", color: "#5C3EE8", Application: ["Emotion Recognition"], certifications: [] },
-        { id: "scikitlearn", name: "Scikit-learn", level: "Beginner", experience: "2 Years", icon: "https://cdn.simpleicons.org/scikitlearn/F7931E", color: "#F7931E", Application: ["Diabetes Prediction", "Churn Analysis"], certifications: ["IBM ML"] }
+        { id: "scikitlearn", name: "Scikit-learn", level: "Beginner", experience: "2 months", icon: "https://cdn.simpleicons.org/scikitlearn/F7931E", color: "#F7931E", Application: ["Diabetes Prediction", "Churn Analysis"], certifications: ["IBM ML"] }
       ]
     },
     webdev: {
@@ -73,11 +73,11 @@ export const portfolioData = {
       color: "#7E57C2",
       description: "Creating highly interactive and responsive web platforms and user interfaces.",
       skills: [
-        { id: "react", name: "React", level: "Intermediate", experience: "1.5 Years", icon: "https://cdn.simpleicons.org/react/61DAFB", color: "#61DAFB", Application: ["Personal Portfolio OS", "UrbanSage AI Frontend"], certifications: [] },
+        { id: "react", name: "React", level: "Intermediate", experience: "1 Year", icon: "https://cdn.simpleicons.org/react/61DAFB", color: "#61DAFB", Application: ["Personal Portfolio OS", "UrbanSage AI Frontend"], certifications: [] },
         { id: "firebase", name: "Firebase", level: "Beginner", experience: "6 Months", icon: "https://cdn.simpleicons.org/firebase/FFCA28", color: "#FFCA28", Application: ["Auth & Database for Web Apps"], certifications: [] },
-        { id: "htmlcss", name: "HTML/CSS", level: "Advanced", experience: "3 Years", icon: "https://cdn.simpleicons.org/html5/E34F26", color: "#E34F26", Application: ["Frontend Layouts", "DOM Manipulation"], certifications: [] },
+        { id: "htmlcss", name: "HTML/CSS", level: "Intermediate", experience: "3 Years", icon: "https://cdn.simpleicons.org/html5/E34F26", color: "#E34F26", Application: ["Frontend Layouts", "DOM Manipulation"], certifications: [] },
         { id: "Javascript", name: "Javascript", level: "Beginner", experience: "6 Months", icon: "https://cdn.simpleicons.org/html5/E34F26", color: "#E34F26", Application: ["Auth & Database for Web Apps"], certifications: [] },
-        { id: "SQL", name: "SQL", level: "Advanced", experience: "1 Year", icon: "https://cdn.simpleicons.org/html5/E34F26", color: "#E34F26", Application: [], certifications: [] },
+        { id: "SQL", name: "SQL", level: "Intermediate", experience: "1 Year", icon: "https://www.image2url.com/r2/default/images/1783331198105-d2e2df4c-9861-45b7-8c25-cd04e86a9167.png", color: "#E34F26", Application: [], certifications: [] },
       ]
     },
     tools: {
@@ -86,10 +86,10 @@ export const portfolioData = {
       color: "#00E676",
       description: "Utilizing software development systems, IDEs, and data engineering sandboxes.",
       skills: [
-        { id: "git", name: "Git/GitHub", level: "Intermediate", experience: "3 Years", icon: "https://cdn.simpleicons.org/git/F05032", color: "#FFFFFF", Application: ["Open Source Connect Global", "GirlScript Summer of Code"], certifications: [] },
-        { id: "vscode", name: "VS Code", level: "Advanced", experience: "5 Years", icon: "https://cdn.simpleicons.org/visualstudiocode/007ACC", color: "#007ACC", Application: ["Development Environment"], certifications: [] },
-        { id: "jupyter", name: "Jupyter", level: "Advanced", experience: "2 Years", icon: "https://cdn.simpleicons.org/jupyter/F37626", color: "#F37626", Application: ["Exploratory Data Analysis", "Model Training"], certifications: [] },
-        { id: "Google collab", name: "Google Collab", level: "Intermediate", experience: "2 Years", icon: "https://cdn.simpleicons.org/jupyter/F37626", color: "#F37626", Application: ["Exploratory Data Analysis", "Model Training"], certifications: [] }
+        { id: "git", name: "Git/GitHub", level: "Intermediate", experience: "2 Years", icon: "https://cdn.simpleicons.org/git/F05032", color: "#FFFFFF", Application: ["Open Source Connect Global", "GirlScript Summer of Code"], certifications: [] },
+        { id: "vscode", name: "VS Code", level: "Intermediate", experience: "5 Years", icon: "https://cdn.simpleicons.org/visualstudiocode/007ACC", color: "#007ACC", Application: ["Development Environment"], certifications: [] },
+        { id: "jupyter", name: "Jupyter", level: "Beginner", experience: "1 Years", icon: "https://cdn.simpleicons.org/jupyter/F37626", color: "#F37626", Application: ["Exploratory Data Analysis", "Model Training"], certifications: [] },
+        { id: "Google collab", name: "Google Collab", level: "Intermediate", experience: "2 Years", icon: "https://www.image2url.com/r2/default/images/1783331052903-7d5a9828-7545-4c8f-b1b8-e0aaa9b14d3b.png", color: "#F37626", Application: ["Exploratory Data Analysis", "Model Training"], certifications: [] }
       ]
 
     }
@@ -162,26 +162,17 @@ export const portfolioData = {
       logo: "https://image2url.com/images/1765895074258-5ed13062-fcc5-450b-aea0-4fa4e9e43afa.png",
       certificate: "https://image2url.com/images/1765896226429-bbdefc28-1539-425e-9df0-01485f43266d.png",
       projects: [
-        {
-          title: "Diabetes Prediction with ML",
-          description: "Designed and trained an SVM-based Machine Learning model for diabetes prediction using the PIMA Diabetes dataset."
-        }
+        
       ]
     },
     {
       role: "Data Analytics Virtual Intern",
       company: "Deloitte",
-      duration: "01|07|2026 - 11|01|2026",
+      duration: "07|11|2026",
       description: "Completed a data analytics job simulation involving business data analysis, interactive dashboard development, and forensic investigation through structured data insights.",
       skills: ["Tableau", "Excel", "Data Analytics", "Data Visualization", "Forensic Analysis", "Business Insights"],
       logo: "https://www.image2url.com/r2/default/images/1783218567186-51799b29-69e2-41fc-bc01-4f2f313b12fe.png",
       certificate: "https://www.image2url.com/r2/default/images/1783225547713-6d2c0c28-8a68-4c9a-9dff-11e6b262f292.png",
-      projects: [
-        {
-          title: "Diabetes Prediction with ML",
-          description: "Designed and trained an SVM-based Machine Learning model for diabetes prediction using the PIMA Diabetes dataset."
-        }
-      ]
     }
   ],
   projects: [
@@ -405,7 +396,7 @@ export const portfolioData = {
       role: "Attendee",
       date: "May 2025 - August 2025",
       location: "IIT Madras, Chennai, Tamil Nadu",
-      description: "Contributed to major open-source web assets, reviewed pull requests, led contributor sessions, and promoted collaborative Git workflows among student teams. Built several interactive custom web layouts.",
+      description: "Participated in an immersive technical workshop at IIT Madras, gaining exposure to emerging technologies, practical problem-solving approaches, and insights from an innovation-driven academic environment.",
       banner: "https://www.image2url.com/r2/default/images/1783067854832-266d8327-73ff-40b0-a28d-247d573c90e3.png",
       verifyLink: "https://www.image2url.com/r2/default/images/1783065556531-76b5e2d2-4b28-4e47-82da-fb331a7686a8.png"
     },
@@ -416,7 +407,7 @@ export const portfolioData = {
       role: "Attendee",
       date: "February 2026",
       location: "SRM Campus",
-      description: "Acquired deep insight into generative modeling, transformer architectures, and CUDA optimizations. Trained custom embeddings and deployed fine-tuned LLM architectures on local inference pipelines.",
+      description: "Explored the foundations of Large Language Models, including transformer architectures, generative AI workflows, and modern AI development concepts through hands-on technical sessions.",
       banner: "https://cdn.phototourl.com/member/2026-07-03-1908bd9e-c9da-40d3-bccd-443340c53e31.png",
       verifyLink: "https://img.sanishtech.com/u/843057c424a812405171ac5d0a17aa80.png"
     },
@@ -426,7 +417,7 @@ export const portfolioData = {
       role: "Attendee",
       date: "September 2025",
       location: "SRM Campus",
-      description: "Acquired deep insight into generative modeling, transformer architectures, and CUDA optimizations. Trained custom embeddings and deployed fine-tuned LLM architectures on local inference pipelines.",
+      description: "Learned practical prompt engineering techniques for designing clear, structured, and context-aware instructions to improve the accuracy, reliability, and quality of generative AI outputs.",
       banner: "https://cdn.phototourl.com/member/2026-07-03-46a5a5d5-7c18-40ee-83f0-e197872dd815.png",
       verifyLink: "https://www.image2url.com/r2/default/images/1783065350435-78daee72-0df8-4ddf-b86b-f6dcd41fad0e.png"
     }
@@ -440,7 +431,7 @@ export const portfolioData = {
       date: "March 2026",
       location: "IIIT Sricity, Andhra Pradesh",
       banner: "https://cdn.phototourl.com/member/2026-07-03-01341825-b834-4e0e-9620-68f27023977d.png",
-      description: "Designed a secure ML pipeline using SVM classifiers for predictive diabetes analysis, running on a FastAPI backend and interactive React UI. Ensured strict input validation and accuracy optimizations.",
+      description: "AI-powered maritime intelligence system that detects vessels in SAR satellite imagery, correlates them with AIS data, and identifies dark, spoofed, and high-risk vessels.",
       techStack: ["React", "FastAPI", "Python", "Scikit-learn", "SVM"],
       teamMembers: ["Kanishka Sharma", "Hari Pooreni Balaji", "Rik Mukherjee", "Aadhidev MS"],
       achievements: "One of the Top 10 Finalist",
@@ -456,8 +447,8 @@ export const portfolioData = {
       location: "SRM Institute of Science and Technology, Kattankulathur, Chennai, Tamil Nadu",
       banner: "https://cdn.phototourl.com/member/2026-07-03-a0db001c-a4fd-423f-8c48-6487d7e6761b.jpg",
       description: "Jur AI is an intelligent legal document compliance scanner that uses NLP and Retrieval-Augmented Generation (RAG) to analyze contracts, policies, and regulatory filings. It identifies risk clauses, flags non-compliant sections, and provides plain-language summaries powered by a FastAPI backend and React frontend.",
-      techStack: ["TensorFlow", "DeepFace", "OpenCV", "FastAPI", "WebSockets"],
-      teamMembers: ["Kanishka Sharma", "Teammate C"],
+      techStack: ["React", "Vite", "Tailwind CSS", "FastAPI", "Python", "LLMs", "RAG", "Multi-Agent AI", "PostgreSQL", "PWA"],
+      teamMembers: ["Kanishka Sharma", "Prajakta Chakraborty", "Sanjay Ganesh K Barade", "Nitesh", "Rik Mukherjee", "Tushar Sinha"],
       achievements: "Nominated in Top 5 overall hacks. Highlighted for architectural elegance in stream handling.",
       github: "https://github.com/kanishka3125/emotion_detector.git",
       demoLink: "https://jurai-frontend.vercel.app/"
@@ -470,12 +461,11 @@ export const portfolioData = {
       date: "December 2025",
       location: "Hindustan Institute of Science and Technology, Chennai",
       banner: "https://cdn.phototourl.com/member/2026-07-03-6185b472-abee-4718-ba2e-b1c8fa5047c9.png",
-      description: "Engineered robust multi-peer synchronization layouts with WebSocket communication, temporal versioning, and auto-conflict resolutions.",
+      description: "A digital mental wellness platform designed to provide accessible and personalized emotional support. Nexion combines AI-powered conversations, mental health resources, mood tracking, and intelligent insights to help users better understand and manage their emotional well-being through a secure and supportive digital experience.",
       techStack: ["Node.js", "Express", "WebSockets", "Docker", "Tailwind CSS"],
-      teamMembers: ["Kanishka Sharma", "Teammate D", "Teammate E", "Teammate F"],
-      achievements: "Successfully qualified for national finals. Rated highly on fault-tolerance testing.",
+      teamMembers: ["Kanishka Sharma", "Hari Pooreni Balaji", "Nitesh", "Derby David"],
+      achievements: "Successfully qualified for final hackathon round.",
       github: "https://github.com/Nitesh-code-droid/pulse-robot-template-37443.git",
-      demoLink: "https://github.com/Nitesh-code-droid/pulse-robot-template-37443.git"
     },
     {
       id: "Regenhack",
@@ -485,7 +475,7 @@ export const portfolioData = {
       date: "October 2025",
       location: "SRM Institute of Science and Technology, Kattankulathur, Chennai, Tamil Nadu",
       banner: "https://cdn.phototourl.com/member/2026-07-03-d7e981ed-0c6f-4c23-a7fc-444dc4dd94ff.png",
-      description: "",
+      description: "Gamified sustainability platform that rewards eco-friendly habits with Green Credits, analyzes product carbon impact, and turns sustainable living into a competitive experience.",
       techStack: ["React", "Python", "Django"],
       teamMembers: ["Kanishka Sharma", "Hari Pooreni Balaji", "Nitesh", "Derby David"],
       achievements: "Top 10 Finalist",
@@ -500,12 +490,12 @@ export const portfolioData = {
       date: "December 2025",
       location: "Remote , India",
       banner: "https://cdn.phototourl.com/member/2026-07-03-abd83052-28e5-4fba-b3d7-adbcdf2ed1c3.png",
-      description: "Engineered robust multi-peer synchronization layouts with WebSocket communication, temporal versioning, and auto-conflict resolutions.",
-      techStack: ["Node.js", "Express", "WebSockets", "Docker", "Tailwind CSS"],
-      teamMembers: ["Kanishka Sharma", "Teammate D", "Teammate E", "Teammate F"],
-      achievements: "Successfully qualified for national finals. Rated highly on fault-tolerance testing.",
-      github: "https://github.com/Nitesh-code-droid/pulse-robot-template-37443.git",
-      demoLink: "https://github.com/Nitesh-code-droid/pulse-robot-template-37443.git"
+      description: "An AI-powered personal finance assistant designed to make financial guidance simpler and more accessible for beginners. ZEFFI uses Gemini and real-time financial data to deliver personalized insights through text and voice, adapting recommendations to each user’s financial goals and spending behavior. The platform simplifies complex financial information into actionable guidance for smarter everyday money decisions.",
+      techStack: ["React", "Gemini", "Vertex AI", "Fi MCP", "Python", "Flask/Node.js", "Firebase", "Voice AI"],
+      teamMembers: ["Kanishka Sharma", "Hari Pooreni Balaji", "Nitesh", "Aadhidev M S", "Jeffin C John"],
+      achievements: "Successfully participated and submitted our idea.",
+      github: "https://github.com/kanishka3125",
+      
     },
     {
       id: "hits",
@@ -515,12 +505,12 @@ export const portfolioData = {
       date: "December 2025",
       location: "Remote, India",
       banner: "https://cdn.phototourl.com/member/2026-07-03-4add61c7-be5e-4258-823f-a8cf0f131142.png",
-      description: "Engineered robust multi-peer synchronization layouts with WebSocket communication, temporal versioning, and auto-conflict resolutions.",
+      description: "An AI-powered information retrieval system that helps users instantly find accurate answers from complex web portals. The platform integrates static resources such as PDFs and documents with dynamic content like notices and announcements into a unified knowledge graph, enabling natural-language, context-aware queries instead of traditional keyword search. It also includes an admin dashboard for content management, query analytics, and keeping information up to date.",
       techStack: ["Node.js", "Express", "WebSockets", "Docker", "Tailwind CSS"],
-      teamMembers: ["Kanishka Sharma", "Teammate D", "Teammate E", "Teammate F"],
-      achievements: "Successfully qualified for national finals. Rated highly on fault-tolerance testing.",
-      github: "https://github.com/Nitesh-code-droid/pulse-robot-template-37443.git",
-      demoLink: "https://github.com/Nitesh-code-droid/pulse-robot-template-37443.git"
+      teamMembers: ["Kanishka Sharma", "Saloni Sharma", "Suhani Narendra Futane", "Sameer Singh"],
+      achievements: "Successfully participated and submitted our idea.",
+      github: "https://github.com/kanishka3125"
+      
     },
   ]
 };

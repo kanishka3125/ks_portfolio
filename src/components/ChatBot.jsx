@@ -33,7 +33,7 @@ function generateReply(input, data) {
   return `I can help you learn about Kanishka's skills, projects, experience, internships, certifications, or contact info. What interests you?`
 }
 
-export default function ChatBot({ data }) {
+export default function ChatBot({ data, theme }) {
   const [open, setOpen] = useState(false)
   const [messages, setMessages] = useState([
     { role: 'bot', text: `Hi! 👋 I'm Kanishka's portfolio assistant. Ask me anything about skills, projects, or experience!` }
@@ -102,8 +102,8 @@ export default function ChatBot({ data }) {
               </div>
               <div>
                 <h3 className="text-sm font-semibold text-text-primary">Portfolio Assistant</h3>
-                <p className="text-[10px] text-green-400 font-medium flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block" /> Online
+                <p className={`text-[10px] font-medium flex items-center gap-1 ${theme === 'light' ? 'text-green-700' : 'text-green-400'}`}>
+                  <span className={`w-1.5 h-1.5 rounded-full inline-block ${theme === 'light' ? 'bg-green-700' : 'bg-green-400'}`} /> Online
                 </p>
               </div>
             </div>

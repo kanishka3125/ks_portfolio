@@ -78,7 +78,9 @@ const Navbar = ({ data, theme, toggleTheme, isRecruiterMode, toggleRecruiterMode
                 onClick={toggleRecruiterMode}
                 className={`hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all duration-300 text-[11px] font-bold uppercase tracking-wider ${
                   isRecruiterMode
-                    ? 'bg-green-500/10 text-green-400 border-green-500/40 shadow-[0_0_10px_rgba(34,197,94,0.15)]'
+                    ? theme === 'light'
+                      ? 'bg-green-600/10 text-green-700 border-green-600/40 shadow-[0_0_10px_rgba(22,163,74,0.15)]'
+                      : 'bg-green-500/10 text-green-400 border-green-500/40 shadow-[0_0_10px_rgba(34,197,94,0.15)]'
                     : 'bg-white/5 text-text-muted border-white/10 hover:text-white hover:bg-white/10'
                 }`}
                 title="Toggle Recruiter Mode"
@@ -89,13 +91,13 @@ const Navbar = ({ data, theme, toggleTheme, isRecruiterMode, toggleRecruiterMode
 
               <button
                 onClick={toggleTheme}
-                className="w-8.5 h-8.5 flex items-center justify-center rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-text-primary transition-all duration-300 cursor-pointer hover:scale-105"
+                className="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-text-primary transition-all duration-300 cursor-pointer hover:scale-105"
                 aria-label="Toggle light/dark theme"
               >
                 {theme === 'dark' ? (
-                  <Sun size={15} className="text-primary-light fill-primary-light/10 animate-float" style={{ animationDuration: '4s' }} />
+                  <Sun size={15} className="text-primary-light fill-primary-light/10" />
                 ) : (
-                  <Moon size={15} className="text-accent fill-accent/10 animate-float" style={{ animationDuration: '4s' }} />
+                  <Moon size={15} className="text-accent fill-accent/10" />
                 )}
               </button>
 
@@ -103,7 +105,7 @@ const Navbar = ({ data, theme, toggleTheme, isRecruiterMode, toggleRecruiterMode
                 href={data.contact.resume}
                 target="_blank"
                 rel="noreferrer"
-                className="hidden md:inline-flex text-xs font-bold bg-gradient-button text-white px-4 py-1.5 rounded-lg shadow-md shadow-primary-light/20 hover:shadow-primary-light/40 transition-all duration-300"
+                className="hidden md:inline-flex items-center text-xs font-bold bg-gradient-button text-white px-4 py-1.5 rounded-lg shadow-md shadow-primary-light/20 hover:shadow-primary-light/40 transition-all duration-300"
               >
                 Resume
               </a>
@@ -139,7 +141,9 @@ const Navbar = ({ data, theme, toggleTheme, isRecruiterMode, toggleRecruiterMode
                 }}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-xl border transition-all duration-300 text-sm font-bold uppercase tracking-wider mb-4 ${
                   isRecruiterMode
-                    ? 'bg-green-500/10 text-green-400 border-green-500/40 shadow-[0_0_15px_rgba(34,197,94,0.2)]'
+                    ? theme === 'light'
+                      ? 'bg-green-600/10 text-green-700 border-green-600/40 shadow-[0_0_15px_rgba(22,163,74,0.2)]'
+                      : 'bg-green-500/10 text-green-400 border-green-500/40 shadow-[0_0_15px_rgba(34,197,94,0.2)]'
                     : 'bg-white/5 text-text-muted border-white/10 hover:text-white'
                 }`}
               >

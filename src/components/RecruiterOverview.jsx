@@ -2,7 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { FileText, Trophy, Code, GraduationCap, MapPin, Briefcase, User } from 'lucide-react'
 
-const RecruiterOverview = ({ data }) => {
+const RecruiterOverview = ({ data, theme }) => {
   return (
     <section id="recruiter-overview" className="section-reveal scroll-mt-24 mb-16 relative z-10">
       <div className="bg-card-bg/60 border border-primary-light/30 backdrop-blur-xl rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
@@ -27,7 +27,7 @@ const RecruiterOverview = ({ data }) => {
                   <h1 className="text-3xl md:text-4xl font-heading font-black text-text-primary tracking-tight">
                     {data.name}
                   </h1>
-                  <span className="bg-green-500/20 text-green-400 text-[10px] font-bold px-2 py-1 rounded border border-green-500/30 uppercase tracking-widest animate-pulse whitespace-nowrap">
+                  <span className={`${theme === 'light' ? 'bg-green-600/20 text-green-700 border-green-600/30' : 'bg-green-500/20 text-green-400 border-green-500/30'} text-[10px] font-bold px-2 py-1 rounded border uppercase tracking-widest animate-pulse whitespace-nowrap`}>
                     Open to Work
                   </span>
                 </div>

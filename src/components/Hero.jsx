@@ -177,9 +177,9 @@ const Hero = ({ data, theme }) => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}
-          className="hero-line inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-[11px] font-semibold mb-4"
+          className={`hero-line inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold mb-4 ${theme === 'light' ? 'bg-green-600/10 border-green-600/30 text-green-700' : 'bg-green-500/10 border-green-500/20 text-green-400'}`}
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+          <span className={`w-1.5 h-1.5 rounded-full animate-pulse ${theme === 'light' ? 'bg-green-600' : 'bg-green-400'}`} />
           Available for opportunities
         </motion.div>
 

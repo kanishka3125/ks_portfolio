@@ -40,13 +40,15 @@ const goals = [
   },
 ]
 
-const statusColors = {
-  completed: { dot: 'bg-green-400', glow: 'shadow-green-400/40', text: 'text-green-400' },
+const getStatusColors = (theme) => ({
+  completed: { dot: theme === 'light' ? 'bg-green-600' : 'bg-green-400', glow: theme === 'light' ? 'shadow-green-600/40' : 'shadow-green-400/40', text: theme === 'light' ? 'text-green-700' : 'text-green-400' },
   current: { dot: 'bg-primary-light', glow: 'shadow-primary-light/40', text: 'text-primary-light' },
   upcoming: { dot: 'bg-gray-600', glow: '', text: 'text-gray-500' },
-}
+})
 
-export default function FutureGoals() {
+export default function FutureGoals({ theme }) {
+  const statusColors = getStatusColors(theme)
+
   return (
     <section id="future-goals" className="section-reveal py-8 md:py-12">
       <SectionHeading>Future Roadmap</SectionHeading>
