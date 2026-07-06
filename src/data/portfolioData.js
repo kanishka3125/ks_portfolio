@@ -269,7 +269,7 @@ export const portfolioData = {
       description: "Interactive time-series analysis dashboard that detects statistical anomalies using Z-scores and explains unusual spikes and drops through visual insights.",
       image: "https://cdn.phototourl.com/member/2026-07-03-1c0d0a64-2254-41a5-9633-492790cdcca8.png",
       tech: ["Python", "Streamlit", "Pandas", "NumPy", "Matplotlib", "Z-Score"],
-      demoLink: "",
+      demoLink: "https://anomaly-detection-root-cause-analyzer.streamlit.app/",
       github: "https://github.com/kanishka3125/Anomaly-Detection-Root-Cause-Analyzer.git",
 
     },
@@ -455,7 +455,7 @@ export const portfolioData = {
       date: "January 2026",
       location: "SRM Institute of Science and Technology, Kattankulathur, Chennai, Tamil Nadu",
       banner: "https://cdn.phototourl.com/member/2026-07-03-a0db001c-a4fd-423f-8c48-6487d7e6761b.jpg",
-      description: "Created a real-time computer vision expression analyzer using DeepFace and OpenCV over high-performance WebSocket channels, with baseline calibration to resolve user resting-face variance.",
+      description: "Jur AI is an intelligent legal document compliance scanner that uses NLP and Retrieval-Augmented Generation (RAG) to analyze contracts, policies, and regulatory filings. It identifies risk clauses, flags non-compliant sections, and provides plain-language summaries powered by a FastAPI backend and React frontend.",
       techStack: ["TensorFlow", "DeepFace", "OpenCV", "FastAPI", "WebSockets"],
       teamMembers: ["Kanishka Sharma", "Teammate C"],
       achievements: "Nominated in Top 5 overall hacks. Highlighted for architectural elegance in stream handling.",
