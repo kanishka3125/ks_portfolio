@@ -162,7 +162,7 @@ export const portfolioData = {
       logo: "https://image2url.com/images/1765895074258-5ed13062-fcc5-450b-aea0-4fa4e9e43afa.png",
       certificate: "https://image2url.com/images/1765896226429-bbdefc28-1539-425e-9df0-01485f43266d.png",
       projects: [
-        
+
       ]
     },
     {
@@ -356,25 +356,108 @@ export const portfolioData = {
       id: "microsoft-genai",
       title: "Career Essentials in Generative AI",
       organization: "Microsoft and LinkedIn",
-      orgLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/120px-Microsoft_logo.svg.png",
+      orgLogo: "https://www.image2url.com/r2/default/images/1783334244721-710fde97-71f9-41de-8281-10a365ff5a87.png",
       image: "https://i.postimg.cc/BnBr7ZzC/Microsoft-and-Linkedin-PROFESSIONAL-CERTIFICATE.png",
       verifyLink: "https://image2url.com/pdfs/1765886917981-81c3d275-8732-472c-b2b6-99295450d656.pdf",
+      skills: ["Generative AI", "Prompt Engineering", "Computer Ethics", "Responsible AI", "Generative AI"]
+    },
+    {
+      id: "Azure",
+      organization: "Microsoft",
+      title: "Get started with Azure AI Services",
+      orgLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/120px-Microsoft_logo.svg.png",
+      image: "https://www.image2url.com/r2/default/images/1783333867479-3f84c9aa-90f4-422e-a1de-9b6a9158bc88.png",
+      verifyLink: "https://www.image2url.com/r2/default/images/1783333867479-3f84c9aa-90f4-422e-a1de-9b6a9158bc88.png",
+      skills: ["Microsoft Azure", "AI Ethics", "Azure AI Services", "Artificial Intelligence", "Responsible AI"]
+    },
+    {
+      id: "Introduction to Generative AI",
+      organization: "Google Cloud",
+      title: "Introduction to Generative AI",
+      orgLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png",
+      image: "https://www.image2url.com/r2/default/images/1783332491251-ea722afd-4271-4ab0-9e3d-f3efa220cf55.png",
+      verifyLink: "https://www.image2url.com/r2/default/images/1783332491251-ea722afd-4271-4ab0-9e3d-f3efa220cf55.png",
+      skills: ["Generative AI", "Large Language Models (LLMs)", "Artificial Intelligence"]
+    },
+    {
+      id: "Data Analytics Internship",
+      organization: "Deloitte",
+      title: "Data Analytics Job Simulation",
+      orgLogo: "https://www.image2url.com/r2/default/images/1783218567186-51799b29-69e2-41fc-bc01-4f2f313b12fe.png",
+      image: "https://www.image2url.com/r2/default/images/1783335125421-3369b6e1-f0cd-40b6-8158-923753fb57ea.png",
+      verifyLink: "https://www.image2url.com/r2/default/images/1783335125421-3369b6e1-f0cd-40b6-8158-923753fb57ea.png",
+      skills: ["Data Analytics", "Data Visualization", "Business Analysis", "Data Interpretation"]
+    },
+    {
+      id: "hp life",
+      organization: "HP Life",
+      title: "Data Science and Analytics",
+      orgLogo: "https://www.image2url.com/r2/default/images/1783335846435-85c46f75-95db-413e-ab5d-92ec767fede4.png",
+      image: "https://www.image2url.com/r2/default/images/1783335857350-4edbace6-d47f-4df7-b50c-4f46a1ae5c21.jpg",
+      verifyLink: "https://www.image2url.com/r2/default/images/1783335857350-4edbace6-d47f-4df7-b50c-4f46a1ae5c21.jpg",
+      skills: ["Data Science", "Data Analytics", "Data-Driven Decision Making", "Data Interpretation"]
+    },
+    {
+      id: "Samsung",
+      organization: "Samsung",
+      title: "Solve for Tomorrow",
+      orgLogo: "https://www.image2url.com/r2/default/images/1783337133973-dfa00b85-9441-4c69-a873-bb7ae015cb62.png",
+      image: "https://www.image2url.com/r2/default/images/1783336439813-ce558d54-b6ec-4deb-9204-292defa7eb76.png",
+      verifyLink: "https://www.image2url.com/r2/default/images/1783336439813-ce558d54-b6ec-4deb-9204-292defa7eb76.png",
+      skills: ["Innovation", "Design Thinking"]
+    },
+    {
+      id: "Problem solving",
+      organization: "Hackerrank",
+      title: "Problem Solving (Basic)",
+      orgLogo: "https://www.image2url.com/r2/default/images/1783339333881-4b5596ea-4224-4d77-b6cc-000e9cb18436.webp",
+      image: "https://www.image2url.com/r2/default/images/1783336438101-7b82166a-00a8-44d7-a96b-2f999d72f007.png",
+      verifyLink: "https://www.image2url.com/r2/default/images/1783336438101-7b82166a-00a8-44d7-a96b-2f999d72f007.png",
       skills: ["Generative AI", "Microsoft Copilot", "AI Ethics"]
     },
     {
-      id: "Professional Certificate in Python",
-      organization: "Microsoft Professional Certificate",
-      orgLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/120px-Microsoft_logo.svg.png",
-      image: "https://i.postimg.cc/BnBr7ZzC/Microsoft-and-Linkedin-PROFESSIONAL-CERTIFICATE.png",
-      verifyLink: "https://image2url.com/pdfs/1765886917981-81c3d275-8732-472c-b2b6-99295450d656.pdf",
+      id: "Elite Coders",
+      organization: "Elite Coders",
+      title: "Elite Coders Winter of Code",
+      orgLogo: "https://www.image2url.com/r2/default/images/1783218567186-51799b29-69e2-41fc-bc01-4f2f313b12fe.png",
+      image: "https://www.image2url.com/r2/default/images/1783336439947-8bc5d359-e2ef-4c37-9337-ea473927b098.png",
+      verifyLink: "https://www.image2url.com/r2/default/images/1783336439947-8bc5d359-e2ef-4c37-9337-ea473927b098.png",
       skills: ["Generative AI", "Microsoft Copilot", "AI Ethics"]
     },
     {
-      id: "Professional Certificate in MLOps",
-      organization: "Microsoft Professional Certificate",
-      orgLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/120px-Microsoft_logo.svg.png",
-      image: "https://i.postimg.cc/BnBr7ZzC/Microsoft-and-Linkedin-PROFESSIONAL-CERTIFICATE.png",
-      verifyLink: "https://image2url.com/pdfs/1765886917981-81c3d275-8732-472c-b2b6-99295450d656.pdf",
+      id: "Java",
+      organization: "Hackerank",
+      title: "Java (Basic)",
+      orgLogo: "https://www.image2url.com/r2/default/images/1783339333881-4b5596ea-4224-4d77-b6cc-000e9cb18436.webp",
+      image: "https://www.image2url.com/r2/default/images/1783337322261-62f12fe6-8bda-4eb7-a513-4cec1f327d89.png",
+      verifyLink: "https://www.image2url.com/r2/default/images/1783337322261-62f12fe6-8bda-4eb7-a513-4cec1f327d89.png",
+      skills: ["Generative AI", "Microsoft Copilot", "AI Ethics"]
+    },
+    {
+      id: "Isro",
+      organization: "ISRO and Hack2Skill",
+      title: "Bharatiya Antriksh Hackathon 2025",
+      orgLogo: "https://www.image2url.com/r2/default/images/1783337828500-727d3b6d-f856-4c68-882e-cd121fa0802f.png",
+      image: "https://www.image2url.com/r2/default/images/1783337335434-7de0ac70-232f-4b51-b916-a16c6763bcd2.png",
+      verifyLink: "https://www.image2url.com/r2/default/images/1783337335434-7de0ac70-232f-4b51-b916-a16c6763bcd2.png",
+      skills: ["Generative AI", "Microsoft Copilot", "AI Ethics"]
+    },
+    {
+      id: "Adobe",
+      organization: "Adobe and Hack2Skill",
+      title: "Adobe India Hackathon 2026",
+      orgLogo: "https://www.image2url.com/r2/default/images/1783338565996-c9dd08b3-83d3-443e-9a60-c9128721b468.png",
+      image: "https://www.image2url.com/r2/default/images/1783337812502-55e80936-93d8-4036-bf5f-30f6c287dba4.jpg",
+      verifyLink: "https://www.image2url.com/r2/default/images/1783337812502-55e80936-93d8-4036-bf5f-30f6c287dba4.jpg",
+      skills: ["Generative AI", "Microsoft Copilot", "AI Ethics"]
+    },
+    {
+      id: "Agentic AI",
+      organization: "Google and Hack2Skill",
+      title: "google Agentic AI Hackathon",
+      orgLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png",
+      image: "https://www.image2url.com/r2/default/images/1783337875111-c01f7262-64fe-450b-b0d6-b1e073160c62.png",
+      verifyLink: "https://www.image2url.com/r2/default/images/1783337875111-c01f7262-64fe-450b-b0d6-b1e073160c62.png",
       skills: ["Generative AI", "Microsoft Copilot", "AI Ethics"]
     },
 
@@ -495,7 +578,7 @@ export const portfolioData = {
       teamMembers: ["Kanishka Sharma", "Hari Pooreni Balaji", "Nitesh", "Aadhidev M S", "Jeffin C John"],
       achievements: "Successfully participated and submitted our idea.",
       github: "https://github.com/kanishka3125",
-      
+
     },
     {
       id: "hits",
@@ -510,7 +593,7 @@ export const portfolioData = {
       teamMembers: ["Kanishka Sharma", "Saloni Sharma", "Suhani Narendra Futane", "Sameer Singh"],
       achievements: "Successfully participated and submitted our idea.",
       github: "https://github.com/kanishka3125"
-      
+
     },
   ]
 };
