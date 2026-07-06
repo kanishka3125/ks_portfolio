@@ -310,22 +310,6 @@ export const portfolioData = {
 
     },
     {
-      id: "advanced calculator",
-      title: "Advanced Calculator",
-      domain: "Web",
-      type: "Personal",
-      difficulty: "Beginner",
-      status: "Completed",
-      shortDescription: "A feature-rich all-in-one calculator supporting standard, scientific, unit conversion, and BMI modes.",
-      description: "A feature-rich all-in-one calculator web app with multiple modes — standard arithmetic, scientific calculations, unit converter, and BMI calculator — built with vanilla HTML, CSS, and JavaScript.",
-      image: "https://cdn.phototourl.com/member/2026-07-03-7dc7f2b1-2a35-4ef9-b013-115952bbbd9d.png",
-      tech: ["HTML", "CSS", "JavaScript", "Git"],
-      demoLink: "",
-      github: "https://github.com/kanishka3125",
-
-    },
-
-    {
       id: "predictor",
       title: "Instagram Post Predictor",
       domain: "AI/ML",
@@ -413,7 +397,7 @@ export const portfolioData = {
       orgLogo: "https://www.image2url.com/r2/default/images/1783339333881-4b5596ea-4224-4d77-b6cc-000e9cb18436.webp",
       image: "https://www.image2url.com/r2/default/images/1783336438101-7b82166a-00a8-44d7-a96b-2f999d72f007.png",
       verifyLink: "https://www.image2url.com/r2/default/images/1783336438101-7b82166a-00a8-44d7-a96b-2f999d72f007.png",
-      skills: ["Generative AI", "Microsoft Copilot", "AI Ethics"]
+      skills: ["Problem Solving", "Algorithms", "Data Structures"]
     },
     {
       id: "Elite Coders",
@@ -431,7 +415,7 @@ export const portfolioData = {
       orgLogo: "https://www.image2url.com/r2/default/images/1783339333881-4b5596ea-4224-4d77-b6cc-000e9cb18436.webp",
       image: "https://www.image2url.com/r2/default/images/1783337322261-62f12fe6-8bda-4eb7-a513-4cec1f327d89.png",
       verifyLink: "https://www.image2url.com/r2/default/images/1783337322261-62f12fe6-8bda-4eb7-a513-4cec1f327d89.png",
-      skills: ["Generative AI", "Microsoft Copilot", "AI Ethics"]
+      skills: ["Java", "Object-Oriented Programming (OOP)", "Problem Solving"]
     },
     {
       id: "Isro",
@@ -440,7 +424,7 @@ export const portfolioData = {
       orgLogo: "https://www.image2url.com/r2/default/images/1783337828500-727d3b6d-f856-4c68-882e-cd121fa0802f.png",
       image: "https://www.image2url.com/r2/default/images/1783337335434-7de0ac70-232f-4b51-b916-a16c6763bcd2.png",
       verifyLink: "https://www.image2url.com/r2/default/images/1783337335434-7de0ac70-232f-4b51-b916-a16c6763bcd2.png",
-      skills: ["Generative AI", "Microsoft Copilot", "AI Ethics"]
+      skills: ["Problem Solving", "Innovation", "Hackathons"]
     },
     {
       id: "Adobe",
@@ -449,16 +433,16 @@ export const portfolioData = {
       orgLogo: "https://www.image2url.com/r2/default/images/1783338565996-c9dd08b3-83d3-443e-9a60-c9128721b468.png",
       image: "https://www.image2url.com/r2/default/images/1783337812502-55e80936-93d8-4036-bf5f-30f6c287dba4.jpg",
       verifyLink: "https://www.image2url.com/r2/default/images/1783337812502-55e80936-93d8-4036-bf5f-30f6c287dba4.jpg",
-      skills: ["Generative AI", "Microsoft Copilot", "AI Ethics"]
+      skills: ["Problem Solving", "Coding", "Algorithms"]
     },
     {
       id: "Agentic AI",
       organization: "Google and Hack2Skill",
-      title: "google Agentic AI Hackathon",
+      title: "Google Agentic AI Hackathon",
       orgLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png",
       image: "https://www.image2url.com/r2/default/images/1783337875111-c01f7262-64fe-450b-b0d6-b1e073160c62.png",
       verifyLink: "https://www.image2url.com/r2/default/images/1783337875111-c01f7262-64fe-450b-b0d6-b1e073160c62.png",
-      skills: ["Generative AI", "Microsoft Copilot", "AI Ethics"]
+      skills: ["Agentic AI", "Generative AI", "Large Language Models (LLMs)", "AI Agents", "Prompt Engineering"]
     },
 
   ],
